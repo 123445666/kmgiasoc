@@ -52,7 +52,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\libs\js\index.9934abfd93cb8f131933.js" />
     <None Include="wwwroot\libs\vendors\ckeditor\ckeditor.js" />
     <None Include="wwwroot\libs\vendors\ckeditor\ckeditor.js.map" />
     <None Include="wwwroot\libs\vendors\ckeditor\translations\af.js" />

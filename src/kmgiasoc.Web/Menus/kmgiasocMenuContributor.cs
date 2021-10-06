@@ -24,16 +24,16 @@ namespace kmgiasoc.Web.Menus
             var administration = context.Menu.GetAdministration();
             var l = context.GetLocalizer<kmgiasocResource>();
 
-            context.Menu.Items.Insert(
-                0,
-                new ApplicationMenuItem(
-                    kmgiasocMenus.Home,
-                    l["Menu:Home"],
-                    "~/",
-                    icon: "fas fa-home",
-                    order: 0
-                )
-            );
+            //context.Menu.Items.Insert(
+            //    0,
+            //    new ApplicationMenuItem(
+            //        kmgiasocMenus.Home,
+            //        l["Menu:Home"],
+            //        "~/",
+            //        icon: "fas fa-home",
+            //        order: 0
+            //    )
+            //);
             
             if (MultiTenancyConsts.IsEnabled)
             {

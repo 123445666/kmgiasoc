@@ -52,11 +52,17 @@ namespace Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic
             {
                 options
                     .StyleBundles
-                    .Add(BasicThemeBundles.Styles.Global, bundle =>
+                    //.Add(BasicThemeBundles.Styles.Global, bundle =>
+                    .Add("MyGlobalBundle", bundle =>
                     {
-                        bundle
-                            .AddBaseBundles(StandardBundles.Styles.Global)
-                            .AddContributors(typeof(BasicThemeGlobalStyleContributor));
+                        bundle.AddFiles(
+                        "/libs/vendors/ckeditor/styles.css",
+                        "/libs/styles/index.css",
+                        "/libs/@fortawesome/fontawesome-free/css/all.css"
+                        );
+                        //bundle
+                        //    .AddBaseBundles(StandardBundles.Styles.Global)
+                        //    .AddContributors(typeof(BasicThemeGlobalStyleContributor));
                     });
 
                 options
@@ -64,6 +70,10 @@ namespace Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic
                     .Add(BasicThemeBundles.Scripts.Global, bundle =>
                     {
                         bundle
+                        .AddFiles(
+                           "/libs/js/index.js",
+                           "/libs/js/alpinejs/cdn.min.js"
+                            )
                             .AddBaseBundles(StandardBundles.Scripts.Global)
                             .AddContributors(typeof(BasicThemeGlobalScriptContributor));
                     });
