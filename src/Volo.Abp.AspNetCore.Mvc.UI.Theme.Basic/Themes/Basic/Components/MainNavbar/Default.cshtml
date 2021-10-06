@@ -1,20 +1,174 @@
 ﻿@using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.Themes.Basic.Components.Brand
 @using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.Themes.Basic.Components.Menu
 @using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.Themes.Basic.Components.Toolbar
-<nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm flex-column flex-md-row mb-4" id="main-navbar" style="min-height: 4rem;">
-    <div class="container">
-        @(await Component.InvokeAsync<MainNavbarBrandViewComponent>())
-        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                data-target="#main-navbar-collapse" aria-controls="main-navbar-collapse"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="main-navbar-collapse">
-            <ul class="navbar-nav mx-auto">
+<nav>
+    <div class="container px-4 mx-auto flex flex-wrap items-center">
+
+        <div class="w-full relative flex p-4 lg:p-6 justify-between lg:w-auto lg:static lg:block lg:justify-start">
+            @(await Component.InvokeAsync<MainNavbarBrandViewComponent>())
+            <button class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded block lg:hidden outline-none focus:outline-none"
+                    type="button" onclick="toggleNavbar('example-collapse-navbar')">
+                <i class="text-gray fas fa-bars"></i>
+            </button>
+        </div>
+
+        <div class="lg:flex flex-grow items-center lg:shadow-none hidden" id="example-collapse-navbar">
+            <ul class="flex flex-col lg:flex-row list-none mr-auto">
                 @(await Component.InvokeAsync<MainNavbarMenuViewComponent>())
-            </ul> 
-            <ul class="navbar-nav"> 
+            </ul>
+            <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
                 @(await Component.InvokeAsync<MainNavbarToolbarViewComponent>())
+            </ul>
+        </div>
+    </div>
+</nav>
+<nav class="bg-gray-900 max-w-full overflow-auto">
+    <div class="block">
+        <ul class="block">
+            <!--Regular Link-->
+            <li class="py-3 float-left">
+                <a href="#"
+                   class="relative block py-2 px-2 ml-3 lg:p-2 bg-gray-700 text-white text-xs font-bold rounded hover:bg-gray-700 hover:text-white">
+                    Công
+                    nghệ cao
+                </a>
+            </li>
+            <!--Regular Link-->
+            <li class="py-3 float-left">
+                <a href="#"
+                   class="relative block py-2 px-2 ml-3 lg:p-2 bg-gray-700 text-white text-xs font-bold rounded hover:bg-gray-700 hover:text-white">Ôtô</a>
+            </li>
+            <!--Regular Link-->
+            <li class="py-3 float-left">
+                <a href="#"
+                   class="relative block py-2 px-2 ml-3 lg:p-2 bg-gray-700 text-white text-xs font-bold rounded hover:bg-gray-700 hover:text-white">Gaming</a>
+            </li>
+            <li class="py-3 float-left">
+                <a href="#"
+                   class="relative block py-2 px-2 ml-3 lg:p-2 bg-gray-700 text-white text-xs font-bold rounded hover:bg-gray-700 hover:text-white">
+                    Văn
+                    hóa & Giải trí
+                </a>
+            </li>
+            <li class="py-3 float-left">
+                <a href="#"
+                   class="relative block py-2 px-2 ml-3 lg:p-2 bg-gray-700 text-white text-xs font-bold rounded hover:bg-gray-700 hover:text-white">
+                    Cửa
+                    hàng tạp hóa & cửa hàng tạp hóa
+                </a>
+            </li>
+            <li class="py-3 float-left">
+                <a href="#"
+                   class="relative block py-2 px-2 ml-3 lg:p-2 bg-gray-700 text-white text-xs font-bold rounded hover:bg-gray-700 hover:text-white">
+                    Thể
+                    thao & Ngoài trời
+                </a>
+            </li>
+            <li class="py-3 float-left">
+                <a href="#"
+                   class="relative block py-2 px-2 ml-3 lg:p-2 bg-gray-700 text-white text-xs font-bold rounded hover:bg-gray-700 hover:text-white">
+                    Phụ
+                    kiện thời trang
+                </a>
+            </li>
+            <li class="py-3 float-left">
+                <a href="#"
+                   class="relative block py-2 px-2 ml-3 lg:p-2 bg-gray-700 text-white text-xs font-bold rounded hover:bg-gray-700 hover:text-white">
+                    Gói
+                    di động và internet
+                </a>
+            </li>
+            <li class="py-3 float-left">
+                <a href="#"
+                   class="relative block py-2 px-2 ml-3 lg:p-2 bg-gray-700 text-white text-xs font-bold rounded hover:bg-gray-700 hover:text-white">
+                    Sức
+                    khỏe & Mỹ phẩm
+                </a>
+            </li>
+            <li class="py-3 float-left">
+                <a href="#"
+                   class="relative block py-2 px-2 ml-3 lg:p-2 bg-gray-700 text-white text-xs font-bold rounded hover:bg-gray-700 hover:text-white">
+                    Thể
+                    thao & Ngoài trời
+                </a>
+            </li>
+            <li class="py-3 float-left">
+                <a href="#"
+                   class="relative block py-2 px-2 ml-3 lg:p-2 bg-gray-700 text-white text-xs font-bold rounded hover:bg-gray-700 hover:text-white">
+                    Gia
+                    đình & Trẻ em
+                </a>
+            </li>
+            <li class="py-3 float-left">
+                <a href="#"
+                   class="relative block py-2 px-2 ml-3 lg:p-2 bg-gray-700 text-white text-xs font-bold rounded hover:bg-gray-700 hover:text-white">
+                    Gói
+                    di động và internet
+                </a>
+            </li>
+            <li class="py-3 float-left">
+                <a href="#"
+                   class="relative block py-2 px-2 ml-3 lg:p-2 bg-gray-700 text-white text-xs font-bold rounded hover:bg-gray-700 hover:text-white">
+                    Nhà
+                    & Môi trường sống
+                </a>
+            </li>
+            <li class="py-3 float-left">
+                <a href="#"
+                   class="relative block py-2 px-2 ml-3 lg:p-2 bg-gray-700 text-white text-xs font-bold rounded hover:bg-gray-700 hover:text-white">
+                    Tài
+                    chính & Bảo hiểm
+                </a>
+            </li>
+            <li class="py-3 float-left">
+                <a href="#"
+                   class="relative block py-2 px-2 ml-3 lg:p-2 bg-gray-700 text-white text-xs font-bold rounded hover:bg-gray-700 hover:text-white">
+                    Vườn
+                    & Thủ Công
+                </a>
+            </li>
+            <li class="py-3 float-left">
+                <a href="#"
+                   class="relative block py-2 px-2 ml-3 lg:p-2 bg-gray-700 text-white text-xs font-bold rounded hover:bg-gray-700 hover:text-white">
+                    Dịch
+                    vụ
+                </a>
+            </li>
+            <li class="py-3 float-left">
+                <a href="#"
+                   class="relative block py-2 px-2 ml-3 lg:p-2 bg-gray-700 text-white text-xs font-bold rounded hover:bg-gray-700 hover:text-white">
+                    Du
+                    lịch
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<nav>
+    <div class="container px-4 mx-auto flex flex-wrap items-center">
+        <div class="w-full relative flex p-4 lg:p-6 justify-between lg:w-auto lg:static lg:block lg:justify-start">
+            <a href="#"
+               class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase hover:text-gray-900">Logo</a>
+            <button class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded block lg:hidden outline-none focus:outline-none"
+                    type="button" onclick="toggleNavbar('example-collapse-navbar')">
+                <i class="text-gray fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="lg:flex flex-grow items-center lg:shadow-none hidden" id="example-collapse-navbar">
+            
+            <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
+                <li class="flex items-center">
+                    <button class="inline-flex items-center h-10 px-5 text-white transition-colors duration-150 bg-gray-800 rounded-lg focus:shadow-outline hover:bg-gray-700 font-bold">
+                        <i class="fas fa-user-alt w-4 h-4 mr-3 fill-current"></i><span>Login</span>
+                    </button>
+                </li>
+                <li class="flex items-center my-4 sm:my-auto">
+                    <button class="inline-flex items-center h-10 px-5 text-white transition-colors duration-150 bg-cyan-800 rounded-lg focus:shadow-outline hover:bg-cyan-500 lg:ml-3 font-bold"
+                            type="button" style="transition: all 0.15s ease 0s;">
+                        <i class="fas fa-plus w-4 h-4 mr-3 fill-current"></i> <span>Post A Deal</span>
+                    </button>
+                </li>
             </ul>
         </div>
     </div>

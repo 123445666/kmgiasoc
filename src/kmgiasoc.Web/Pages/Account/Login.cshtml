@@ -1,0 +1,88 @@
+﻿@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Volo.Abp.Account.Localization
+@using Volo.Abp.Account.Settings
+@using Volo.Abp.Settings
+@model kmgiasoc.Web.Pages.Account.CustomLoginModel
+@inject IHtmlLocalizer<AccountResource> L
+@inject Volo.Abp.Settings.ISettingProvider SettingProvider
+
+
+<partial name="_Header" />
+
+<main class="bg-gray-300 mb-32">
+    <div class="flex flex-wrap py-12 justify-center items-center">
+        <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-grey-light mt-3 shadow-sm rounded">
+            <div class="flex-auto p-6 p-5">
+                <h2 class="text-lg font-bold">@L["Login"]</h2>
+                @if (await SettingProvider.IsTrueAsync(AccountSettingNames.IsSelfRegistrationEnabled))
+                {
+                    <strong>
+                        @L["AreYouANewUser"]
+                        <a href="@Url.Page("./Register", new {returnUrl = Model.ReturnUrl, returnUrlHash = Model.ReturnUrlHash})" class="text-decoration-none">@L["Register"]</a>
+                    </strong>
+                }
+                @if (Model.EnableLocalLogin)
+                {
+                    <form method="post" class="mt-4">
+                        <div class="mb-4">
+                            <label asp-for="LoginInput.UserNameOrEmailAddress"></label>
+                            <input asp-for="LoginInput.UserNameOrEmailAddress" class="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-gray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
+                            <p class="text-xs text-gray-400 p-2" />
+                            <span asp-validation-for="LoginInput.UserNameOrEmailAddress" class="text-danger"></span>
+                        </div>
+                        <div class="mb-4">
+                            <label asp-for="LoginInput.Password"></label>
+                            <input asp-for="LoginInput.Password" class="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-gray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
+                            <p class="text-xs text-gray-400 p-2" />
+                            <span asp-validation-for="LoginInput.Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="flex flex-wrap">
+                            <div class="flex-grow">
+                                <div class="custom-checkbox custom-control mb-2">
+                                    <abp-input asp-for="LoginInput.RememberMe" class="mb-4" />
+                                </div>
+                            </div>
+                            <div class="text-right col">
+                                <a href="@Url.Page("./ForgotPassword", new {returnUrl = Model.ReturnUrl, returnUrlHash = Model.ReturnUrlHash})">@L["ForgotPassword"]</a>
+                            </div>
+                        </div>
+                      
+                        <abp-button type="submit" button-type="Primary" name="Action" value="Login" class="w-full py-3 text-base text-white transition duration-500 ease-in-out transform bg-blue-600 border-blue-600 rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blue-800">@L["Login"]</abp-button>
+                        @if (Model.ShowCancelButton)
+                        {
+                            <abp-button type="submit" button-type="Secondary" formnovalidate="formnovalidate" name="Action" value="Cancel" class="btn-block btn-lg mt-3">@L["Cancel"]</abp-button>
+                        }
+                    </form>
+                }
+
+                @if (Model.VisibleExternalProviders.Any())
+                {
+                    <div class="mt-2">
+                        <h5>@L["OrLoginWith"]</h5>
+                        <form asp-page="./Login" asp-page-handler="ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" asp-route-returnUrlHash="@Model.ReturnUrlHash" method="post">
+                            @foreach (var provider in Model.VisibleExternalProviders)
+                            {
+                                <button type="submit" class="btn btn-primary m-1" name="provider" value="@provider.AuthenticationScheme" title="@L["LogInUsingYourProviderAccount", provider.DisplayName]">@provider.DisplayName</button>
+                            }
+                        </form>
+                    </div>
+                }
+
+                @if (!Model.EnableLocalLogin && !Model.VisibleExternalProviders.Any())
+                {
+                    <div class="alert alert-warning">
+                        <strong>@L["InvalidLoginRequest"]</strong>
+                        @L["ThereAreNoLoginSchemesConfiguredForThisClient"]
+                    </div>
+                }
+
+            </div>
+        </div>
+        <!-- Component End  -->
+    </div>
+</main>
+
+
+<partial name="_Footer" />

@@ -1,5 +1,6 @@
 ﻿@using Volo.Abp.UI.Navigation
 @model ApplicationMenu
+
 @foreach (var menuItem in Model.Items)
 {
     var elementId = string.IsNullOrEmpty(menuItem.ElementId) ? string.Empty : $"id=\"{menuItem.ElementId}\"";
@@ -10,8 +11,8 @@
     {
         if (menuItem.Url != null)
         {
-            <li class="nav-item @cssClass @disabled" @elementId>
-                <a class="nav-link" href="@url" target="@menuItem.Target">
+            <li class="hover:bg-gray-700 hover:text-white @cssClass @disabled" @elementId>
+                <a class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold" href="@url" target="@menuItem.Target">
                     @if (menuItem.Icon != null)
                     {
                         if (menuItem.Icon.StartsWith("fa"))
@@ -26,22 +27,26 @@
     }
     else
     {
-        <li class="nav-item">
-            <div class="dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="Menu_@(menuItem.Name)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    @if (menuItem.Icon != null)
+        <!--Regular Link-->
+        <li class="toggleable hover:bg-gray-700 hover:text-white">
+            <input type="checkbox" value="selected" id="toggle-one" class="toggle-input">
+            <label for="toggle-one" class="block cursor-pointer py-6 px-4 lg:p-6 text-sm lg:text-base font-bold" aria-labelledby="Menu_@(menuItem.Name)">
+                @if (menuItem.Icon != null)
+                {
+                    if (menuItem.Icon.StartsWith("fa"))
                     {
-                        if (menuItem.Icon.StartsWith("fa"))
-                        {
-                            <i class="@menuItem.Icon"></i>
-                        }
+                        <i class="@menuItem.Icon"></i>
                     }
-                    @menuItem.DisplayName
-                </a>
-                <div class="dropdown-menu border-0 shadow-sm" aria-labelledby="Menu_@(menuItem.Name)">
+                }
+                @menuItem.DisplayName
+            </label>
+            <div class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-gray-700 z-50">
+                <div class="container mx-auto w-full flex flex-wrap justify-between mx-2">
                     @foreach (var childMenuItem in menuItem.Items)
                     {
-                        @await Html.PartialAsync("~/Themes/Basic/Components/Menu/_MenuItem.cshtml", childMenuItem)
+                        <ul class="px-4 w-full sm:w-1/2 lg:w-1/4 border-gray-600 border-b sm:border-r lg:border-b-0 pb-6 pt-6 lg:pt-3">
+                            @await Html.PartialAsync("~/Themes/Basic/Components/Menu/_MenuItem.cshtml", childMenuItem)
+                        </ul>
                     }
                 </div>
             </div>
