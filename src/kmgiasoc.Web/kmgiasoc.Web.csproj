@@ -17,13 +17,9 @@
 
   <ItemGroup>
     <Compile Remove="Logs\**" />
-    <Compile Remove="Pages\Account\**" />
     <Content Remove="Logs\**" />
-    <Content Remove="Pages\Account\**" />
     <EmbeddedResource Remove="Logs\**" />
-    <EmbeddedResource Remove="Pages\Account\**" />
     <None Remove="Logs\**" />
-    <None Remove="Pages\Account\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -57,6 +53,7 @@
 
   <ItemGroup>
     <None Include="Modules\Account\Components\Toolbar\UserLoginLink\Default.cshtml" />
+    <None Include="Pages\Account\Login.cshtml" />
     <None Include="wwwroot\libs\js\index.js" />
     <None Include="wwwroot\libs\vendors\alpinejs\cdn.min.js" />
     <None Include="wwwroot\libs\vendors\ckeditor\ckeditor.js" />
