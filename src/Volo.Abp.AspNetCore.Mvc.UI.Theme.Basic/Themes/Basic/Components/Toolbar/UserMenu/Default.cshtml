@@ -7,21 +7,35 @@
 @inject ICurrentTenant CurrentTenant
 @inject IHtmlLocalizer<AbpUiResource> L
 @model ApplicationMenu
-<div class="dropdown">
-    <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        @if (CurrentUser.TenantId != null)
+<!-- Profile dropdown -->
+<div @@click.away="open = false" class="relative" x-data="{ open: false }">
+    <button @@click="open = !open"
+            class="bg-gray-800 flex text-white text-sm rounded-full focus:buttonrevert-gray flex justify-center items-center h-8 w-8 rounded-full lg:ml-3"
+            href="#" role="button" id="dropdownUserLink" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+        <div class="absolute bottom-0 flex flex-col items-center hidden mb-6 group-hover:flex">
+            <span class="relative z-10 p-2 text-xs leading-none text-white whitespace-no-wrap bg-black shadow-lg">
+                @if (CurrentUser.TenantId != null)
+                {
+                    <small><i>@CurrentTenant.Name</i>\</small>@CurrentUser.UserName
+                }
+                else
+                {
+                    @CurrentUser.UserName
+                }
+            </span>
+        </div>
+        <span><i class="fas fa-user"></i></span>
+    </button>
+    <div x-show="open" x-transition:enter="transition ease-out duration-100"
+         x-transition:enter-start="transform opacity-0 scale-95"
+         x-transition:enter-end="transform opacity-100 scale-100"
+         x-transition:leave="transition ease-in duration-75"
+         x-transition:leave-start="transform opacity-100 scale-100"
+         x-transition:leave-end="transform opacity-0 scale-95"
+         class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48 bg-white border shadow z-10">
+        @if (Model.Items.Any())
         {
-            <small><i>@CurrentTenant.Name</i>\</small>@CurrentUser.UserName
-        }
-        else
-        {
-            @CurrentUser.UserName
-        }
-    </a>
-
-    @if (Model.Items.Any())
-    {
-        <div class="dropdown-menu dropdown-menu-right border-0 shadow-sm" aria-labelledby="dropdownMenuLink">
             @foreach (var menuItem in Model.Items)
             {
                 var elementId = string.IsNullOrEmpty(menuItem.ElementId) ? string.Empty : $"id=\"{menuItem.ElementId}\"";
@@ -29,7 +43,8 @@
                 var disabled = menuItem.IsDisabled ? "disabled" : string.Empty;
                 var url = string.IsNullOrEmpty(menuItem.Url) ? "#" : Url.Content(menuItem.Url);
 
-                <a class="dropdown-item @cssClass @disabled" href="@url" target="@menuItem.Target" @Html.Raw(elementId)>
+                <a target="@menuItem.Target" @Html.Raw(elementId) href="@url"
+                   class="@cssClass @disabled block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
                     @if (menuItem.Icon != null)
                     {
                         if (menuItem.Icon.StartsWith("fa"))
@@ -40,6 +55,6 @@
                     @menuItem.DisplayName
                 </a>
             }
-        </div>
-    }
+        }
+    </div>
 </div>

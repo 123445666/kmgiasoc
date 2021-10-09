@@ -28,7 +28,7 @@
 
 <html lang="@CultureInfo.CurrentCulture.Name" dir="@rtl">
 <head>
-    @*@await Component.InvokeLayoutHookAsync(LayoutHooks.Head.First, StandardLayouts.Account)*@
+    @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.First, StandardLayouts.Account)
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -40,7 +40,7 @@
     {
         <meta name="description" content="@(ViewBag.Description as string)" />
     }
-    @*<abp-style-bundle name="@BasicThemeBundles.Styles.Global" />*@
+    <abp-style-bundle name="@BasicThemeBundles.Styles.Global" />
     <abp-style-bundle name="MyGlobalBundle" />
 
     @await RenderSectionAsync("styles", false)
@@ -50,9 +50,9 @@
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.Last, StandardLayouts.Account)
 </head>
 <body class="abp-account-layout bg-light @rtl">
-    @*@await Component.InvokeLayoutHookAsync(LayoutHooks.Body.First, StandardLayouts.Account)
+    @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.First, StandardLayouts.Account)
 
-        @(await Component.InvokeAsync<MainNavbarViewComponent>())*@
+    @(await Component.InvokeAsync<MainNavbarViewComponent>())
 
     <div class="@containerClass">
         @(await Component.InvokeAsync<PageAlertsViewComponent>())
@@ -61,7 +61,7 @@
         @await Component.InvokeLayoutHookAsync(LayoutHooks.PageContent.Last, StandardLayouts.Account)
     </div>
 
-    @*<abp-script-bundle name="@BasicThemeBundles.Scripts.Global" />*@
+    <abp-script-bundle name="@BasicThemeBundles.Scripts.Global" />
 
     <script src="~/Abp/ApplicationConfigurationScript"></script>
     <script src="~/Abp/ServiceProxyScript"></script>
