@@ -72,7 +72,8 @@ namespace Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic
                         bundle
                         .AddFiles(
                            "/libs/js/index.js",
-                           "/libs/js/alpinejs/cdn.min.js"
+
+                           "/libs/vendors/alpinejs/cdn.min.js"
                             )
                             .AddBaseBundles(StandardBundles.Scripts.Global)
                             .AddContributors(typeof(BasicThemeGlobalScriptContributor));

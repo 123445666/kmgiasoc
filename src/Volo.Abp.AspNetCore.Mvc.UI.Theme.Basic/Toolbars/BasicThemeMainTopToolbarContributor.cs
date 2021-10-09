@@ -28,13 +28,15 @@ namespace Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.Toolbars
             var languages = await languageProvider.GetLanguagesAsync();
             if (languages.Count > 1)
             {
-                context.Toolbar.Items.Add(new ToolbarItem(typeof(LanguageSwitchViewComponent)));
+                context.Toolbar.Items.Insert(0, new ToolbarItem(typeof(LanguageSwitchViewComponent)));
             }
 
             if (context.ServiceProvider.GetRequiredService<ICurrentUser>().IsAuthenticated)
             {
                 context.Toolbar.Items.Add(new ToolbarItem(typeof(UserMenuViewComponent)));
             }
+
+            context.Toolbar.Items.Add(new ToolbarItem(typeof(AddDealViewComponent)));
         }
     }
 }
