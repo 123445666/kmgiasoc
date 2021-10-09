@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using kmgiasoc.Deals;
 using kmgiasoc.Deals.Dtos;
 using kmgiasoc.Web.Pages.Deals.Deal.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace kmgiasoc.Web.Pages.Deals.Deal
 {
+    [Authorize("kmgiasoc.Deal.Create")]
     public class CreateModel : kmgiasocPageModel
     {
         [BindProperty]
