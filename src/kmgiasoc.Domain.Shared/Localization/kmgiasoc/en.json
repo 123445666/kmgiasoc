@@ -1,4 +1,4 @@
-{
+﻿{
   "culture": "en",
   "texts": {
     "Menu:Home": "Home",
@@ -23,7 +23,9 @@
     "Menu:Deal": "MenuDeal",
     "Deal": "Deal",
     "DealTitle": "DealTitle",
+    "DealTitlePlaceholder": "Tiêu đề",
     "DealDescription": "DealDescription",
+    "DealDescriptionPlaceholder": "Trình bày sản phẩm hoặc ưu đãi bằng lời của bạn, giải thích mức độ thú vị của ưu đãi theo ý kiến ​​của bạn, mô tả cách nhận giá nếu có mánh khóe ... Không sao chép và dán nội dung từ các trang khác! Có phải thỏa thuận của bạn trong cửa hàng? Đừng quên ghi rõ thành phố nơi nó nằm và số hàng có sẵn!",
     "DealDealCategoryId": "DealDealCategoryId",
     "DealDealPriority": "DealDealPriority",
     "DealPrice": "DealPrice",
@@ -31,19 +33,24 @@
     "DealFreeShipping": "DealFreeShipping",
     "DealPriceShipping": "DealPriceShipping",
     "DealCodePromo": "DealCodePromo",
+    "DealCodePromoPlaceholder": "Nhập mã khuyến mãi",
     "DealBeginPromo": "DealBeginPromo",
     "DealEndPromo": "DealEndPromo",
     "DealCityId": "DealCityId",
     "DealLocalShop": "DealLocalShop",
+    "DealLocalShopPlaceholder": "Địa chỉ Shop",
     "DealPublishDate": "DealPublishDate",
     "DealModifiedDate": "DealModifiedDate",
     "CreateDeal": "CreateDeal",
     "EditDeal": "EditDeal",
     "DealDeletionConfirmationMessage": "Are you sure to delete the deal {0}?",
     "DealLink": "DealLink",
+    "DealLinkNotice": "Vui lòng cung cấp liên kết đến trang nơi cộng đồng có thể lấy thông tin, xem sản phẩm và tận hưởng ưu đãi!",
     "DealDomainLink": "DealDomainLink",
     "DealImage": "DealImage",
     "DealCity": "DealCity",
-    "DealCategoryParent": "DealCategoryParent"
+    "DealCategoryParent": "DealCategoryParent",
+    "Information": "Thông tin",
+    "Currency": "VNĐ"
   }
 }

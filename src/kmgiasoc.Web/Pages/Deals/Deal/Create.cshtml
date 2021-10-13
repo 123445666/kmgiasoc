@@ -22,93 +22,84 @@
             <div class="container relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg overflow-hidden">
                 <div class="container items-center px-5 py-12 lg:px-20">
                     <div class="flex flex-col w-full p-10 px-8 pt-6 mx-auto my-6 mb-4 transition duration-500 ease-in-out transform bg-white border rounded-lg lg:w-1/2">
-                        <h1 class="page-title text-lg font-bold space--mb-0"> Poster un nouveau deal </h1>
+                        <h1 class="page-title text-lg font-bold space--mb-0"> @L["CreateDealPage"] </h1>
                         <form>
                             <div class="relative pt-4">
-                                <label for="name" class="text-base leading-7 text-blueGray-500">Link</label>
-                                <input type="text" id="name" name="name" placeholder="https://www.example.com/superdeal"
+                                <label asp-for="ViewModel.Link" class="text-base leading-7 text-blueGray-500">@L["DealLink"]</label>
+                                <input asp-for="ViewModel.Link" type="text" placeholder="https://www.link.com/deal"
                                        class="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-gray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
                                 <p class="text-xs text-gray-400 p-2">
-                                    Vui lòng cung cấp liên kết đến trang nơi cộng đồng có thể lấy
-                                    thông tin, xem sản phẩm và tận hưởng ưu đãi!
+                                    @L["DealLinkNotice"]
                                 </p>
                             </div>
-                            <h2 class="page-title text-lg font-bold space--mb-0"> Thông tin </h2>
+                            <h2 class="page-title text-lg font-bold space--mb-0"> @L["Information"] </h2>
                             <div class="flex flex-wrap flex-row">
                                 <div class="w-1/2 relative pt-4 pr-2">
-                                    <label for="name" class="text-base leading-7 text-blueGray-500">Giá khuyến mãi</label>
-                                    <input type="number" id="number" name="number" placeholder="0"
+                                    <label asp-for="ViewModel.PricePromo" class="text-base leading-7 text-blueGray-500"> @L["DealPricePromo"] <span>(@L["Currency"])</span></label>
+                                    <input asp-for="ViewModel.PricePromo" type="number" placeholder="0"
                                            class="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-gray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
+                                   
                                 </div>
                                 <div class="w-1/2 relative pt-4">
-                                    <label for="name" class="text-base leading-7 text-blueGray-500">Giá gốc</label>
-                                    <input type="number" id="number" name="number" placeholder="0"
+                                    <label asp-for="ViewModel.Price" class="text-base leading-7 text-blueGray-500"> @L["DealPrice"] <span>(@L["Currency"])</span></label>
+                                    <input asp-for="ViewModel.Price" type="number" placeholder="0"
                                            class="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-gray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
                                 </div>
                                 <div class="w-1/2 relative pt-4 pr-2">
-                                    <label for="name" class="text-base leading-7 text-blueGray-500">Giá vận chuyển</label>
-                                    <input type="number" id="number" name="number" placeholder="0"
+                                    <label asp-for="ViewModel.PriceShipping" class="text-base leading-7 text-blueGray-500"> @L["DealPriceShipping"] <span>(@L["Currency"])</span></label>
+                                    <input asp-for="ViewModel.PriceShipping" type="number" placeholder="0"
                                            class="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-gray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
                                 </div>
                             </div>
                             <div class="flex mt-2">
-                                <label class="flex items-center">
-                                    <input type="checkbox" class="form-checkbox ">
-                                    <span class="ml-2 text-blueGray-500">Miễn phí vận chuyển</span>
+                                <label asp-for="ViewModel.FreeShipping" class="flex items-center">
+                                    <input asp-for="ViewModel.FreeShipping" type="checkbox" class="form-checkbox ">
+                                    <span class="ml-2 text-blueGray-500">@L["DealFreeShipping"]</span>
                                 </label>
                             </div>
                             <div class="relative pt-4">
-                                <label for="name" class="text-base leading-7 text-blueGray-500">Voucher</label>
-                                <input type="number" id="number" name="number" placeholder="Nhập mã khuyến mãi"
+                                <label asp-for="ViewModel.CodePromo" class="text-base leading-7 text-blueGray-500">@L["DealCodePromo"]</label>
+                                <input asp-for="ViewModel.CodePromo" type="text" placeholder="@L["DealCodePromoPlaceholder"]"
                                        class="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-gray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
                             </div>
 
                             <div class="relative pt-4">
-                                <label for="name" class="text-base leading-7 text-blueGray-500">Tiêu đề</label>
-                                <input type="number" id="number" name="number" placeholder="Đặt một tiêu đề ngắn gọn ..."
+                                <label asp-for="ViewModel.Title" class="text-base leading-7 text-blueGray-500">@L["DealTitle"]</label>
+                                <input asp-for="ViewModel.Title" type="text" placeholder="@L["DealTitlePlaceholder"]"
                                        class="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-gray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
                             </div>
 
                             <div class="relative pt-4">
-                                <label for="name" class="text-base leading-7 text-blueGray-500">Mô tả</label>
-                                <textarea id="description" name="description"
-                                          placeholder="Trình bày sản phẩm hoặc ưu đãi bằng lời của bạn, giải thích mức độ thú vị của ưu đãi theo ý kiến ​​của bạn, mô tả cách nhận giá nếu có mánh khóe ... Không sao chép và dán nội dung từ các trang khác! Có phải thỏa thuận của bạn trong cửa hàng? Đừng quên ghi rõ thành phố nơi nó nằm và số hàng có sẵn!"
+                                <label asp-for="ViewModel.Description" class="text-base leading-7 text-blueGray-500">@L["DealDescription"]</label>
+                                <textarea asp-for="ViewModel.Description"
+                                          placeholder="@L["DealDescriptionPlaceholder"]"
                                           class="w-full h-32 px-4 py-2 mt-2 text-base text-blueGray-500 transition duration-500 ease-in-out transform bg-white border rounded-lg focus:border-blue-500 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 apearance-none autoexpand ckeditor"></textarea>
                             </div>
 
                             <div class="relative pt-4">
-                                <label for="name" class="text-base leading-7 text-blueGray-500">Voucher</label>
-                                <input type="number" id="number" name="number" placeholder="Nhập mã khuyến mãi"
+                                <label asp-for="ViewModel.BeginPromo" class="text-base leading-7 text-blueGray-500">@L["DealBeginPromo"]</label>
+                                <input asp-for="ViewModel.BeginPromo" type="date" placeholder="dd-mm-yyyy"
                                        class="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-gray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
                             </div>
 
                             <div class="relative pt-4">
-                                <label for="name" class="text-base leading-7 text-blueGray-500">Ngày bắt đầu</label>
-                                <input type="date" id="date" name="date" placeholder="dd-mm-yyyy" placeholder="name"
-                                       class="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-gray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
-                            </div>
-
-                            <div class="relative pt-4">
-                                <label for="name" class="text-base leading-7 text-blueGray-500">Ngày kết thúc</label>
-                                <input type="date" id="date" name="date" placeholder="dd-mm-yyyy" placeholder="name"
+                                <label asp-for="ViewModel.EndPromo" class="text-base leading-7 text-blueGray-500">@L["DealEndPromo"]</label>
+                                <input asp-for="ViewModel.EndPromo" type="date" placeholder="dd-mm-yyyy"
                                        class="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-gray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
                             </div>
 
                             <div class="relative mt-4">
-                                <label for="name" class="text-base leading-7 text-blueGray-500">Chọn nơi bán</label>
-                                <select class="w-full px-4 py-2 mt-2 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-gray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
+                                <label asp-for="ViewModel.City" class="text-base leading-7 text-blueGray-500">@L["DealCity"]</label>
+                                <select asp-for="ViewModel.CityId" class="w-full px-4 py-2 mt-2 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-gray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
                                     <option>Surabaya</option>
                                     <option>Bandung</option>
                                     <option>jakarta</option>
                                 </select>
                             </div>
 
-                            <section class="flex flex-col w-full h-full p-1 overflow-auto">
-                                <label for="name" class="text-base leading-7 text-blueGray-500 mb-5">Ảnh</label>
-                                <header class="flex flex-col items-center justify-center py-12 text-base text-blueGray-500 transition duration-500 ease-in-out transform bg-white border border-dashed rounded-lg focus:border-blue-500 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
-                                    <p class="flex flex-wrap justify-center mb-3 text-base leading-7 text-blueGray-500">
-                                        <span>Drag and drop your</span> <span>files anywhere or</span>
-                                    </p>
+                            <section class="mt-4 flex flex-col w-full h-full p-1 overflow-auto">
+                                <label asp-for="ViewModel.Image" class="text-base leading-7 text-blueGray-500">@L["DealImage"]</label>
+                                <header class="flex flex-col items-center justify-center py-12 mt-2 text-base text-blueGray-500 transition duration-500 ease-in-out transform bg-white border border-dashed rounded-lg focus:border-blue-500 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
                                     <button class="w-auto px-2 py-1 my-2 mr-2 text-blueGray-500 transition duration-500 ease-in-out transform border rounded-md hover:text-blueGray-600 text-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-gray-100">
                                         Upload a file
                                     </button>
@@ -116,14 +107,15 @@
                             </section>
 
                             <div class="relative pt-4">
-                                <label for="name" class="text-base leading-7 text-blueGray-500">Địa chỉ local</label>
-                                <input type="number" id="number" name="number" placeholder="Địa chỉ nơi bán ..."
+                                <label asp-for="ViewModel.LocalShop" class="text-base leading-7 text-blueGray-500">@L["DealLocalShop"]</label>
+                                <input asp-for="ViewModel.LocalShop" type="text" placeholder="@L["DealLocalShopPlaceholder"]"
                                        class="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-gray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
                             </div>
 
                             <div class="flex items-center w-full pt-4 mb-4">
-                                <button class="w-full py-3 text-base text-white transition duration-500 ease-in-out transform bg-blue-600 border-blue-600 rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blue-800 ">
-                                    Lưu
+                                <button id="AddDealButton"
+                                        class="w-full py-3 text-base text-white transition duration-500 ease-in-out transform bg-cyan-800 rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-cyan-500">
+                                    @L["Submit"].Value
                                 </button>
                             </div>
                         </form>
