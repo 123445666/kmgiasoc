@@ -1,10 +1,10 @@
 ﻿@page
 @using Microsoft.AspNetCore.Mvc.Localization
-@using Volo.Abp.Account.Localization
+@using kmgiasoc.Localization
 @using Volo.Abp.Account.Settings
 @using Volo.Abp.Settings
 @model kmgiasoc.Web.Pages.Account.CustomLoginModel
-@inject IHtmlLocalizer<AccountResource> L
+@inject IHtmlLocalizer<kmgiasocResource> L
 @inject Volo.Abp.Settings.ISettingProvider SettingProvider
 
 
@@ -40,19 +40,20 @@
 
                         <div class="flex flex-wrap">
                             <div class="flex-grow">
-                                <div class="custom-checkbox custom-control mb-2">
-                                    <abp-input asp-for="LoginInput.RememberMe" class="mb-4" />
-                                </div>
+                                <label asp-for="LoginInput.RememberMe" class="flex items-center">
+                                    <input type="checkbox" asp-for="LoginInput.RememberMe" class="form-checkbox">
+                                    <span asp-for="LoginInput.RememberMe" class="ml-2 text-blueGray-500">@L["RememberMe"] </span>
+                                </label>
                             </div>
                             <div class="text-right col">
                                 <a href="@Url.Page("./ForgotPassword", new {returnUrl = Model.ReturnUrl, returnUrlHash = Model.ReturnUrlHash})">@L["ForgotPassword"]</a>
                             </div>
                         </div>
-                      
-                        <abp-button type="submit" button-type="Primary" name="Action" value="Login" class="w-full py-3 text-base text-white transition duration-500 ease-in-out transform bg-blue-600 border-blue-600 rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blue-800">@L["Login"]</abp-button>
+
+                        <button type="submit" button-type="Primary" name="Action" value="Login" class="inline-flex items-center h-10 px-5 mt-3 text-white transition-colors duration-150 bg-gray-800 rounded-lg focus:buttonrevert-gray hover:bg-gray-700 font-bold lg:ml-3">@L["Login"]</button>
                         @if (Model.ShowCancelButton)
                         {
-                            <abp-button type="submit" button-type="Secondary" formnovalidate="formnovalidate" name="Action" value="Cancel" class="btn-block btn-lg mt-3">@L["Cancel"]</abp-button>
+                            <button type="submit" button-type="Secondary" formnovalidate="formnovalidate" name="Action" value="Cancel" class="inline-flex items-center h-10 px-5 text-white transition-colors duration-150 bg-gray-800 rounded-lg focus:buttonrevert-gray hover:bg-gray-700 font-bold lg:ml-3">@L["Cancel"]</button>
                         }
                     </form>
                 }
