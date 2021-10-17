@@ -11,7 +11,7 @@ using kmgiasoc.EntityFrameworkCore;
 namespace kmgiasoc.Migrations
 {
     [DbContext(typeof(kmgiasocDbContext))]
-    [Migration("20210928180652_Added_Deal_Entity")]
+    [Migration("20211017215640_Added_Deal_Entity")]
     partial class Added_Deal_Entity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,7 +20,7 @@ namespace kmgiasoc.Migrations
             modelBuilder
                 .HasAnnotation("_Abp_DatabaseProvider", EfCoreDatabaseProvider.SqlServer)
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.10")
+                .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>
@@ -1973,6 +1973,9 @@ namespace kmgiasoc.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("Parent")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime>("PublishDate")
                         .HasColumnType("datetime2");
 
@@ -1988,6 +1991,9 @@ namespace kmgiasoc.Migrations
 
                     b.Property<DateTime>("BeginPromo")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("CityId")
                         .HasColumnType("uniqueidentifier");
@@ -2018,6 +2024,9 @@ namespace kmgiasoc.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("DomainLink")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("EndPromo")
                         .HasColumnType("datetime2");
 
@@ -2028,6 +2037,9 @@ namespace kmgiasoc.Migrations
                     b.Property<bool>("FreeShipping")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("LastModificationTime")
                         .HasColumnType("datetime2")
                         .HasColumnName("LastModificationTime");
@@ -2035,6 +2047,9 @@ namespace kmgiasoc.Migrations
                     b.Property<Guid?>("LastModifierId")
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("LastModifierId");
+
+                    b.Property<string>("Link")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LocalShop")
                         .HasColumnType("nvarchar(max)");
@@ -2058,6 +2073,8 @@ namespace kmgiasoc.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DealCategoryId");
 
                     b.ToTable("AppDeals");
                 });
@@ -2335,6 +2352,15 @@ namespace kmgiasoc.Migrations
                     b.HasOne("Volo.Abp.TenantManagement.Tenant", null)
                         .WithMany("ConnectionStrings")
                         .HasForeignKey("TenantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("kmgiasoc.Deals.Deal", b =>
+                {
+                    b.HasOne("kmgiasoc.DealCategories.DealCategory", null)
+                        .WithMany()
+                        .HasForeignKey("DealCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

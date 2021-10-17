@@ -1,4 +1,4 @@
-﻿{
+{
   "culture": "en",
   "texts": {
     "Menu:Home": "Home",
@@ -52,7 +52,6 @@
     "DealCategoryParent": "DealCategoryParent",
     "Information": "Information",
     "Currency": "VNĐ",
-    /* Account */
     "UserName": "Username",
     "EmailAddress": "Email address",
     "UserNameOrEmailAddress": "Username or email address",

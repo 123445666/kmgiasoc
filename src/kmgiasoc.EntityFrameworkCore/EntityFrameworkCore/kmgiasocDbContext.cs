@@ -95,8 +95,8 @@ namespace kmgiasoc.EntityFrameworkCore
             builder.Entity<Deal>(b =>
             {
                 b.ToTable(kmgiasocConsts.DbTablePrefix + "Deals", kmgiasocConsts.DbSchema);
-                b.ConfigureByConvention(); 
-                
+                b.ConfigureByConvention();
+                b.HasOne<DealCategory>().WithMany().HasForeignKey(x => x.DealCategoryId).IsRequired();
 
                 /* Configure more properties here */
             });

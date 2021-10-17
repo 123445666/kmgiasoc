@@ -18,7 +18,7 @@ namespace kmgiasoc.Migrations
             modelBuilder
                 .HasAnnotation("_Abp_DatabaseProvider", EfCoreDatabaseProvider.SqlServer)
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.10")
+                .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>
@@ -2072,6 +2072,8 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DealCategoryId");
+
                     b.ToTable("AppDeals");
                 });
 
@@ -2348,6 +2350,15 @@ namespace kmgiasoc.Migrations
                     b.HasOne("Volo.Abp.TenantManagement.Tenant", null)
                         .WithMany("ConnectionStrings")
                         .HasForeignKey("TenantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("kmgiasoc.Deals.Deal", b =>
+                {
+                    b.HasOne("kmgiasoc.DealCategories.DealCategory", null)
+                        .WithMany()
+                        .HasForeignKey("DealCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

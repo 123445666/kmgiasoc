@@ -11,6 +11,7 @@ namespace kmgiasoc.Deals
         public string Link { get; set; }
         public string DomainLink { get; set; }
         public string Image { get; set; }
+        [ForeignKey("DealCategory")]
         public Guid DealCategoryId { get; set; }
         public int DealPriority { get; set; }
         [Column(TypeName = "decimal(18,4)")]
