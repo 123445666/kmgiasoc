@@ -1,6 +1,7 @@
 using System;
 
 using System.ComponentModel.DataAnnotations;
+using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Form;
 
 namespace kmgiasoc.Web.Pages.Deals.Deal.ViewModels
 {
@@ -21,6 +22,7 @@ namespace kmgiasoc.Web.Pages.Deals.Deal.ViewModels
         [Display(Name = "DealImage")]
         public string Image { get; set; }
 
+        [SelectItems(nameof(DealCategories))]
         [Display(Name = "DealDealCategoryId")]
         public Guid DealCategoryId { get; set; }
 

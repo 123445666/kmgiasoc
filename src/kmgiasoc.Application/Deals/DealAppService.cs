@@ -3,6 +3,10 @@ using kmgiasoc.Permissions;
 using kmgiasoc.Deals.Dtos;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
+using System.Threading.Tasks;
+using kmgiasoc.DealCategories.Dtos;
+using kmgiasoc.DealCategories;
+using System.Collections.Generic;
 
 namespace kmgiasoc.Deals
 {
@@ -16,10 +20,21 @@ namespace kmgiasoc.Deals
         protected override string DeletePolicyName { get; set; } = kmgiasocPermissions.Deal.Delete;
 
         private readonly IDealRepository _repository;
+        private readonly IDealCategoryRepository _dealCategoryRepository;
         
-        public DealAppService(IDealRepository repository) : base(repository)
+        public DealAppService(IDealRepository repository, IDealCategoryRepository dealCategoryRepository) : base(repository)
         {
             _repository = repository;
+            _dealCategoryRepository = dealCategoryRepository;
+        }
+
+        public async Task<ListResultDto<DealCategoryDto>> GetDealCategoriesLookupAsync()
+        {
+            var dealCategories = await _dealCategoryRepository.GetListAsync();
+
+            return new ListResultDto<DealCategoryDto>(
+                ObjectMapper.Map<List<DealCategory>, List<DealCategoryDto>>(dealCategories)
+            );
         }
     }
 }
