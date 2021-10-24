@@ -15,6 +15,7 @@ using Volo.Abp.TenantManagement.EntityFrameworkCore;
 using kmgiasoc.DealCategories;
 using Volo.Abp.EntityFrameworkCore.Modeling;
 using kmgiasoc.Deals;
+using Volo.Abp.BlobStoring.Database.EntityFrameworkCore;
 
 namespace kmgiasoc.EntityFrameworkCore
 {
@@ -100,6 +101,7 @@ namespace kmgiasoc.EntityFrameworkCore
 
                 /* Configure more properties here */
             });
+            builder.ConfigureBlobStoring();
         }
     }
 }
