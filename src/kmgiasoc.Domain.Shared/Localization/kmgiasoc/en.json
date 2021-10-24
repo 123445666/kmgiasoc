@@ -113,6 +113,24 @@
     "PasswordResetInfoInEmail": "We received an account recovery request! If you initiated this request, click the following link to reset your password.",
     "ResetMyPassword": "Reset my password",
     "AccessDenied": "Access denied!",
-    "AccessDeniedMessage": "You do not have access to this resource."
+    "AccessDeniedMessage": "You do not have access to this resource.",
+    "Permission:Country": "Country",
+    "Menu:Country": "MenuCountry",
+    "Country": "Country",
+    "CountryName": "CountryName",
+    "CountryFlag": "CountryFlag",
+    "CountryOrderCountry": "CountryOrderCountry",
+    "CreateCountry": "CreateCountry",
+    "EditCountry": "EditCountry",
+    "CountryDeletionConfirmationMessage": "Are you sure to delete the country {0}?",
+    "Permission:City": "City",
+    "Menu:City": "MenuCity",
+    "City": "City",
+    "CityCountryId": "CityCountryId",
+    "CityName": "CityName",
+    "CityOrderCity": "CityOrderCity",
+    "CreateCity": "CreateCity",
+    "EditCity": "EditCity",
+    "CityDeletionConfirmationMessage": "Are you sure to delete the city {0}?"
   }
 }

@@ -16,6 +16,8 @@ using kmgiasoc.DealCategories;
 using Volo.Abp.EntityFrameworkCore.Modeling;
 using kmgiasoc.Deals;
 using Volo.Abp.BlobStoring.Database.EntityFrameworkCore;
+using kmgiasoc.Countries;
+using kmgiasoc.Cities;
 
 namespace kmgiasoc.EntityFrameworkCore
 {
@@ -57,6 +59,8 @@ namespace kmgiasoc.EntityFrameworkCore
         #endregion
         public DbSet<DealCategory> DealCategories { get; set; }
         public DbSet<Deal> Deals { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<City> Cities { get; set; }
 
         public kmgiasocDbContext(DbContextOptions<kmgiasocDbContext> options)
             : base(options)
@@ -102,6 +106,36 @@ namespace kmgiasoc.EntityFrameworkCore
                 /* Configure more properties here */
             });
             builder.ConfigureBlobStoring();
+
+
+            builder.Entity<Country>(b =>
+            {
+                b.ToTable(kmgiasocConsts.DbTablePrefix + "Countries", kmgiasocConsts.DbSchema);
+                b.ConfigureByConvention(); 
+                
+
+                /* Configure more properties here */
+            });
+
+
+            builder.Entity<City>(b =>
+            {
+                b.ToTable(kmgiasocConsts.DbTablePrefix + "Cities", kmgiasocConsts.DbSchema);
+                b.ConfigureByConvention(); 
+                
+
+                /* Configure more properties here */
+            });
+
+
+            builder.Entity<Deal>(b =>
+            {
+                b.ToTable(kmgiasocConsts.DbTablePrefix + "Deals", kmgiasocConsts.DbSchema);
+                b.ConfigureByConvention(); 
+                
+
+                /* Configure more properties here */
+            });
         }
     }
 }

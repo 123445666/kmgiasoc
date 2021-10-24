@@ -21,6 +21,16 @@ namespace kmgiasoc.Permissions
             dealPermission.AddChild(kmgiasocPermissions.Deal.Create, L("Permission:Create"));
             dealPermission.AddChild(kmgiasocPermissions.Deal.Update, L("Permission:Update"));
             dealPermission.AddChild(kmgiasocPermissions.Deal.Delete, L("Permission:Delete"));
+
+            var countryPermission = myGroup.AddPermission(kmgiasocPermissions.Country.Default, L("Permission:Country"));
+            countryPermission.AddChild(kmgiasocPermissions.Country.Create, L("Permission:Create"));
+            countryPermission.AddChild(kmgiasocPermissions.Country.Update, L("Permission:Update"));
+            countryPermission.AddChild(kmgiasocPermissions.Country.Delete, L("Permission:Delete"));
+
+            var cityPermission = myGroup.AddPermission(kmgiasocPermissions.City.Default, L("Permission:City"));
+            cityPermission.AddChild(kmgiasocPermissions.City.Create, L("Permission:Create"));
+            cityPermission.AddChild(kmgiasocPermissions.City.Update, L("Permission:Update"));
+            cityPermission.AddChild(kmgiasocPermissions.City.Delete, L("Permission:Delete"));
         }
 
         private static LocalizableString L(string name)

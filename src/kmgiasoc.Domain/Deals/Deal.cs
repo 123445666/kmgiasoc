@@ -24,7 +24,8 @@ namespace kmgiasoc.Deals
         public string CodePromo { get; set; }
         public DateTime BeginPromo { get; set; }
         public DateTime EndPromo { get; set; }
-        public Guid CityId { get; set; }
+        [ForeignKey("City")]
+        public int CityId { get; set; }
         public string City { get; set; }
         public string LocalShop { get; set; }
         public DateTime PublishDate { get; set; }
@@ -47,7 +48,7 @@ namespace kmgiasoc.Deals
             string codePromo,
             DateTime beginPromo,
             DateTime endPromo,
-            Guid cityId,
+            int cityId,
             string localShop,
             DateTime publishDate,
             DateTime modifiedDate
@@ -86,7 +87,7 @@ namespace kmgiasoc.Deals
             string codePromo,
             DateTime beginPromo,
             DateTime endPromo,
-            Guid cityId,
+            int cityId,
             string city,
             string localShop,
             DateTime publishDate,

@@ -33,7 +33,7 @@ namespace kmgiasoc.Deals.Dtos
 
         public DateTime EndPromo { get; set; }
 
-        public Guid CityId { get; set; }
+        public int CityId { get; set; }
 
         public string City { get; set; }
 

@@ -9,5 +9,7 @@ namespace kmgiasoc.Web.Menus
 
         public const string DealCategory = Prefix + ".DealCategory";
         public const string Deal = Prefix + ".Deal";
+        public const string Country = Prefix + ".Country";
+        public const string City = Prefix + ".City";
     }
 }

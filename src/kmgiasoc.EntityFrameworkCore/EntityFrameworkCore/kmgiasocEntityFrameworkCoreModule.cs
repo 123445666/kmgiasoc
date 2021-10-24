@@ -1,3 +1,5 @@
+using kmgiasoc.Cities;
+using kmgiasoc.Countries;
 using kmgiasoc.Deals;
 using kmgiasoc.DealCategories;
 using Microsoft.Extensions.DependencyInjection;
@@ -45,6 +47,8 @@ namespace kmgiasoc.EntityFrameworkCore
                 options.AddDefaultRepositories(includeAllEntities: true);
                 options.AddRepository<DealCategory, DealCategoryRepository>();
                 options.AddRepository<Deal, DealRepository>();
+                options.AddRepository<Country, CountryRepository>();
+                options.AddRepository<City, CityRepository>();
             });
 
             Configure<AbpDbContextOptions>(options =>

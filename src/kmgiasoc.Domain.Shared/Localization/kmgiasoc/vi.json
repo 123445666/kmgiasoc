@@ -115,6 +115,24 @@
     "PasswordResetInfoInEmail": "Chúng tôi đã nhận được yêu cầu khôi phục tài khoản! Nếu bạn bắt đầu yêu cầu này, hãy nhấp vào liên kết sau để đặt lại mật khẩu của bạn.",
     "ResetMyPassword": "Đặt lại mật khẩu của tôi",
     "AccessDenied": "Quyền truy cập bị từ chối!",
-    "AccessDeniedMessage": "Bạn không có quyền truy cập vào tài nguyên này."
+    "AccessDeniedMessage": "Bạn không có quyền truy cập vào tài nguyên này.",
+    "Permission:Country": "Country",
+    "Menu:Country": "MenuCountry",
+    "Country": "Country",
+    "CountryName": "CountryName",
+    "CountryFlag": "CountryFlag",
+    "CountryOrderCountry": "CountryOrderCountry",
+    "CreateCountry": "CreateCountry",
+    "EditCountry": "EditCountry",
+    "CountryDeletionConfirmationMessage": "Are you sure to delete the country {0}?",
+    "Permission:City": "City",
+    "Menu:City": "MenuCity",
+    "City": "City",
+    "CityCountryId": "CityCountryId",
+    "CityName": "CityName",
+    "CityOrderCity": "CityOrderCity",
+    "CreateCity": "CreateCity",
+    "EditCity": "EditCity",
+    "CityDeletionConfirmationMessage": "Are you sure to delete the city {0}?"
   }
 }

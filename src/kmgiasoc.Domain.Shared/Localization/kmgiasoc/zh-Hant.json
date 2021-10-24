@@ -44,6 +44,24 @@
     "DealDomainLink": "DealDomainLink",
     "DealImage": "DealImage",
     "DealCity": "DealCity",
-    "DealCategoryParent": "DealCategoryParent"
+    "DealCategoryParent": "DealCategoryParent",
+    "Permission:Country": "Country",
+    "Menu:Country": "MenuCountry",
+    "Country": "Country",
+    "CountryName": "CountryName",
+    "CountryFlag": "CountryFlag",
+    "CountryOrderCountry": "CountryOrderCountry",
+    "CreateCountry": "CreateCountry",
+    "EditCountry": "EditCountry",
+    "CountryDeletionConfirmationMessage": "Are you sure to delete the country {0}?",
+    "Permission:City": "City",
+    "Menu:City": "MenuCity",
+    "City": "City",
+    "CityCountryId": "CityCountryId",
+    "CityName": "CityName",
+    "CityOrderCity": "CityOrderCity",
+    "CreateCity": "CreateCity",
+    "EditCity": "EditCity",
+    "CityDeletionConfirmationMessage": "Are you sure to delete the city {0}?"
   }
 }

@@ -51,7 +51,7 @@ namespace kmgiasoc.Web.Pages.Deals.Deal.ViewModels
         public DateTime EndPromo { get; set; }
 
         [Display(Name = "DealCityId")]
-        public Guid CityId { get; set; }
+        public int CityId { get; set; }
 
         [Display(Name = "DealCity")]
         public string City { get; set; }

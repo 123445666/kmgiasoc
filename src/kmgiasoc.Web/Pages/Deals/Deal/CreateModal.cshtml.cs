@@ -15,6 +15,7 @@ namespace kmgiasoc.Web.Pages.Deals.Deal
         public CreateDealViewModel ViewModel { get; set; }
         public List<SelectListItem> DealCategories { get; set; }
 
+
         private readonly IDealAppService _service;
 
         public CreateModalModel(IDealAppService service)

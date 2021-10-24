@@ -21,7 +21,7 @@ namespace kmgiasoc.Deals
 
         private readonly IDealRepository _repository;
         private readonly IDealCategoryRepository _dealCategoryRepository;
-        
+
         public DealAppService(IDealRepository repository, IDealCategoryRepository dealCategoryRepository) : base(repository)
         {
             _repository = repository;
