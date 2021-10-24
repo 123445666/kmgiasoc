@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using kmgiasoc.Deals;
 using kmgiasoc.Deals.Dtos;
 using kmgiasoc.Web.Pages.Deals.Deal.ViewModels;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 
 namespace kmgiasoc.Web.Pages.Deals.Deal
@@ -12,6 +15,7 @@ namespace kmgiasoc.Web.Pages.Deals.Deal
     {
         [BindProperty]
         public CreateDealViewModel ViewModel { get; set; }
+        public List<SelectListItem> DealCategories { get; set; }
 
         private readonly IDealAppService _service;
 
@@ -22,13 +26,20 @@ namespace kmgiasoc.Web.Pages.Deals.Deal
 
         public virtual async Task OnGetAsync()
         {
-            await Task.CompletedTask;
+            var dealCategoriesLookup = await _service.GetDealCategoriesLookupAsync();
+            DealCategories = dealCategoriesLookup.Items
+                .Select(x => new SelectListItem(x.Name, x.Id.ToString()))
+                .ToList();
         }
+
+        [ValidateAntiForgeryToken]
         public virtual async Task<IActionResult> OnPostAsync()
         {
             var dto = ObjectMapper.Map<CreateDealViewModel, DealCreateDto>(ViewModel);
             await _service.CreateAsync(dto);
-            return NoContent();
+            return RedirectToPage("/deals/deal/create");
+            //return NoContent();
+            //return Page();
         }
     }
 }

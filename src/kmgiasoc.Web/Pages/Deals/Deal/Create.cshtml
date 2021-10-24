@@ -1,5 +1,7 @@
 ﻿@page
+
 @using kmgiasoc.Permissions
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Volo.Abp.AspNetCore.Mvc.UI.Layout
@@ -16,6 +18,7 @@
     PageLayout.Content.MenuItemName = kmgiasocMenus.Deal;
 }
 
+
 <main class="bg-gray-300 mb-32">
     <div class="flex flex-wrap py-12">
         <div class="w-full md:w-9/12 px-2 mr-auto ml-auto">
@@ -23,7 +26,8 @@
                 <div class="container items-center px-5 py-12 lg:px-20">
                     <div class="flex flex-col w-full p-10 px-8 pt-6 mx-auto my-6 mb-4 transition duration-500 ease-in-out transform bg-white border rounded-lg lg:w-1/2">
                         <h1 class="page-title text-lg font-bold space--mb-0"> @L["CreateDealPage"] </h1>
-                        <form>
+                        <form action="/deals/deal/create" method="post" novalidate="novalidate">
+                            @Html.AntiForgeryToken()
                             <div class="relative pt-4">
                                 <label asp-for="ViewModel.Link" class="text-base leading-7 text-blueGray-500">@L["DealLink"]</label>
                                 <input asp-for="ViewModel.Link" type="text" placeholder="https://www.link.com/deal"
@@ -80,125 +84,17 @@
                                 <label for="name" class="text-base leading-7 text-blueGray-500">Chọn Danh Mục</label>
                                 <ul id="filter1"
                                     class="filter-switch flex flex-wrap relative p-1 space-x-1 rounded-md font-semibold text-blue-600 my-4">
-                                    <li class="filter-switch-item flex relative bg-gray-300x bg-gray-200 mt-2">
-                                        <input type="radio" name="filter1" id="filter1-0" class="sr-only">
-                                        <label for="filter1-0"
-                                               class="py-1 px-2 text-sm leading-6 text-gray-600 rounded shadow buttonrevert-gray">
-                                            Công nghệ cao
-                                        </label>
-                                    </li>
-                                    <li class="filter-switch-item flex relative bg-gray-300x bg-gray-200 mt-2">
-                                        <input type="radio" name="filter1" id="filter1-1" class="sr-only">
-                                        <label for="filter1-1"
-                                               class="py-1 px-2 text-sm leading-6 text-gray-600 rounded shadow buttonrevert-gray">
-                                            Ôtô
-                                        </label>
-                                    </li>
-                                    <li class="filter-switch-item flex relative bg-gray-300x bg-gray-200 mt-2">
-                                        <input type="radio" name="filter1" id="filter1-2" class="sr-only">
-                                        <label for="filter1-2"
-                                               class="py-1 px-2 text-sm leading-6 text-gray-600 rounded shadow buttonrevert-gray">
-                                            Bảng điều khiển & trò chơi điện tử
-                                        </label>
-                                    </li>
-                                    <li class="filter-switch-item flex relative bg-gray-300x bg-gray-200 mt-2">
-                                        <input type="radio" name="filter1" id="filter1-3" class="sr-only">
-                                        <label for="filter1-3"
-                                               class="py-1 px-2 text-sm leading-6 text-gray-600 rounded shadow buttonrevert-gray">
-                                            Văn hóa & Giải trí
-                                        </label>
-                                    </li>
-                                    <li class="filter-switch-item flex relative bg-gray-300x bg-gray-200 mt-2">
-                                        <input type="radio" name="filter1" id="filter1-4" class="sr-only">
-                                        <label for="filter1-4"
-                                               class="py-1 px-2 text-sm leading-6 text-gray-600 rounded shadow buttonrevert-gray">
-                                            Cửa hàng tạp hóa & cửa hàng tạp hóa
-                                        </label>
-                                    </li>
-                                    <li class="filter-switch-item flex relative bg-gray-300x bg-gray-200 mt-2">
-                                        <input type="radio" name="filter1" id="filter1-4" class="sr-only">
-                                        <label for="filter1-4"
-                                               class="py-1 px-2 text-sm leading-6 text-gray-600 rounded shadow buttonrevert-gray">
-                                            Thể thao & Ngoài trời
-                                        </label>
-                                    </li>
-                                    <li class="filter-switch-item flex relative bg-gray-300x bg-gray-200 mt-2">
-                                        <input type="radio" name="filter1" id="filter1-4" class="sr-only">
-                                        <label for="filter1-4"
-                                               class="py-1 px-2 text-sm leading-6 text-gray-600 rounded shadow buttonrevert-gray">
-                                            Phụ kiện thời trang
-                                        </label>
-                                    </li>
-                                    <li class="filter-switch-item flex relative bg-gray-300x bg-gray-200 mt-2">
-                                        <input type="radio" name="filter1" id="filter1-4" class="sr-only">
-                                        <label for="filter1-4"
-                                               class="py-1 px-2 text-sm leading-6 text-gray-600 rounded shadow buttonrevert-gray">
-                                            Gói di động và internet
-                                        </label>
-                                    </li>
-                                    <li class="filter-switch-item flex relative bg-gray-300x bg-gray-200 mt-2">
-                                        <input type="radio" name="filter1" id="filter1-4" class="sr-only">
-                                        <label for="filter1-4"
-                                               class="py-1 px-2 text-sm leading-6 text-gray-600 rounded shadow buttonrevert-gray">
-                                            Sức khỏe & Mỹ phẩm
-                                        </label>
-                                    </li>
-                                    <li class="filter-switch-item flex relative bg-gray-300x bg-gray-200 mt-2">
-                                        <input type="radio" name="filter1" id="filter1-4" class="sr-only">
-                                        <label for="filter1-4"
-                                               class="py-1 px-2 text-sm leading-6 text-gray-600 rounded shadow buttonrevert-gray">
-                                            Thể thao & Ngoài trời
-                                        </label>
-                                    </li>
-                                    <li class="filter-switch-item flex relative bg-gray-300x bg-gray-200 mt-2">
-                                        <input type="radio" name="filter1" id="filter1-4" class="sr-only">
-                                        <label for="filter1-4"
-                                               class="py-1 px-2 text-sm leading-6 text-gray-600 rounded shadow buttonrevert-gray">
-                                            Gia đình & Trẻ em
-                                        </label>
-                                    </li>
-                                    <li class="filter-switch-item flex relative bg-gray-300x bg-gray-200 mt-2">
-                                        <input type="radio" name="filter1" id="filter1-4" class="sr-only">
-                                        <label for="filter1-4"
-                                               class="py-1 px-2 text-sm leading-6 text-gray-600 rounded shadow buttonrevert-gray">
-                                            Gói di động và internet
-                                        </label>
-                                    </li>
-                                    <li class="filter-switch-item flex relative bg-gray-300x bg-gray-200 mt-2">
-                                        <input type="radio" name="filter1" id="filter1-4" class="sr-only">
-                                        <label for="filter1-4"
-                                               class="py-1 px-2 text-sm leading-6 text-gray-600 rounded shadow buttonrevert-gray">
-                                            Nhà & Môi trường sống
-                                        </label>
-                                    </li>
-                                    <li class="filter-switch-item flex relative bg-gray-300x bg-gray-200 mt-2">
-                                        <input type="radio" name="filter1" id="filter1-4" class="sr-only">
-                                        <label for="filter1-4"
-                                               class="py-1 px-2 text-sm leading-6 text-gray-600 rounded shadow buttonrevert-gray">
-                                            Tài chính & Bảo hiểm
-                                        </label>
-                                    </li>
-                                    <li class="filter-switch-item flex relative bg-gray-300x bg-gray-200 mt-2">
-                                        <input type="radio" name="filter1" id="filter1-4" class="sr-only">
-                                        <label for="filter1-4"
-                                               class="py-1 px-2 text-sm leading-6 text-gray-600 rounded shadow buttonrevert-gray">
-                                            Vườn & Tự làm
-                                        </label>
-                                    </li>
-                                    <li class="filter-switch-item flex relative bg-gray-300x bg-gray-200 mt-2">
-                                        <input type="radio" name="filter1" id="filter1-4" class="sr-only">
-                                        <label for="filter1-4"
-                                               class="py-1 px-2 text-sm leading-6 text-gray-600 rounded shadow buttonrevert-gray">
-                                            Dịch vụ
-                                        </label>
-                                    </li>
-                                    <li class="filter-switch-item flex relative bg-gray-300x bg-gray-200 mt-2">
-                                        <input type="radio" name="filter1" id="filter1-4" class="sr-only">
-                                        <label for="filter1-4"
-                                               class="py-1 px-2 text-sm leading-6 text-gray-600 rounded shadow buttonrevert-gray">
-                                            Du lịch
-                                        </label>
-                                    </li>
+
+                                    @foreach (var g in Model.DealCategories)
+                                    {
+                                        <li class="filter-switch-item flex relative bg-gray-300x bg-gray-200 mt-2">
+                                            <input type="radio" asp-for="ViewModel.DealCategoryId" value="@g.Value" id="CategoryId@(g.Value)" class="sr-only">
+                                            <label for="CategoryId@(g.Value)"
+                                                   class="py-1 px-2 text-sm leading-6 text-gray-600 rounded shadow buttonrevert-gray">
+                                                @g.Text
+                                            </label>
+                                        </li>
+                                    }
                                 </ul>
                             </div>
 
@@ -217,9 +113,9 @@
                             <div class="relative mt-4">
                                 <label asp-for="ViewModel.City" class="text-base leading-7 text-blueGray-500">@L["DealCity"]</label>
                                 <select asp-for="ViewModel.CityId" class="w-full px-4 py-2 mt-2 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-gray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
-                                    <option>Surabaya</option>
-                                    <option>Bandung</option>
-                                    <option>jakarta</option>
+                                    <option value="Toanquoc">Toàn Quốc</option>
+                                    <option value="Hanoi">Hà Nội</option>
+                                    <option value="Saigon">Sài Gòn</option>
                                 </select>
                             </div>
 
