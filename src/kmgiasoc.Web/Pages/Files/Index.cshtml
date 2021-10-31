@@ -1,0 +1,39 @@
+﻿@page
+@model kmgiasoc.Web.Pages.Files.IndexModel
+@section scripts{
+    <abp-script src="/Pages/Files/index.js" />
+}
+
+<div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-grey-light">
+    <div class="py-3 px-6 mb-0 bg-grey-lighter border-b-1 border-grey-light text-grey-darkest">
+        <h3>File Upload and Download</h3>
+    </div>
+    <div class="flex-auto p-6">
+        <div class="flex flex-wrap">
+            <div class="flex-grow">
+                <h3>Upload File</h3>
+                <hr>
+                <form method="post" enctype="multipart/form-data" novalidate="novalidate">
+                    <abp-input asp-for="UploadFileDto.Name"></abp-input>
+
+                    <abp-input asp-for="UploadFileDto.File"></abp-input>
+
+                    <input type="submit" class="btn btn-info" />
+                </form>
+            </div>
+
+            <div style="border-left: 1px dotted gray" class="col">
+                <h3>Download File</h3>
+                <hr>
+                <form id="DownloadFile">
+                    <div class="form-group">
+                        <label for="fileName">Filename</label><span> * </span>
+                        <input type="text" id="fileName" name="fileName" class="form-control ">
+                    </div>
+
+                    <input type="submit" class="btn btn-info">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
