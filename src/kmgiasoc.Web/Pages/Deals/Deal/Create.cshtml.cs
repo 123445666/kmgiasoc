@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
+using kmgiasoc.Web.Pages.Files;
 
 namespace kmgiasoc.Web.Pages.Deals.Deal
 {
@@ -15,6 +16,8 @@ namespace kmgiasoc.Web.Pages.Deals.Deal
     {
         [BindProperty]
         public CreateDealViewModel ViewModel { get; set; }
+        [BindProperty]
+        public UploadFileDto UploadFileDto { get; set; }
         public List<SelectListItem> DealCategories { get; set; }
 
         private readonly IDealAppService _service;
