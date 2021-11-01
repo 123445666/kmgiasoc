@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using kmgiasoc.DealCategories.Dtos;
 using kmgiasoc.DealCategories;
 using System.Collections.Generic;
+using kmgiasoc.Cities.Dtos;
+using kmgiasoc.Cities;
 
 namespace kmgiasoc.Deals
 {
@@ -21,11 +23,14 @@ namespace kmgiasoc.Deals
 
         private readonly IDealRepository _repository;
         private readonly IDealCategoryRepository _dealCategoryRepository;
+        private readonly ICityRepository _cityRepository;
 
-        public DealAppService(IDealRepository repository, IDealCategoryRepository dealCategoryRepository) : base(repository)
+        public DealAppService(IDealRepository repository, IDealCategoryRepository dealCategoryRepository,
+            ICityRepository cityRepository) : base(repository)
         {
             _repository = repository;
             _dealCategoryRepository = dealCategoryRepository;
+            _cityRepository = cityRepository;
         }
 
         public async Task<ListResultDto<DealCategoryDto>> GetDealCategoriesLookupAsync()
@@ -34,6 +39,15 @@ namespace kmgiasoc.Deals
 
             return new ListResultDto<DealCategoryDto>(
                 ObjectMapper.Map<List<DealCategory>, List<DealCategoryDto>>(dealCategories)
+            );
+        }
+
+        public async Task<ListResultDto<CityDto>> GetCititesLookupAsync()
+        {
+            var citites = await _cityRepository.GetListAsync();
+
+            return new ListResultDto<CityDto>(
+                ObjectMapper.Map<List<City>, List<CityDto>>(citites)
             );
         }
     }

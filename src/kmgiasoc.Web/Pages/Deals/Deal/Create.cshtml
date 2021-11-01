@@ -33,8 +33,8 @@
                             @Html.AntiForgeryToken()
                             <div class="relative pt-4">
                                 <label asp-for="ViewModel.Link" class="text-base leading-7 text-blueGray-500">@L["DealLink"]</label>
-                                <input asp-for="ViewModel.Link" type="text" placeholder="https://www.link.com/deal"
-                                       class="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-gray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
+                                <input asp-for="ViewModel.Link" type="text" placeholder="https://www.link.com/deal" autocomplete="off"
+                                       class="w-full border-2 border-gray-300 px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
                                 <p class="text-xs text-gray-400 p-2">
                                     @L["DealLinkNotice"]
                                 </p>
@@ -44,18 +44,18 @@
                                 <div class="w-1/2 relative pt-4 pr-2">
                                     <label asp-for="ViewModel.PricePromo" class="text-base leading-7 text-blueGray-500"> @L["DealPricePromo"] <span>(@L["Currency"])</span></label>
                                     <input asp-for="ViewModel.PricePromo" type="number" placeholder="0"
-                                           class="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-gray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
+                                           class="w-full border-2 border-gray-300 px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
 
                                 </div>
                                 <div class="w-1/2 relative pt-4">
                                     <label asp-for="ViewModel.Price" class="text-base leading-7 text-blueGray-500"> @L["DealPrice"] <span>(@L["Currency"])</span></label>
                                     <input asp-for="ViewModel.Price" type="number" placeholder="0"
-                                           class="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-gray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
+                                           class="w-full border-2 border-gray-300 px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
                                 </div>
                                 <div class="w-1/2 relative pt-4 pr-2">
                                     <label asp-for="ViewModel.PriceShipping" class="text-base leading-7 text-blueGray-500"> @L["DealPriceShipping"] <span>(@L["Currency"])</span></label>
                                     <input asp-for="ViewModel.PriceShipping" type="number" placeholder="0"
-                                           class="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-gray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
+                                           class="w-full border-2 border-gray-300 px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
                                 </div>
                             </div>
                             <div class="flex mt-2">
@@ -67,13 +67,13 @@
                             <div class="relative pt-4">
                                 <label asp-for="ViewModel.CodePromo" class="text-base leading-7 text-blueGray-500">@L["DealCodePromo"]</label>
                                 <input asp-for="ViewModel.CodePromo" type="text" placeholder="@L["DealCodePromoPlaceholder"]"
-                                       class="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-gray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
+                                       class="w-full border-2 border-gray-300 px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
                             </div>
 
                             <div class="relative pt-4">
                                 <label asp-for="ViewModel.Title" class="text-base leading-7 text-blueGray-500">@L["DealTitle"]</label>
                                 <input asp-for="ViewModel.Title" type="text" placeholder="@L["DealTitlePlaceholder"]"
-                                       class="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-gray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
+                                       class="w-full border-2 border-gray-300 px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
                             </div>
 
                             <div class="relative pt-4">
@@ -104,39 +104,56 @@
                             <div class="relative pt-4">
                                 <label asp-for="ViewModel.BeginPromo" class="text-base leading-7 text-blueGray-500">@L["DealBeginPromo"]</label>
                                 <input asp-for="ViewModel.BeginPromo" type="datetime-local" asp-format="{0:yyyy-MM-dd}" placeholder="dd-mm-yyyy"
-                                       class="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-gray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
+                                       class="w-full border-2 border-gray-300 px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
                             </div>
 
                             <div class="relative pt-4">
                                 <label asp-for="ViewModel.EndPromo" class="text-base leading-7 text-blueGray-500">@L["DealEndPromo"]</label>
                                 <input asp-for="ViewModel.EndPromo" type="datetime-local" asp-format="{0:yyyy-MM-dd}" placeholder="dd-mm-yyyy"
-                                       class="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-gray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
+                                       class="w-full border-2 border-gray-300 px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
                             </div>
 
                             <div class="relative mt-4">
                                 <label asp-for="ViewModel.City" class="text-base leading-7 text-blueGray-500">@L["DealCity"]</label>
                                 <select asp-for="ViewModel.CityId" class="w-full px-4 py-2 mt-2 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-gray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
-                                    <option value="Toanquoc">Toàn Quốc</option>
-                                    <option value="Hanoi">Hà Nội</option>
-                                    <option value="Saigon">Sài Gòn</option>
+                                    @foreach (var g in Model.Citites)
+                                    {
+                                        <option value="@(g.Value)">@(g.Text)</option>
+                                    }
+
                                 </select>
                             </div>
 
-                            <section class="mt-4 flex flex-col w-full h-full p-1 overflow-auto">
-                                <label asp-for="ViewModel.Image" class="text-base leading-7 text-blueGray-500">@L["DealImage"]</label>
-                                <abp-input asp-for="UploadFileDto.Name"></abp-input>
-                                <img id="imgPreview" src="#" alt="pic" style="display:none;" />
-                                <header class="flex flex-col items-center justify-center py-12 mt-2 text-base text-blueGray-500 transition duration-500 ease-in-out transform bg-white border border-dashed rounded-lg focus:border-blue-500 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
-                                    <abp-input asp-for="UploadFileDto.File" class="w-auto px-2 py-1 my-2 mr-2 text-blueGray-500 transition duration-500 ease-in-out transform border rounded-md hover:text-blueGray-600 text-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-gray-100">
-                                        Upload a file
-                                    </abp-input>
-                                </header>
-                            </section>
+                            <div class="relative pt-4">
+                                <div class="bg-white px-2">
+                                    <div class="max-w-md mx-auto rounded-lg overflow-hidden md:max-w-xl">
+                                        <div class="md:flex">
+                                            <div class="w-full p-3">
+                                                <div id="dealImgUpload"
+                                                     class="relative border-dotted h-48 rounded-lg border-dashed border-2 border-cyan-700 bg-gray-100 flex justify-center items-center">
+                                                    <div class="absolute">
+                                                        <div class="flex flex-col items-center">
+                                                            <i class="fa fa-folder-open fa-4x text-cyan-700"></i>
+                                                            <span class="block text-gray-400 font-normal">Attach your image here</span>
+                                                        </div>
+                                                    </div>
+                                                    <input type="file" asp-for="DealUploadFileDto.File" class="h-full w-full opacity-0 cursor-pointer" />
+                                                    @*<input id="DealUploadFileDto_File" type="file" class="h-full w-full opacity-0 cursor-pointer" name="">*@
+                                                </div>
+                                                <div id="dealImgUploaded" class="hidden">
+                                                    <img id="dealImgPreview" src="#" class="flex flex-col items-center" />
+                                                    <a id="removeDealImgFile" href="#" class="text-red-600">Remove image</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="relative pt-4">
                                 <label asp-for="ViewModel.LocalShop" class="text-base leading-7 text-blueGray-500">@L["DealLocalShop"]</label>
                                 <input asp-for="ViewModel.LocalShop" type="text" placeholder="@L["DealLocalShopPlaceholder"]"
-                                       class="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-gray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
+                                       class="w-full border-2 border-gray-300 px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
                             </div>
 
                             <div class="flex items-center w-full pt-4 mb-4">

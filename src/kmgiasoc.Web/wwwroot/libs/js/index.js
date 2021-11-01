@@ -16,7 +16,7 @@
   \************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../styles/main.css */ \"./src/styles/main.css\");\n\n\n//# sourceURL=webpack://tailwind/./src/js/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../styles/main.css */ \"./src/styles/main.css\");\n\n$(function () {\n  $(\"#ViewModel_FreeShipping\").change(function () {\n    if (this.checked) {\n      $(\"#ViewModel_PriceShipping\").val(0);\n      $(\"#ViewModel_PriceShipping\").prop(\"disabled\", true);\n      return;\n    }\n\n    $(\"#ViewModel_PriceShipping\").prop(\"disabled\", false);\n  });\n  $(\"#DealUploadFileDto_File\").on(\"change\", function () {\n    var file = this.files[0];\n\n    if (file) {\n      var reader = new FileReader();\n\n      reader.onload = function (event) {\n        $(\"#dealImgUpload\").hide();\n        $(\"#dealImgUploaded\").show();\n        $(\"#dealImgPreview\").attr(\"src\", event.target.result);\n      };\n\n      reader.readAsDataURL(file);\n    }\n  });\n  $(\"#removeDealImgFile\").on(\"click\", function (e) {\n    e.preventDefault();\n    $(\"#dealImgUpload\").show();\n    $(\"#dealImgUploaded\").hide();\n    $(\"#dealImgPreview\").attr(\"src\", \"\");\n    $(\"#DealUploadFileDto_File\").val(\"\");\n  });\n});\n\n//# sourceURL=webpack://tailwind/./src/js/main.js?");
 
 /***/ }),
 

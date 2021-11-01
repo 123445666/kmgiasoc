@@ -137,16 +137,4 @@ $(function () {
     });
 
 
-    $('#UploadFileDto_File').change(function () {
-        const file = this.files[0];
-        console.log(file);
-        if (file) {
-            let reader = new FileReader();
-            reader.onload = function (event) {
-                $('#imgPreview').show();
-                $('#imgPreview').attr('src', event.target.result);
-            }
-            reader.readAsDataURL(file);
-        }
-    });
 });
