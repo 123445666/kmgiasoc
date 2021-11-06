@@ -15,7 +15,7 @@ namespace kmgiasoc.Controllers
         }
 
         [HttpGet]
-        [Route("download/{fileName}")]
+        [Route("uploaded/{fileName}")]
         public async Task<IActionResult> DownloadAsync(string fileName)
         {
             var fileDto = await _fileAppService.GetBlobAsync(new GetBlobRequestDto { Name = fileName });

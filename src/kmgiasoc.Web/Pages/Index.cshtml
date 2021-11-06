@@ -5,495 +5,77 @@
 @model kmgiasoc.Web.Pages.IndexModel
 @inject IHtmlLocalizer<kmgiasocResource> L
 @inject ICurrentUser CurrentUser
-@section styles {
-    <abp-style src="/Pages/Index.css" />
-}
-@section scripts {
-    <abp-script src="/Pages/Index.js" />
-}
-
 
 <partial name="_Header" />
 
 <main class="bg-gray-300 mb-32">
     <div class="flex flex-wrap py-12">
         <div class="w-full md:w-7/12 px-2 mr-auto ml-auto">
-            <div class="p-2">
-                <div class="bg-white shadow-xl rounded-lg overflow-hidden md:flex">
-                    <div class="w-full md:w-3/12">
-                        <img class="w-full" src="https://picsum.photos/225" />
-                    </div>
-                    <div class="w-full md:w-9/12 p-3">
-                        <div class="flex justify-between items-center">
-                            <div class="border rounded-lg py-1 px-3">
-                                <button type="button"
-                                        class="text-cyan-700 h-8 w-8 rounded-full hover:bg-cyan-700 hover:text-white">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <span>126°</span>
-                                <button type="button" class="text-red-700 h-8 w-8 rounded-full hover:bg-red-700 hover:text-white">
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                            <div>
-                                <span><span class="text-gray-400">20 phút trước</span></span>
-                            </div>
-                        </div>
-                        <div class="py-2">
-                            <p class="font-bold">
-                                <a href="#">
-                                    Chaussures de sécurité (intervention) Adidas Gsg 9.7 - Noir
-                                    (elite.lepape.com)
-                                </a>
-                            </p>
-                            <p>
-                                <span>
-                                    <span class="mr-1 text-xl"><span class="text-red-700 font-bold">40€</span></span>
-                                    <span class="mr-1 text-xl">
-                                        <span class="line-through text-gray-400">133€</span>
-                                        <span>-70%</span>
-                                    </span>
-                                    <span class="mr-1 text-gray-400">
-                                        <i class="fas fa-truck"></i> <span>3,90€</span>
-                                    </span>
-                                    <a href="#">
-                                        <span class="text-gray-400">
-                                            Bons plans
-                                            <span class="text-cyan-700">Lepape</span>
-                                        </span>
-                                    </a>
-                                </span>
-                            </p>
-                            <p class="text-gray-700 text-xs">
-                                La chaussure d'intervention pour homme ADIDAS GSG-9.7 , ici déclinée
-                                en coloris
-                                noir, est un modèle conçu pour ceux qui sont en quête de durabilité, de robustesse et de dynamisme.
-                                …
-                                <a class="font-bold" href="#">More</a>
-                            </p>
-                        </div>
-                        <div class="p-1">
-                            <div class="sm:flex sm:justify-between sm:items-center">
-                                <div>
-                                    <div class="text-gray-700"><span class="text-xs font-bold">Admin</span></div>
-                                </div>
-                                <button class="mt-3 sm:mt-0 py-2 px-8 bg-cyan-700 hover:bg-cyan-500 font-bold text-white rounded-lg shadow-md text-sm">
-                                    Show
-                                    Deal
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+            @foreach (var g in Model.pagedResultDealDto)
+            {
+<div class="p-2">
+    <div class="bg-white shadow-xl rounded-lg overflow-hidden md:flex">
+        <div class="w-full md:w-3/12">
+            <img class="w-full" src="/uploaded/@(g.Image)" />
+        </div>
+        <div class="w-full md:w-9/12 p-3">
+            <div class="flex justify-between items-center">
+                <div class="border rounded-lg py-1 px-3">
+                    <button type="button"
+                            class="text-cyan-700 h-8 w-8 rounded-full hover:bg-cyan-700 hover:text-white">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <span>126°</span>
+                    <button type="button" class="text-red-700 h-8 w-8 rounded-full hover:bg-red-700 hover:text-white">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+                <div>
+                    <span><span class="text-gray-400">@(g.PublishDate)</span></span>
                 </div>
             </div>
-            <div class="p-2">
-                <div class="bg-white shadow-xl rounded-lg overflow-hidden md:flex">
-                    <div class="w-full md:w-3/12">
-                        <img class="w-full" src="https://picsum.photos/225" />
+            <div class="py-2">
+                <p class="font-bold">
+                    <a href="@(g.Link)">
+                        @(g.Title)
+                    </a>
+                </p>
+                <p>
+                    <span>
+                        <span class="mr-1 text-xl"><span class="text-red-700 font-bold">@(g.PricePromo)</span></span>
+                        <span class="mr-1 text-xl">
+                            <span class="line-through text-gray-400">@(g.Price)</span>
+                            <span></span>
+                        </span>
+                        <span class="mr-1 text-gray-400">
+                            <i class="fas fa-truck"></i> <span>@(g.PriceShipping)</span>
+                        </span>
+                        <a href="#">
+                            <span class="text-gray-400">
+                                <span class="text-cyan-700">@(g.DomainLink)</span>
+                            </span>
+                        </a>
+                    </span>
+                </p>
+                <p class="text-gray-700 text-xs">
+                    @(g.Description)
+                    <a class="font-bold" href="#">More</a>
+                </p>
+            </div>
+            <div class="p-1">
+                <div class="sm:flex sm:justify-between sm:items-center">
+                    <div>
+                        <div class="text-gray-700"><span class="text-xs font-bold">Admin</span></div>
                     </div>
-                    <div class="w-full md:w-9/12 p-3">
-                        <div class="flex justify-between items-center">
-                            <div class="border rounded-lg py-1 px-3">
-                                <button type="button"
-                                        class="text-cyan-700 h-8 w-8 rounded-full hover:bg-cyan-700 hover:text-white">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <span>126°</span>
-                                <button type="button" class="text-red-700 h-8 w-8 rounded-full hover:bg-red-700 hover:text-white">
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                            <div>
-                                <span><span class="text-gray-400">20 phút trước</span></span>
-                            </div>
-                        </div>
-                        <div class="py-2">
-                            <p class="font-bold">
-                                <a href="#">
-                                    Chaussures de sécurité (intervention) Adidas Gsg 9.7 - Noir
-                                    (elite.lepape.com)
-                                </a>
-                            </p>
-                            <p>
-                                <span>
-                                    <span class="mr-1 text-xl"><span class="text-red-700 font-bold">40€</span></span>
-                                    <span class="mr-1 text-xl">
-                                        <span class="line-through text-gray-400">133€</span>
-                                        <span>-70%</span>
-                                    </span>
-                                    <span class="mr-1 text-gray-400">
-                                        <i class="fas fa-truck"></i> <span>3,90€</span>
-                                    </span>
-                                    <a href="#">
-                                        <span class="text-gray-400">
-                                            Bons plans
-                                            <span class="text-cyan-700">Lepape</span>
-                                        </span>
-                                    </a>
-                                </span>
-                            </p>
-                            <p class="text-gray-700 text-xs">
-                                La chaussure d'intervention pour homme ADIDAS GSG-9.7 , ici déclinée
-                                en coloris
-                                noir, est un modèle conçu pour ceux qui sont en quête de durabilité, de robustesse et de dynamisme.
-                                …
-                                <a class="font-bold" href="#">More</a>
-                            </p>
-                        </div>
-                        <div class="p-1">
-                            <div class="sm:flex sm:justify-between sm:items-center">
-                                <div>
-                                    <div class="text-gray-700"><span class="text-xs font-bold">Admin</span></div>
-                                </div>
-                                <button class="mt-3 sm:mt-0 py-2 px-8 bg-cyan-700 hover:bg-cyan-500 font-bold text-white rounded-lg shadow-md text-sm">
-                                    Show
-                                    Deal
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    <a href="@(g.Link)" class="mt-3 sm:mt-0 py-2 px-8 bg-cyan-700 hover:bg-cyan-500 font-bold text-white rounded-lg shadow-md text-sm">
+                        Xem Deal
+                    </a>
                 </div>
             </div>
-            <div class="p-2">
-                <div class="bg-white shadow-xl rounded-lg overflow-hidden md:flex">
-                    <div class="w-full md:w-3/12">
-                        <img class="w-full" src="https://picsum.photos/225" />
-                    </div>
-                    <div class="w-full md:w-9/12 p-3">
-                        <div class="flex justify-between items-center">
-                            <div class="border rounded-lg py-1 px-3">
-                                <button type="button"
-                                        class="text-cyan-700 h-8 w-8 rounded-full hover:bg-cyan-700 hover:text-white">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <span>126°</span>
-                                <button type="button" class="text-red-700 h-8 w-8 rounded-full hover:bg-red-700 hover:text-white">
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                            <div>
-                                <span><span class="text-gray-400">20 phút trước</span></span>
-                            </div>
-                        </div>
-                        <div class="py-2">
-                            <p class="font-bold">
-                                <a href="#">
-                                    Chaussures de sécurité (intervention) Adidas Gsg 9.7 - Noir
-                                    (elite.lepape.com)
-                                </a>
-                            </p>
-                            <p>
-                                <span>
-                                    <span class="mr-1 text-xl"><span class="text-red-700 font-bold">40€</span></span>
-                                    <span class="mr-1 text-xl">
-                                        <span class="line-through text-gray-400">133€</span>
-                                        <span>-70%</span>
-                                    </span>
-                                    <span class="mr-1 text-gray-400">
-                                        <i class="fas fa-truck"></i> <span>3,90€</span>
-                                    </span>
-                                    <a href="#">
-                                        <span class="text-gray-400">
-                                            Bons plans
-                                            <span class="text-cyan-700">Lepape</span>
-                                        </span>
-                                    </a>
-                                </span>
-                            </p>
-                            <p class="text-gray-700 text-xs">
-                                La chaussure d'intervention pour homme ADIDAS GSG-9.7 , ici déclinée
-                                en coloris
-                                noir, est un modèle conçu pour ceux qui sont en quête de durabilité, de robustesse et de dynamisme.
-                                …
-                                <a class="font-bold" href="#">More</a>
-                            </p>
-                        </div>
-                        <div class="p-1">
-                            <div class="sm:flex sm:justify-between sm:items-center">
-                                <div>
-                                    <div class="text-gray-700"><span class="text-xs font-bold">Admin</span></div>
-                                </div>
-                                <button class="mt-3 sm:mt-0 py-2 px-8 bg-cyan-700 hover:bg-cyan-500 font-bold text-white rounded-lg shadow-md text-sm">
-                                    Show
-                                    Deal
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p-2">
-                <div class="bg-white shadow-xl rounded-lg overflow-hidden md:flex">
-                    <div class="w-full md:w-3/12">
-                        <img class="w-full" src="https://picsum.photos/225" />
-                    </div>
-                    <div class="w-full md:w-9/12 p-3">
-                        <div class="flex justify-between items-center">
-                            <div class="border rounded-lg py-1 px-3">
-                                <button type="button"
-                                        class="text-cyan-700 h-8 w-8 rounded-full hover:bg-cyan-700 hover:text-white">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <span>126°</span>
-                                <button type="button" class="text-red-700 h-8 w-8 rounded-full hover:bg-red-700 hover:text-white">
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                            <div>
-                                <span><span class="text-gray-400">20 phút trước</span></span>
-                            </div>
-                        </div>
-                        <div class="py-2">
-                            <p class="font-bold">
-                                <a href="#">
-                                    Chaussures de sécurité (intervention) Adidas Gsg 9.7 - Noir
-                                    (elite.lepape.com)
-                                </a>
-                            </p>
-                            <p>
-                                <span>
-                                    <span class="mr-1 text-xl"><span class="text-red-700 font-bold">40€</span></span>
-                                    <span class="mr-1 text-xl">
-                                        <span class="line-through text-gray-400">133€</span>
-                                        <span>-70%</span>
-                                    </span>
-                                    <span class="mr-1 text-gray-400">
-                                        <i class="fas fa-truck"></i> <span>3,90€</span>
-                                    </span>
-                                    <a href="#">
-                                        <span class="text-gray-400">
-                                            Bons plans
-                                            <span class="text-cyan-700">Lepape</span>
-                                        </span>
-                                    </a>
-                                </span>
-                            </p>
-                            <p class="text-gray-700 text-xs">
-                                La chaussure d'intervention pour homme ADIDAS GSG-9.7 , ici déclinée
-                                en coloris
-                                noir, est un modèle conçu pour ceux qui sont en quête de durabilité, de robustesse et de dynamisme.
-                                …
-                                <a class="font-bold" href="#">More</a>
-                            </p>
-                        </div>
-                        <div class="p-1">
-                            <div class="sm:flex sm:justify-between sm:items-center">
-                                <div>
-                                    <div class="text-gray-700"><span class="text-xs font-bold">Admin</span></div>
-                                </div>
-                                <button class="mt-3 sm:mt-0 py-2 px-8 bg-cyan-700 hover:bg-cyan-500 font-bold text-white rounded-lg shadow-md text-sm">
-                                    Show
-                                    Deal
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p-2">
-                <div class="bg-white shadow-xl rounded-lg overflow-hidden md:flex">
-                    <div class="w-full md:w-3/12">
-                        <img class="w-full" src="https://picsum.photos/225" />
-                    </div>
-                    <div class="w-full md:w-9/12 p-3">
-                        <div class="flex justify-between items-center">
-                            <div class="border rounded-lg py-1 px-3">
-                                <button type="button"
-                                        class="text-cyan-700 h-8 w-8 rounded-full hover:bg-cyan-700 hover:text-white">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <span>126°</span>
-                                <button type="button" class="text-red-700 h-8 w-8 rounded-full hover:bg-red-700 hover:text-white">
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                            <div>
-                                <span><span class="text-gray-400">20 phút trước</span></span>
-                            </div>
-                        </div>
-                        <div class="py-2">
-                            <p class="font-bold">
-                                <a href="#">
-                                    Chaussures de sécurité (intervention) Adidas Gsg 9.7 - Noir
-                                    (elite.lepape.com)
-                                </a>
-                            </p>
-                            <p>
-                                <span>
-                                    <span class="mr-1 text-xl"><span class="text-red-700 font-bold">40€</span></span>
-                                    <span class="mr-1 text-xl">
-                                        <span class="line-through text-gray-400">133€</span>
-                                        <span>-70%</span>
-                                    </span>
-                                    <span class="mr-1 text-gray-400">
-                                        <i class="fas fa-truck"></i> <span>3,90€</span>
-                                    </span>
-                                    <a href="#">
-                                        <span class="text-gray-400">
-                                            Bons plans
-                                            <span class="text-cyan-700">Lepape</span>
-                                        </span>
-                                    </a>
-                                </span>
-                            </p>
-                            <p class="text-gray-700 text-xs">
-                                La chaussure d'intervention pour homme ADIDAS GSG-9.7 , ici déclinée
-                                en coloris
-                                noir, est un modèle conçu pour ceux qui sont en quête de durabilité, de robustesse et de dynamisme.
-                                …
-                                <a class="font-bold" href="#">More</a>
-                            </p>
-                        </div>
-                        <div class="p-1">
-                            <div class="sm:flex sm:justify-between sm:items-center">
-                                <div>
-                                    <div class="text-gray-700"><span class="text-xs font-bold">Admin</span></div>
-                                </div>
-                                <button class="mt-3 sm:mt-0 py-2 px-8 bg-cyan-700 hover:bg-cyan-500 font-bold text-white rounded-lg shadow-md text-sm">
-                                    Show
-                                    Deal
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p-2">
-                <div class="bg-white shadow-xl rounded-lg overflow-hidden md:flex">
-                    <div class="w-full md:w-3/12">
-                        <img class="w-full" src="https://picsum.photos/225" />
-                    </div>
-                    <div class="w-full md:w-9/12 p-3">
-                        <div class="flex justify-between items-center">
-                            <div class="border rounded-lg py-1 px-3">
-                                <button type="button"
-                                        class="text-cyan-700 h-8 w-8 rounded-full hover:bg-cyan-700 hover:text-white">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <span>126°</span>
-                                <button type="button" class="text-red-700 h-8 w-8 rounded-full hover:bg-red-700 hover:text-white">
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                            <div>
-                                <span><span class="text-gray-400">20 phút trước</span></span>
-                            </div>
-                        </div>
-                        <div class="py-2">
-                            <p class="font-bold">
-                                <a href="#">
-                                    Chaussures de sécurité (intervention) Adidas Gsg 9.7 - Noir
-                                    (elite.lepape.com)
-                                </a>
-                            </p>
-                            <p>
-                                <span>
-                                    <span class="mr-1 text-xl"><span class="text-red-700 font-bold">40€</span></span>
-                                    <span class="mr-1 text-xl">
-                                        <span class="line-through text-gray-400">133€</span>
-                                        <span>-70%</span>
-                                    </span>
-                                    <span class="mr-1 text-gray-400">
-                                        <i class="fas fa-truck"></i> <span>3,90€</span>
-                                    </span>
-                                    <a href="#">
-                                        <span class="text-gray-400">
-                                            Bons plans
-                                            <span class="text-cyan-700">Lepape</span>
-                                        </span>
-                                    </a>
-                                </span>
-                            </p>
-                            <p class="text-gray-700 text-xs">
-                                La chaussure d'intervention pour homme ADIDAS GSG-9.7 , ici déclinée
-                                en coloris
-                                noir, est un modèle conçu pour ceux qui sont en quête de durabilité, de robustesse et de dynamisme.
-                                …
-                                <a class="font-bold" href="#">More</a>
-                            </p>
-                        </div>
-                        <div class="p-1">
-                            <div class="sm:flex sm:justify-between sm:items-center">
-                                <div>
-                                    <div class="text-gray-700"><span class="text-xs font-bold">Admin</span></div>
-                                </div>
-                                <button class="mt-3 sm:mt-0 py-2 px-8 bg-cyan-700 hover:bg-cyan-500 font-bold text-white rounded-lg shadow-md text-sm">
-                                    Show
-                                    Deal
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p-2">
-                <div class="bg-white shadow-xl rounded-lg overflow-hidden md:flex">
-                    <div class="w-full md:w-3/12">
-                        <img class="w-full" src="https://picsum.photos/225" />
-                    </div>
-                    <div class="w-full md:w-9/12 p-3">
-                        <div class="flex justify-between items-center">
-                            <div class="border rounded-lg py-1 px-3">
-                                <button type="button"
-                                        class="text-cyan-700 h-8 w-8 rounded-full hover:bg-cyan-700 hover:text-white">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <span>126°</span>
-                                <button type="button" class="text-red-700 h-8 w-8 rounded-full hover:bg-red-700 hover:text-white">
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                            <div>
-                                <span><span class="text-gray-400">20 phút trước</span></span>
-                            </div>
-                        </div>
-                        <div class="py-2">
-                            <p class="font-bold">
-                                <a href="#">
-                                    Chaussures de sécurité (intervention) Adidas Gsg 9.7 - Noir
-                                    (elite.lepape.com)
-                                </a>
-                            </p>
-                            <p>
-                                <span>
-                                    <span class="mr-1 text-xl"><span class="text-red-700 font-bold">40€</span></span>
-                                    <span class="mr-1 text-xl">
-                                        <span class="line-through text-gray-400">133€</span>
-                                        <span>-70%</span>
-                                    </span>
-                                    <span class="mr-1 text-gray-400">
-                                        <i class="fas fa-truck"></i> <span>3,90€</span>
-                                    </span>
-                                    <a href="#">
-                                        <span class="text-gray-400">
-                                            Bons plans
-                                            <span class="text-cyan-700">Lepape</span>
-                                        </span>
-                                    </a>
-                                </span>
-                            </p>
-                            <p class="text-gray-700 text-xs">
-                                La chaussure d'intervention pour homme ADIDAS GSG-9.7 , ici déclinée
-                                en coloris
-                                noir, est un modèle conçu pour ceux qui sont en quête de durabilité, de robustesse et de dynamisme.
-                                …
-                                <a class="font-bold" href="#">More</a>
-                            </p>
-                        </div>
-                        <div class="p-1">
-                            <div class="sm:flex sm:justify-between sm:items-center">
-                                <div>
-                                    <div class="text-gray-700"><span class="text-xs font-bold">Admin</span></div>
-                                </div>
-                                <button class="mt-3 sm:mt-0 py-2 px-8 bg-cyan-700 hover:bg-cyan-500 font-bold text-white rounded-lg shadow-md text-sm">
-                                    Show
-                                    Deal
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        </div>
+    </div>
+</div>}
+
         </div>
         <div class="w-full md:w-3/12 px-2 mr-auto ml-auto">
             <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-pink-600">
@@ -520,4 +102,3 @@
 </main>
 
 <partial name="_Footer" />
-
