@@ -1,4 +1,5 @@
 using System;
+using Volo.Abp;
 using Volo.Abp.Application.Dtos;
 
 namespace kmgiasoc.Deals.Dtos
