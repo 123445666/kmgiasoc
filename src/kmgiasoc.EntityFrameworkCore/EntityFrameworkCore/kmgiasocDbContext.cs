@@ -18,6 +18,7 @@ using kmgiasoc.Deals;
 using Volo.Abp.BlobStoring.Database.EntityFrameworkCore;
 using kmgiasoc.Countries;
 using kmgiasoc.Cities;
+using Volo.CmsKit.EntityFrameworkCore;
 
 namespace kmgiasoc.EntityFrameworkCore
 {
@@ -136,6 +137,7 @@ namespace kmgiasoc.EntityFrameworkCore
 
                 /* Configure more properties here */
             });
+            builder.ConfigureCmsKit();
         }
     }
 }

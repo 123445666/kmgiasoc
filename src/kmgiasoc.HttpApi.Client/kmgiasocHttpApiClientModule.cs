@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Account;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
@@ -6,6 +6,7 @@ using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.SettingManagement;
+using Volo.CmsKit;
 
 namespace kmgiasoc
 {
@@ -18,6 +19,7 @@ namespace kmgiasoc
         typeof(AbpFeatureManagementHttpApiClientModule),
         typeof(AbpSettingManagementHttpApiClientModule)
     )]
+    [DependsOn(typeof(CmsKitHttpApiClientModule))]
     public class kmgiasocHttpApiClientModule : AbpModule
     {
         public const string RemoteServiceName = "Default";

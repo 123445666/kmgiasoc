@@ -15,6 +15,7 @@ using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
 using Volo.Abp.BlobStoring.Database.EntityFrameworkCore;
+using Volo.CmsKit.EntityFrameworkCore;
 
 namespace kmgiasoc.EntityFrameworkCore
 {
@@ -31,6 +32,7 @@ namespace kmgiasoc.EntityFrameworkCore
         typeof(AbpFeatureManagementEntityFrameworkCoreModule)
         )]
     [DependsOn(typeof(BlobStoringDatabaseEntityFrameworkCoreModule))]
+    [DependsOn(typeof(CmsKitEntityFrameworkCoreModule))]
     public class kmgiasocEntityFrameworkCoreModule : AbpModule
     {
         public override void PreConfigureServices(ServiceConfigurationContext context)
