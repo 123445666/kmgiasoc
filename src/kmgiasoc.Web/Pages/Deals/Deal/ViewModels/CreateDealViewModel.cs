@@ -2,7 +2,6 @@ using System;
 
 using System.ComponentModel.DataAnnotations;
 using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Form;
-
 namespace kmgiasoc.Web.Pages.Deals.Deal.ViewModels
 {
     public class CreateDealViewModel
@@ -51,7 +50,7 @@ namespace kmgiasoc.Web.Pages.Deals.Deal.ViewModels
         public DateTime EndPromo { get; set; }
 
         [SelectItems(nameof(DealCategories))]
-        [Display(Name = "Citites")]
+        [Display(Name = "DealCityId")]
         public int CityId { get; set; }
 
         [Display(Name = "DealCity")]
@@ -65,5 +64,8 @@ namespace kmgiasoc.Web.Pages.Deals.Deal.ViewModels
 
         [Display(Name = "DealModifiedDate")]
         public DateTime ModifiedDate { get; set; }
+
+        [Display(Name = "DealRatePoint")]
+        public int RatePoint { get; set; }
     }
 }

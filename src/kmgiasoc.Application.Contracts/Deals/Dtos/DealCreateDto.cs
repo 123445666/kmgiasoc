@@ -42,5 +42,7 @@ namespace kmgiasoc.Deals.Dtos
         public DateTime PublishDate { get; set; }
 
         public DateTime ModifiedDate { get; set; }
+
+        public int RatePoint { get; set; }
     }
 }

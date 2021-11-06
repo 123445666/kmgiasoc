@@ -1,5 +1,4 @@
 using System;
-using Volo.Abp;
 using Volo.Abp.Application.Dtos;
 
 namespace kmgiasoc.Deals.Dtos
@@ -44,6 +43,8 @@ namespace kmgiasoc.Deals.Dtos
         public DateTime PublishDate { get; set; }
 
         public DateTime ModifiedDate { get; set; }
+
+        public int RatePoint { get; set; }
         public bool IsDeleted { get { if (DealPriority == (int)DealEnum.Status.Deleted) return true; return false; } set { DealPriority = (int)DealEnum.Status.Deleted; } }
 
         public bool IsPublished

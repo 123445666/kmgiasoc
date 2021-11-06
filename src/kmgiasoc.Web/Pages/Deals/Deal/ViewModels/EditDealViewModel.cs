@@ -62,5 +62,8 @@ namespace kmgiasoc.Web.Pages.Deals.Deal.ViewModels
 
         [Display(Name = "DealModifiedDate")]
         public DateTime ModifiedDate { get; set; }
+
+        [Display(Name = "DealRatePoint")]
+        public int RatePoint { get; set; }
     }
 }

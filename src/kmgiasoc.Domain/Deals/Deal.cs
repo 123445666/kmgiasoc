@@ -30,46 +30,12 @@ namespace kmgiasoc.Deals
         public string LocalShop { get; set; }
         public DateTime PublishDate { get; set; }
         public DateTime ModifiedDate { get; set; }
+        public int RatePoint { get; set; }
 
         protected Deal()
         {
         }
 
-        public Deal(
-            Guid id,
-            string title,
-            string description,
-            Guid dealCategoryId,
-            int dealPriority,
-            decimal price,
-            decimal pricePromo,
-            bool freeShipping,
-            decimal priceShipping,
-            string codePromo,
-            DateTime beginPromo,
-            DateTime endPromo,
-            int cityId,
-            string localShop,
-            DateTime publishDate,
-            DateTime modifiedDate
-        ) : base(id)
-        {
-            Title = title;
-            Description = description;
-            DealCategoryId = dealCategoryId;
-            DealPriority = dealPriority;
-            Price = price;
-            PricePromo = pricePromo;
-            FreeShipping = freeShipping;
-            PriceShipping = priceShipping;
-            CodePromo = codePromo;
-            BeginPromo = beginPromo;
-            EndPromo = endPromo;
-            CityId = cityId;
-            LocalShop = localShop;
-            PublishDate = publishDate;
-            ModifiedDate = modifiedDate;
-        }
 
         public Deal(
             Guid id,
@@ -91,7 +57,8 @@ namespace kmgiasoc.Deals
             string city,
             string localShop,
             DateTime publishDate,
-            DateTime modifiedDate
+            DateTime modifiedDate,
+            int ratePoint
         ) : base(id)
         {
             Title = title;
@@ -113,6 +80,7 @@ namespace kmgiasoc.Deals
             LocalShop = localShop;
             PublishDate = publishDate;
             ModifiedDate = modifiedDate;
+            RatePoint = ratePoint;
         }
     }
 }

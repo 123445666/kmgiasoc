@@ -120,6 +120,10 @@ $(function () {
                 title: l('DealModifiedDate'),
                 data: "modifiedDate"
             },
+            {
+                title: l('DealRatePoint'),
+                data: "ratePoint"
+            },
         ]
     }));
 
@@ -135,6 +139,4 @@ $(function () {
         e.preventDefault();
         createModal.open();
     });
-
-
 });
