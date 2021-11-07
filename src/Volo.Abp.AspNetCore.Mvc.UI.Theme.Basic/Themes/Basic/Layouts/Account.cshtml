@@ -45,6 +45,8 @@
 
     @await RenderSectionAsync("styles", false)
 
+    @await RenderSectionAsync("content_toolbar", false)
+
     @await Component.InvokeAsync(typeof(WidgetStylesViewComponent))
 
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.Last, StandardLayouts.Account)

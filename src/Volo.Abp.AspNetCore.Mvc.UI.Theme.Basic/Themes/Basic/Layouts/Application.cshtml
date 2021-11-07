@@ -49,6 +49,8 @@
 
     @await RenderSectionAsync("styles", false)
 
+    @await RenderSectionAsync("content_toolbar", false)
+
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.Last, StandardLayouts.Application)
 </head>
 <body class="abp-application-layout bg-light @rtl">
