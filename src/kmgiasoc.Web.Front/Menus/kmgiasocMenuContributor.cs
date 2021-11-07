@@ -6,6 +6,8 @@ using Volo.Abp.Identity.Web.Navigation;
 using Volo.Abp.SettingManagement.Web.Navigation;
 using Volo.Abp.TenantManagement.Web.Navigation;
 using Volo.Abp.UI.Navigation;
+using Volo.CmsKit.Admin.Web.Menus;
+using Volo.CmsKit.Public.Web.Menus;
 
 namespace kmgiasoc.Web.Menus
 {
@@ -34,42 +36,16 @@ namespace kmgiasoc.Web.Menus
             //        order: 0
             //    )
             //);
+            administration.TryRemoveMenuItem(TenantManagementMenuNames.GroupName);
+            administration.TryRemoveMenuItem(IdentityMenuNames.GroupName);
+            administration.TryRemoveMenuItem(SettingManagementMenuNames.GroupName);
+            administration.TryRemoveMenuItem(CmsKitAdminMenus.GroupName);
+            administration.TryRemoveMenuItem(CmsKitMenus.Public);
             
-            if (MultiTenancyConsts.IsEnabled)
-            {
-                administration.SetSubItemOrder(TenantManagementMenuNames.GroupName, 1);
-            }
-            else
-            {
-                administration.TryRemoveMenuItem(TenantManagementMenuNames.GroupName);
-            }
-
-            administration.SetSubItemOrder(IdentityMenuNames.GroupName, 2);
-            administration.SetSubItemOrder(SettingManagementMenuNames.GroupName, 3);
-            if (await context.IsGrantedAsync(kmgiasocPermissions.DealCategory.Default))
-            {
-                context.Menu.AddItem(
-                    new ApplicationMenuItem(kmgiasocMenus.DealCategory, l["Menu:DealCategory"], "/DealCategories/DealCategory")
-                );
-            }
-            if (await context.IsGrantedAsync(kmgiasocPermissions.Deal.Default))
-            {
-                context.Menu.AddItem(
-                    new ApplicationMenuItem(kmgiasocMenus.Deal, l["Menu:Deal"], "/Deals/Deal")
-                );
-            }
-            if (await context.IsGrantedAsync(kmgiasocPermissions.Country.Default))
-            {
-                context.Menu.AddItem(
-                    new ApplicationMenuItem(kmgiasocMenus.Country, l["Menu:Country"], "/Countries/Country")
-                );
-            }
-            if (await context.IsGrantedAsync(kmgiasocPermissions.City.Default))
-            {
-                context.Menu.AddItem(
-                    new ApplicationMenuItem(kmgiasocMenus.City, l["Menu:City"], "/Cities/City")
-                );
-            }
+            //foreach (var i in context.Menu.Items)
+            //{
+            //    context.Menu.Items.Remove(i);
+            //}
         }
     }
 }
