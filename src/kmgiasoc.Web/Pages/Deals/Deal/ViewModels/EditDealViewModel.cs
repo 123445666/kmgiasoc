@@ -9,6 +9,9 @@ namespace kmgiasoc.Web.Pages.Deals.Deal.ViewModels
         [Display(Name = "DealTitle")]
         public string Title { get; set; }
 
+        [Display(Name = "DealSlug")]
+        public string Slug { get; set; }
+
         [Display(Name = "DealDescription")]
         public string Description { get; set; }
 

@@ -39,9 +39,7 @@ namespace kmgiasoc.Web.Menus
             administration.TryRemoveMenuItem(TenantManagementMenuNames.GroupName);
             administration.TryRemoveMenuItem(IdentityMenuNames.GroupName);
             administration.TryRemoveMenuItem(SettingManagementMenuNames.GroupName);
-            administration.TryRemoveMenuItem(CmsKitAdminMenus.GroupName);
-            administration.TryRemoveMenuItem(CmsKitMenus.Public);
-            
+            context.Menu.TryRemoveMenuItem(CmsKitAdminMenus.GroupName);
             //foreach (var i in context.Menu.Items)
             //{
             //    context.Menu.Items.Remove(i);

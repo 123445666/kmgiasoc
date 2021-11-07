@@ -6,6 +6,7 @@ namespace kmgiasoc.DealCategories
     public class DealCategory : AuditedAggregateRoot<Guid>
     {
         public string Name { get; set; }
+        public string Slug { get; set; }
         public Guid Parent { get; set; }
         public string Description { get; set; }
         public int CatOrder { get; set; }
@@ -20,6 +21,7 @@ namespace kmgiasoc.DealCategories
         public DealCategory(
             Guid id,
             string name,
+            string slug,
             string description,
             int catOrder,
             DateTime publishDate,
@@ -27,6 +29,7 @@ namespace kmgiasoc.DealCategories
         ) : base(id)
         {
             Name = name;
+            Slug = slug;
             Description = description;
             CatOrder = catOrder;
             PublishDate = publishDate;

@@ -7,6 +7,7 @@ namespace kmgiasoc.Deals
     public class Deal : AuditedAggregateRoot<Guid>
     {
         public string Title { get; set; }
+        public string Slug { get; set; }
         public string Description { get; set; }
         public string Link { get; set; }
         public string DomainLink { get; set; }
@@ -35,11 +36,10 @@ namespace kmgiasoc.Deals
         protected Deal()
         {
         }
-
-
         public Deal(
             Guid id,
             string title,
+            string slug,
             string description,
             string link,
             string domainLink,
@@ -62,6 +62,7 @@ namespace kmgiasoc.Deals
         ) : base(id)
         {
             Title = title;
+            Slug = slug;
             Description = description;
             Link = link;
             DomainLink = domainLink;

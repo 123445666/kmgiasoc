@@ -49,6 +49,10 @@ $(function () {
                 data: "title"
             },
             {
+                title: l('DealSlug'),
+                data: "slug"
+            },
+            {
                 title: l('DealDescription'),
                 data: "description"
             },

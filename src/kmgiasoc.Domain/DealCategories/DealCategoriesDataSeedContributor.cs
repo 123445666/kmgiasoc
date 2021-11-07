@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
+using Volo.CmsKit;
 
 namespace kmgiasoc.DealCategories
 {
@@ -35,7 +36,7 @@ namespace kmgiasoc.DealCategories
             foreach (string cat in CategoriesString)
             {
                 await _dealCategoryRepository.InsertAsync(
-                new DealCategory(Guid.NewGuid(), cat, "", i++, DateTime.Now, DateTime.Now),
+                new DealCategory(Guid.NewGuid(), cat, SlugNormalizer.Normalize(cat), "", i++, DateTime.Now, DateTime.Now),
                 autoSave: true
             );
             }
