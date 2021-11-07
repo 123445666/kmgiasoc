@@ -1,4 +1,4 @@
-namespace kmgiasoc.Web.Menus
+﻿namespace kmgiasoc.Web.Menus
 {
     public class kmgiasocMenus
     {
@@ -7,9 +7,5 @@ namespace kmgiasoc.Web.Menus
 
         //Add your menu items here...
 
-        public const string DealCategory = Prefix + ".DealCategory";
-        public const string Deal = Prefix + ".Deal";
-        public const string Country = Prefix + ".Country";
-        public const string City = Prefix + ".City";
     }
 }

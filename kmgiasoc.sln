@@ -96,6 +96,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "public", "public", "{6CC4A4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "unified", "unified", "{E69A2810-CA99-456C-8036-5D911FFB3D85}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "kmgiasoc.Web.Front", "src\kmgiasoc.Web.Front\kmgiasoc.Web.Front.csproj", "{2F4EB6C2-C555-4485-997F-1648A6EE434E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -254,6 +256,10 @@ Global
 		{A5DED84C-F3FD-4BFA-99A9-C3642A900358}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5DED84C-F3FD-4BFA-99A9-C3642A900358}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5DED84C-F3FD-4BFA-99A9-C3642A900358}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F4EB6C2-C555-4485-997F-1648A6EE434E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F4EB6C2-C555-4485-997F-1648A6EE434E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F4EB6C2-C555-4485-997F-1648A6EE434E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F4EB6C2-C555-4485-997F-1648A6EE434E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -303,6 +309,7 @@ Global
 		{D34B8FD0-A88E-4B21-BCB0-BA0846DDD474} = {DB959388-6019-4A6D-8DB7-AC255AC50043}
 		{6CC4A46A-7A38-4121-8A73-DA1924AF13EF} = {DB959388-6019-4A6D-8DB7-AC255AC50043}
 		{E69A2810-CA99-456C-8036-5D911FFB3D85} = {DB959388-6019-4A6D-8DB7-AC255AC50043}
+		{2F4EB6C2-C555-4485-997F-1648A6EE434E} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28315BFD-90E7-4E14-A2EA-F3D23AF4126F}

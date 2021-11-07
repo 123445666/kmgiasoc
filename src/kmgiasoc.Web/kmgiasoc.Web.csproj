@@ -34,93 +34,21 @@
   <ItemGroup>
     <PackageReference Include="Serilog.AspNetCore" Version="4.1.0" />
     <PackageReference Include="Serilog.Sinks.Async" Version="1.4.0" />
-    <ProjectReference Include="..\..\modules\Volo.CmsKit\src\Volo.CmsKit.Web\Volo.CmsKit.Web.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\kmgiasoc.Application\kmgiasoc.Application.csproj" />
     <ProjectReference Include="..\kmgiasoc.HttpApi\kmgiasoc.HttpApi.csproj" />
     <ProjectReference Include="..\kmgiasoc.EntityFrameworkCore\kmgiasoc.EntityFrameworkCore.csproj" />
-    <ProjectReference Include="..\Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic\Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.csproj" />
-    <PackageReference Include="Volo.Abp.Autofac" Version="4.4.2" />
-    <PackageReference Include="Volo.Abp.Swashbuckle" Version="4.4.2" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Authentication.JwtBearer" Version="4.4.2" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Serilog" Version="4.4.2" />
-    <PackageReference Include="Volo.Abp.Identity.Web" Version="4.4.2" />
-    <PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="4.4.2" />
-    <PackageReference Include="Volo.Abp.TenantManagement.Web" Version="4.4.2" />
-    <PackageReference Include="Volo.Abp.SettingManagement.Web" Version="4.4.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Modules\Account\Components\Toolbar\UserLoginLink\Default.cshtml" />
-    <None Include="Pages\Account\Login.cshtml" />
-    <None Include="wwwroot\libs\js\index.js" />
-    <None Include="wwwroot\libs\vendors\alpinejs\cdn.min.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\ckeditor.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\ckeditor.js.map" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\af.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\ar.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\ast.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\az.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\bg.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\ca.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\cs.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\da.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\de-ch.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\de.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\el.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\en-au.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\en-gb.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\eo.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\es.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\et.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\eu.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\fa.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\fi.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\fr.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\gl.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\gu.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\he.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\hi.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\hr.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\hu.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\id.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\it.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\ja.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\km.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\kn.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\ko.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\ku.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\lt.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\lv.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\ms.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\nb.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\ne.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\nl.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\no.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\oc.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\pl.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\pt-br.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\pt.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\ro.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\ru.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\si.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\sk.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\sl.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\sq.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\sr-latn.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\sr.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\sv.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\th.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\tk.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\tr.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\tt.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\ug.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\uk.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\vi.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\zh-cn.js" />
-    <None Include="wwwroot\libs\vendors\ckeditor\translations\zh.js" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" Version="4.4.3" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="4.4.3" />
+    <PackageReference Include="Volo.Abp.Swashbuckle" Version="4.4.3" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Authentication.JwtBearer" Version="4.4.3" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Serilog" Version="4.4.3" />
+    <PackageReference Include="Volo.Abp.Identity.Web" Version="4.4.3" />
+    <PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="4.4.3" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Web" Version="4.4.3" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Web" Version="4.4.3" />
   </ItemGroup>
 
 </Project>

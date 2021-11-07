@@ -1,5 +1,4 @@
-using System.Threading.Tasks;
-using kmgiasoc.Permissions;
+﻿using System.Threading.Tasks;
 using kmgiasoc.Localization;
 using kmgiasoc.MultiTenancy;
 using Volo.Abp.Identity.Web.Navigation;
@@ -24,16 +23,16 @@ namespace kmgiasoc.Web.Menus
             var administration = context.Menu.GetAdministration();
             var l = context.GetLocalizer<kmgiasocResource>();
 
-            //context.Menu.Items.Insert(
-            //    0,
-            //    new ApplicationMenuItem(
-            //        kmgiasocMenus.Home,
-            //        l["Menu:Home"],
-            //        "~/",
-            //        icon: "fas fa-home",
-            //        order: 0
-            //    )
-            //);
+            context.Menu.Items.Insert(
+                0,
+                new ApplicationMenuItem(
+                    kmgiasocMenus.Home,
+                    l["Menu:Home"],
+                    "~/",
+                    icon: "fas fa-home",
+                    order: 0
+                )
+            );
             
             if (MultiTenancyConsts.IsEnabled)
             {
@@ -46,30 +45,6 @@ namespace kmgiasoc.Web.Menus
 
             administration.SetSubItemOrder(IdentityMenuNames.GroupName, 2);
             administration.SetSubItemOrder(SettingManagementMenuNames.GroupName, 3);
-            if (await context.IsGrantedAsync(kmgiasocPermissions.DealCategory.Default))
-            {
-                context.Menu.AddItem(
-                    new ApplicationMenuItem(kmgiasocMenus.DealCategory, l["Menu:DealCategory"], "/DealCategories/DealCategory")
-                );
-            }
-            if (await context.IsGrantedAsync(kmgiasocPermissions.Deal.Default))
-            {
-                context.Menu.AddItem(
-                    new ApplicationMenuItem(kmgiasocMenus.Deal, l["Menu:Deal"], "/Deals/Deal")
-                );
-            }
-            if (await context.IsGrantedAsync(kmgiasocPermissions.Country.Default))
-            {
-                context.Menu.AddItem(
-                    new ApplicationMenuItem(kmgiasocMenus.Country, l["Menu:Country"], "/Countries/Country")
-                );
-            }
-            if (await context.IsGrantedAsync(kmgiasocPermissions.City.Default))
-            {
-                context.Menu.AddItem(
-                    new ApplicationMenuItem(kmgiasocMenus.City, l["Menu:City"], "/Cities/City")
-                );
-            }
         }
     }
 }
