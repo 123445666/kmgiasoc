@@ -7,7 +7,7 @@
         <div class="w-full relative flex p-4 lg:p-6 justify-between lg:w-auto lg:static lg:block lg:justify-start">
             @(await Component.InvokeAsync<MainNavbarBrandViewComponent>())
             <button class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded block lg:hidden outline-none focus:outline-none"
-                    type="button" onclick="toggleNavbar('example-collapse-navbar')">
+                    type="button" id="collapse-navbar">
                 <i class="text-gray fas fa-bars"></i>
             </button>
         </div>

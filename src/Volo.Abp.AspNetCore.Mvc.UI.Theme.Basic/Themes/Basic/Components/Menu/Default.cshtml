@@ -29,8 +29,8 @@
     {
         <!--Regular Link-->
         <li class="toggleable hover:bg-gray-700 hover:text-white">
-            <input type="checkbox" value="selected" id="toggle-one" class="toggle-input">
-            <label for="toggle-one" class="block cursor-pointer py-6 px-4 lg:p-6 text-sm lg:text-base font-bold" aria-labelledby="Menu_@(menuItem.Name)">
+            <input type="checkbox" value="selected" id="toogle-@menuItem.ElementId" class="toggle-input">
+            <label for="toogle-@menuItem.ElementId" class="block cursor-pointer py-6 px-4 lg:p-6 text-sm lg:text-base font-bold" aria-labelledby="Menu_@(menuItem.Name)">
                 @if (menuItem.Icon != null)
                 {
                     if (menuItem.Icon.StartsWith("fa"))
