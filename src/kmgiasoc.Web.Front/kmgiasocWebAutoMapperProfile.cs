@@ -17,17 +17,13 @@ namespace kmgiasoc.Web
             //Define your AutoMapper configuration here for the Web project.
             CreateMap<DealCategoryDto, CreateEditDealCategoryViewModel>();
             CreateMap<CreateEditDealCategoryViewModel, CreateUpdateDealCategoryDto>();
-            CreateMap<DealDto, EditDealViewModel>();
             CreateMap<CreateDealViewModel, CreateDealDto>();
-            CreateMap<EditDealViewModel, UpdateDealDto>();
             CreateMap<DealDto, CreateEditDealViewModel>();
             CreateMap<CreateEditDealViewModel, CreateUpdateDealDto>();
             CreateMap<DealCategoryDto, EditDealCategoryViewModel>();
             CreateMap<CreateDealCategoryViewModel, DealCategoryCreateDto>();
             CreateMap<EditDealCategoryViewModel, DealCategoryUpdateDto>();
-            CreateMap<DealDto, EditDealViewModel>();
             CreateMap<CreateDealViewModel, DealCreateDto>();
-            CreateMap<EditDealViewModel, DealUpdateDto>();
             CreateMap<CountryDto, EditCountryViewModel>();
             CreateMap<CreateCountryViewModel, CountryCreateDto>();
             CreateMap<EditCountryViewModel, CountryUpdateDto>();

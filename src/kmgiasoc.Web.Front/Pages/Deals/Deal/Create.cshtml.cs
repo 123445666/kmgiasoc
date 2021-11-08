@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 using kmgiasoc.Web.Pages.Files;
 using System.IO;
 using kmgiasoc.FileUploader;
+using Volo.CmsKit;
 
 namespace kmgiasoc.Web.Pages.Deals.Deal
 {
@@ -65,6 +66,7 @@ namespace kmgiasoc.Web.Pages.Deals.Deal
             }
 
             ViewModel.Image = fileName;
+            ViewModel.Slug = SlugNormalizer.Normalize(ViewModel.Title);
 
             ViewModel.DealPriority = (int)DealEnum.Status.Draft;
             var dto = ObjectMapper.Map<CreateDealViewModel, DealCreateDto>(ViewModel);

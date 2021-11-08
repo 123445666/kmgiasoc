@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@abp/aspnetcore.mvc.ui.theme.basic@^4.4.3":
+"@abp/aspnetcore.mvc.ui.theme.basic@~4.4.3":
   version "4.4.3"
   resolved "https://registry.yarnpkg.com/@abp/aspnetcore.mvc.ui.theme.basic/-/aspnetcore.mvc.ui.theme.basic-4.4.3.tgz#26b230021334f7859fbb80f9c379a1192cc3fe97"
   integrity sha512-FR1XIiZljhjBuHQKr2kdd0gD82sy8+oVPrJ+BrSKK3N4OsOTpVxZnUhixLeDRv1Lmw3twwmLCEcp8snPix/wPg==
@@ -75,7 +75,7 @@
     "@abp/highlight.js" "~4.4.3"
     "@abp/star-rating-svg" "~4.4.3"
 
-"@abp/cms-kit@4.4.3":
+"@abp/cms-kit@~4.4.3":
   version "4.4.3"
   resolved "https://registry.yarnpkg.com/@abp/cms-kit/-/cms-kit-4.4.3.tgz#5e902fa16cfee393d50d2b0c42455a532d4dcf84"
   integrity sha512-3PzBJUuKciTtudiDQ/NNVTBpYaevfhufm4UFThecMCSnkId1emaoZcUX2gxs5I+0kC+m6nw3SwT209R543X/kQ==
