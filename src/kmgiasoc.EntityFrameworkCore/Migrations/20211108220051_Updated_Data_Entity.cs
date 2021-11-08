@@ -12,12 +12,6 @@ namespace kmgiasoc.Migrations
                 table: "AppDeals");
 
             migrationBuilder.AddColumn<Guid>(
-                name: "DealCategoryId1",
-                table: "AppDeals",
-                type: "uniqueidentifier",
-                nullable: true);
-
-            migrationBuilder.AddColumn<Guid>(
                 name: "DeleterId",
                 table: "AppCountries",
                 type: "uniqueidentifier",
@@ -73,11 +67,6 @@ namespace kmgiasoc.Migrations
                 column: "CityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AppDeals_DealCategoryId1",
-                table: "AppDeals",
-                column: "DealCategoryId1");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_AppCities_CountryId",
                 table: "AppCities",
                 column: "CountryId");
@@ -98,13 +87,6 @@ namespace kmgiasoc.Migrations
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_AppDeals_AppDealCategories_DealCategoryId1",
-                table: "AppDeals",
-                column: "DealCategoryId1",
-                principalTable: "AppDealCategories",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -117,25 +99,13 @@ namespace kmgiasoc.Migrations
                 name: "FK_AppDeals_AppCities_CityId",
                 table: "AppDeals");
 
-            migrationBuilder.DropForeignKey(
-                name: "FK_AppDeals_AppDealCategories_DealCategoryId1",
-                table: "AppDeals");
-
             migrationBuilder.DropIndex(
                 name: "IX_AppDeals_CityId",
                 table: "AppDeals");
 
             migrationBuilder.DropIndex(
-                name: "IX_AppDeals_DealCategoryId1",
-                table: "AppDeals");
-
-            migrationBuilder.DropIndex(
                 name: "IX_AppCities_CountryId",
                 table: "AppCities");
-
-            migrationBuilder.DropColumn(
-                name: "DealCategoryId1",
-                table: "AppDeals");
 
             migrationBuilder.DropColumn(
                 name: "DeleterId",

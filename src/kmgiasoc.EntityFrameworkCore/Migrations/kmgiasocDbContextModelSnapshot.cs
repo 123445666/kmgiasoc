@@ -2961,9 +2961,6 @@ namespace kmgiasoc.Migrations
                     b.Property<Guid>("DealCategoryId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("DealCategoryId1")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("DealPriority")
                         .HasColumnType("int");
 
@@ -3052,8 +3049,6 @@ namespace kmgiasoc.Migrations
                     b.HasIndex("CityId");
 
                     b.HasIndex("DealCategoryId");
-
-                    b.HasIndex("DealCategoryId1");
 
                     b.ToTable("AppDeals");
                 });
@@ -3385,10 +3380,6 @@ namespace kmgiasoc.Migrations
                         .HasForeignKey("DealCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("kmgiasoc.DealCategories.DealCategory", "DealCategory")
-                        .WithMany()
-                        .HasForeignKey("DealCategoryId1");
 
                     b.Navigation("Author");
 
