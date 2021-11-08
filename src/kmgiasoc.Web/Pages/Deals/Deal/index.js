@@ -53,6 +53,10 @@ $(function () {
                 data: "slug"
             },
             {
+                title: l('DealShortDescription'),
+                data: "shortDescription"
+            },
+            {
                 title: l('DealDescription'),
                 data: "description"
             },
@@ -67,6 +71,10 @@ $(function () {
             {
                 title: l('DealImage'),
                 data: "image"
+            },
+            {
+                title: l('DealCoverImageMediaId'),
+                data: "coverImageMediaId"
             },
             {
                 title: l('DealDealCategoryId'),
@@ -127,6 +135,14 @@ $(function () {
             {
                 title: l('DealRatePoint'),
                 data: "ratePoint"
+            },
+            {
+                title: l('DealAuthorId'),
+                data: "authorId"
+            },
+            {
+                title: l('DealAuthor'),
+                data: "author"
             },
         ]
     }));

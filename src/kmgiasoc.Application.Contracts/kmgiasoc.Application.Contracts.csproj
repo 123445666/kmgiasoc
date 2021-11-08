@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\modules\Volo.CmsKit\src\Volo.CmsKit.Domain\Volo.CmsKit.Domain.csproj" />
     <ProjectReference Include="..\kmgiasoc.Domain.Shared\kmgiasoc.Domain.Shared.csproj" />
   </ItemGroup>
 

@@ -1,6 +1,7 @@
 using System;
 
 using System.ComponentModel.DataAnnotations;
+using Volo.CmsKit.Users;
 
 namespace kmgiasoc.Web.Pages.Deals.Deal.ViewModels
 {
@@ -11,6 +12,9 @@ namespace kmgiasoc.Web.Pages.Deals.Deal.ViewModels
 
         [Display(Name = "DealSlug")]
         public string Slug { get; set; }
+
+        [Display(Name = "DealShortDescription")]
+        public string ShortDescription { get; set; }
 
         [Display(Name = "DealDescription")]
         public string Description { get; set; }
@@ -23,6 +27,9 @@ namespace kmgiasoc.Web.Pages.Deals.Deal.ViewModels
 
         [Display(Name = "DealImage")]
         public string Image { get; set; }
+
+        [Display(Name = "DealCoverImageMediaId")]
+        public Guid? CoverImageMediaId { get; set; }
 
         [Display(Name = "DealDealCategoryId")]
         public Guid DealCategoryId { get; set; }
@@ -68,5 +75,11 @@ namespace kmgiasoc.Web.Pages.Deals.Deal.ViewModels
 
         [Display(Name = "DealRatePoint")]
         public int RatePoint { get; set; }
+
+        [Display(Name = "DealAuthorId")]
+        public Guid AuthorId { get; set; }
+
+        [Display(Name = "DealAuthor")]
+        public CmsUser Author { get; set; }
     }
 }

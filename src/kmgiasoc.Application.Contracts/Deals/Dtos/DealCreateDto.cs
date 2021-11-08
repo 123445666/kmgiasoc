@@ -1,5 +1,7 @@
 using System;
 using System.ComponentModel;
+using Volo.CmsKit.Users;
+
 namespace kmgiasoc.Deals.Dtos
 {
     [Serializable]
@@ -9,6 +11,8 @@ namespace kmgiasoc.Deals.Dtos
 
         public string Slug { get; set; }
 
+        public string ShortDescription { get; set; }
+
         public string Description { get; set; }
 
         public string Link { get; set; }
@@ -16,6 +20,8 @@ namespace kmgiasoc.Deals.Dtos
         public string DomainLink { get; set; }
 
         public string Image { get; set; }
+
+        public Guid? CoverImageMediaId { get; set; }
 
         public Guid DealCategoryId { get; set; }
 
@@ -46,5 +52,9 @@ namespace kmgiasoc.Deals.Dtos
         public DateTime ModifiedDate { get; set; }
 
         public int RatePoint { get; set; }
+
+        public Guid AuthorId { get; set; }
+
+        public CmsUser Author { get; set; }
     }
 }
