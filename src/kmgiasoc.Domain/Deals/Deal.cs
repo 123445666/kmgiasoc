@@ -58,63 +58,6 @@ namespace kmgiasoc.Deals
             Guid? coverImageMediaId,
             Guid? tenantId,
             Guid dealCategoryId,
-            int dealPriority,
-            decimal price,
-            decimal pricePromo,
-            bool freeShipping,
-            decimal priceShipping,
-            string codePromo,
-            DateTime beginPromo,
-            DateTime endPromo,
-            int cityId,
-            string city,
-            string localShop,
-            DateTime publishDate,
-            DateTime modifiedDate,
-            int ratePoint,
-            Guid authorId,
-            CmsUser author
-        ) : base(id)
-        {
-            Title = title;
-            Slug = slug;
-            ShortDescription = shortDescription;
-            Description = description;
-            Link = link;
-            DomainLink = domainLink;
-            Image = image;
-            CoverImageMediaId = coverImageMediaId;
-            TenantId = tenantId;
-            DealCategoryId = dealCategoryId;
-            DealPriority = dealPriority;
-            Price = price;
-            PricePromo = pricePromo;
-            FreeShipping = freeShipping;
-            PriceShipping = priceShipping;
-            CodePromo = codePromo;
-            BeginPromo = beginPromo;
-            EndPromo = endPromo;
-            CityId = cityId;
-            LocalShop = localShop;
-            PublishDate = publishDate;
-            ModifiedDate = modifiedDate;
-            RatePoint = ratePoint;
-            AuthorId = authorId;
-            Author = author;
-        }
-
-        public Deal(
-            Guid id,
-            string title,
-            string slug,
-            string shortDescription,
-            string description,
-            string link,
-            string domainLink,
-            string image,
-            Guid? coverImageMediaId,
-            Guid? tenantId,
-            Guid dealCategoryId,
             DealCategory dealCategory,
             int dealPriority,
             decimal price,
