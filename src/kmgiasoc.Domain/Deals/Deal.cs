@@ -1,3 +1,5 @@
+using kmgiasoc.Cities;
+using kmgiasoc.DealCategories;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using Volo.Abp.Domain.Entities.Auditing;
@@ -17,8 +19,8 @@ namespace kmgiasoc.Deals
         public string Image { get; set; }
         public Guid? CoverImageMediaId { get; set; }
         public Guid? TenantId { get; protected set; }
-        [ForeignKey("DealCategory")]
         public Guid DealCategoryId { get; set; }
+        public DealCategory DealCategory { get; set; }
         public int DealPriority { get; set; }
         [Column(TypeName = "decimal(18,4)")]
         public decimal Price { get; set; }
@@ -32,7 +34,7 @@ namespace kmgiasoc.Deals
         public DateTime EndPromo { get; set; }
         [ForeignKey("City")]
         public int CityId { get; set; }
-        public string City { get; set; }
+        public City City { get; set; }
         public string LocalShop { get; set; }
         public DateTime PublishDate { get; set; }
         public DateTime ModifiedDate { get; set; }
@@ -42,53 +44,6 @@ namespace kmgiasoc.Deals
 
         protected Deal()
         {
-        }
-        public Deal(
-            Guid id,
-            string title,
-            string slug,
-            string description,
-            string link,
-            string domainLink,
-            string image,
-            Guid dealCategoryId,
-            int dealPriority,
-            decimal price,
-            decimal pricePromo,
-            bool freeShipping,
-            decimal priceShipping,
-            string codePromo,
-            DateTime beginPromo,
-            DateTime endPromo,
-            int cityId,
-            string city,
-            string localShop,
-            DateTime publishDate,
-            DateTime modifiedDate,
-            int ratePoint
-        ) : base(id)
-        {
-            Title = title;
-            Slug = slug;
-            Description = description;
-            Link = link;
-            DomainLink = domainLink;
-            Image = image;
-            DealCategoryId = dealCategoryId;
-            DealPriority = dealPriority;
-            Price = price;
-            PricePromo = pricePromo;
-            FreeShipping = freeShipping;
-            PriceShipping = priceShipping;
-            CodePromo = codePromo;
-            BeginPromo = beginPromo;
-            EndPromo = endPromo;
-            CityId = cityId;
-            City = city;
-            LocalShop = localShop;
-            PublishDate = publishDate;
-            ModifiedDate = modifiedDate;
-            RatePoint = ratePoint;
         }
 
         public Deal(
@@ -131,6 +86,65 @@ namespace kmgiasoc.Deals
             CoverImageMediaId = coverImageMediaId;
             TenantId = tenantId;
             DealCategoryId = dealCategoryId;
+            DealPriority = dealPriority;
+            Price = price;
+            PricePromo = pricePromo;
+            FreeShipping = freeShipping;
+            PriceShipping = priceShipping;
+            CodePromo = codePromo;
+            BeginPromo = beginPromo;
+            EndPromo = endPromo;
+            CityId = cityId;
+            LocalShop = localShop;
+            PublishDate = publishDate;
+            ModifiedDate = modifiedDate;
+            RatePoint = ratePoint;
+            AuthorId = authorId;
+            Author = author;
+        }
+
+        public Deal(
+            Guid id,
+            string title,
+            string slug,
+            string shortDescription,
+            string description,
+            string link,
+            string domainLink,
+            string image,
+            Guid? coverImageMediaId,
+            Guid? tenantId,
+            Guid dealCategoryId,
+            DealCategory dealCategory,
+            int dealPriority,
+            decimal price,
+            decimal pricePromo,
+            bool freeShipping,
+            decimal priceShipping,
+            string codePromo,
+            DateTime beginPromo,
+            DateTime endPromo,
+            int cityId,
+            City city,
+            string localShop,
+            DateTime publishDate,
+            DateTime modifiedDate,
+            int ratePoint,
+            Guid authorId,
+            CmsUser author
+        ) : base(id)
+        {
+            Title = title;
+            Slug = slug;
+            ShortDescription = shortDescription;
+            Description = description;
+            Link = link;
+            DomainLink = domainLink;
+            Image = image;
+            CoverImageMediaId = coverImageMediaId;
+            TenantId = tenantId;
+            DealCategoryId = dealCategoryId;
+            DealCategory = dealCategory;
             DealPriority = dealPriority;
             Price = price;
             PricePromo = pricePromo;

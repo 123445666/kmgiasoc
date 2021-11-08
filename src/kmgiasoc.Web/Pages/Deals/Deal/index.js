@@ -81,6 +81,10 @@ $(function () {
                 data: "dealCategoryId"
             },
             {
+                title: l('DealDealCategory'),
+                data: "dealCategory"
+            },
+            {
                 title: l('DealDealPriority'),
                 data: "dealPriority"
             },

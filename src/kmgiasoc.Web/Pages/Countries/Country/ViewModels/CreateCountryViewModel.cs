@@ -14,5 +14,6 @@ namespace kmgiasoc.Web.Pages.Countries.Country.ViewModels
 
         [Display(Name = "CountryOrderCountry")]
         public int OrderCountry { get; set; }
+
     }
 }

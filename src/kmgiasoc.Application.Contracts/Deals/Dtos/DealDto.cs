@@ -1,3 +1,5 @@
+using kmgiasoc.Cities.Dtos;
+using kmgiasoc.DealCategories.Dtos;
 using System;
 using Volo.Abp;
 using Volo.Abp.Application.Dtos;
@@ -6,7 +8,7 @@ using Volo.CmsKit.Users;
 namespace kmgiasoc.Deals.Dtos
 {
     [Serializable]
-    public class DealDto : FullAuditedEntityDto<Guid>, ISoftDelete, IIsPublished, IIsApproved
+    public class DealDto : FullAuditedEntityDto<Guid>, IIsPublished, IIsApproved
     {
         public string Title { get; set; }
 
@@ -26,6 +28,8 @@ namespace kmgiasoc.Deals.Dtos
 
         public Guid DealCategoryId { get; set; }
 
+        public DealCategoryDto DealCategory { get; set; }
+
         public int DealPriority { get; set; }
 
         public decimal Price { get; set; }
@@ -44,7 +48,7 @@ namespace kmgiasoc.Deals.Dtos
 
         public int CityId { get; set; }
 
-        public string City { get; set; }
+        public CityDto City { get; set; }
 
         public string LocalShop { get; set; }
 
@@ -56,7 +60,7 @@ namespace kmgiasoc.Deals.Dtos
 
         public Guid AuthorId { get; set; }
 
-        public CmsUser Author { get; set; }
+        public CmsUserDto Author { get; set; }
         public bool IsPublished
         {
             get

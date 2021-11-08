@@ -1,3 +1,5 @@
+using kmgiasoc.Cities;
+using kmgiasoc.DealCategories;
 using System;
 
 using System.ComponentModel.DataAnnotations;
@@ -34,6 +36,9 @@ namespace kmgiasoc.Web.Pages.Deals.Deal.ViewModels
         [Display(Name = "DealDealCategoryId")]
         public Guid DealCategoryId { get; set; }
 
+        [Display(Name = "DealDealCategory")]
+        public DealCategory DealCategory { get; set; }
+
         [Display(Name = "DealDealPriority")]
         public int DealPriority { get; set; }
 
@@ -62,7 +67,7 @@ namespace kmgiasoc.Web.Pages.Deals.Deal.ViewModels
         public int CityId { get; set; }
 
         [Display(Name = "DealCity")]
-        public string City { get; set; }
+        public City City { get; set; }
 
         [Display(Name = "DealLocalShop")]
         public string LocalShop { get; set; }

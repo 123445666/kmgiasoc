@@ -49,6 +49,10 @@ $(function () {
                 data: "countryId"
             },
             {
+                title: l('CityCountry'),
+                data: "country"
+            },
+            {
                 title: l('CityName'),
                 data: "name"
             },
