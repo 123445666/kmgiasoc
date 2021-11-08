@@ -7,7 +7,7 @@ namespace kmgiasoc.DealCategories
     {
         public string Name { get; set; }
         public string Slug { get; set; }
-        public Guid Parent { get; set; }
+        public Nullable<Guid> Parent { get; set; }
         public string Description { get; set; }
         public int CatOrder { get; set; }
 
@@ -18,10 +18,12 @@ namespace kmgiasoc.DealCategories
         {
         }
 
+
         public DealCategory(
             Guid id,
             string name,
             string slug,
+            Nullable<Guid> parent,
             string description,
             int catOrder,
             DateTime publishDate,
@@ -30,23 +32,6 @@ namespace kmgiasoc.DealCategories
         {
             Name = name;
             Slug = slug;
-            Description = description;
-            CatOrder = catOrder;
-            PublishDate = publishDate;
-            ModifiedDate = modifiedDate;
-        }
-
-        public DealCategory(
-            Guid id,
-            string name,
-            Guid parent,
-            string description,
-            int catOrder,
-            DateTime publishDate,
-            DateTime modifiedDate
-        ) : base(id)
-        {
-            Name = name;
             Parent = parent;
             Description = description;
             CatOrder = catOrder;

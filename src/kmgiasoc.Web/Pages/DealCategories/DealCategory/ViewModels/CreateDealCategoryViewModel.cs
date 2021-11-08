@@ -9,8 +9,11 @@ namespace kmgiasoc.Web.Pages.DealCategories.DealCategory.ViewModels
         [Display(Name = "DealCategoryName")]
         public string Name { get; set; }
 
+        [Display(Name = "DealCategorySlug")]
+        public string Slug { get; set; }
+
         [Display(Name = "DealCategoryParent")]
-        public Guid Parent { get; set; }
+        public Nullable<Guid> Parent { get; set; }
 
         [Display(Name = "DealCategoryDescription")]
         public string Description { get; set; }

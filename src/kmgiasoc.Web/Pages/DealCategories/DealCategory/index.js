@@ -49,6 +49,10 @@ $(function () {
                 data: "name"
             },
             {
+                title: l('DealCategorySlug'),
+                data: "slug"
+            },
+            {
                 title: l('DealCategoryParent'),
                 data: "parent"
             },

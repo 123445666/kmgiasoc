@@ -8,7 +8,9 @@ namespace kmgiasoc.DealCategories.Dtos
     {
         public string Name { get; set; }
 
-        public Guid Parent { get; set; }
+        public string Slug { get; set; }
+
+        public Nullable<Guid> Parent { get; set; }
 
         public string Description { get; set; }
 
