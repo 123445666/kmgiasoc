@@ -98,17 +98,6 @@ namespace kmgiasoc.EntityFrameworkCore
             });
 
 
-            builder.Entity<Deal>(b =>
-            {
-                b.ToTable(kmgiasocConsts.DbTablePrefix + "Deals", kmgiasocConsts.DbSchema);
-                b.ConfigureByConvention();
-                b.HasOne<DealCategory>().WithMany().HasForeignKey(x => x.DealCategoryId).IsRequired();
-
-                /* Configure more properties here */
-            });
-            builder.ConfigureBlobStoring();
-
-
             builder.Entity<Country>(b =>
             {
                 b.ToTable(kmgiasocConsts.DbTablePrefix + "Countries", kmgiasocConsts.DbSchema);
