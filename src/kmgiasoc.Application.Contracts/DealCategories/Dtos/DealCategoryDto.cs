@@ -4,7 +4,7 @@ using Volo.Abp.Application.Dtos;
 namespace kmgiasoc.DealCategories.Dtos
 {
     [Serializable]
-    public class DealCategoryDto : AuditedEntityDto<Guid>
+    public class DealCategoryDto : FullAuditedEntityDto<Guid>
     {
         public string Name { get; set; }
 

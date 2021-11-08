@@ -36,7 +36,7 @@ namespace kmgiasoc.DealCategories
             foreach (string cat in CategoriesString)
             {
                 await _dealCategoryRepository.InsertAsync(
-                new DealCategory(Guid.NewGuid(), cat, SlugNormalizer.Normalize(cat), null, "", i++, DateTime.Now, DateTime.Now),
+                new DealCategory(Guid.NewGuid(), cat, SlugNormalizer.Normalize(cat), null, null, "", i++, DateTime.Now, DateTime.Now),
                 autoSave: true
             );
             }
