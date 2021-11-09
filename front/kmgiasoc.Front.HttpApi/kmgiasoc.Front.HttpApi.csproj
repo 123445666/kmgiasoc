@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<RootNamespace>kmgiasoc</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\src\kmgiasoc.HttpApi\kmgiasoc.HttpApi.csproj" />
+	  <ProjectReference Include="..\kmgiasoc.Front.Application.Contracts\kmgiasoc.Front.Application.Contracts.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="kmgiasoc\Front\" />
+	</ItemGroup>
+
+</Project>

@@ -8,6 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Deals\Dtos\CreateUpdateDealDto.cs" />
+    <Compile Remove="Deals\Dtos\UpdateDealDto.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\kmgiasoc.Domain.Shared\kmgiasoc.Domain.Shared.csproj" />
   </ItemGroup>
 
