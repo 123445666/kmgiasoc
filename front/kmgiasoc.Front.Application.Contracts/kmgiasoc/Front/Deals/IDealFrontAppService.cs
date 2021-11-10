@@ -4,7 +4,7 @@ using kmgiasoc.DealCategories.Dtos;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 
-namespace kmgiasoc.kmgiasoc.Front.Deals
+namespace kmgiasoc.Front.Deals
 {
     public interface IDealFrontAppService : IApplicationService
     {

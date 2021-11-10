@@ -3,12 +3,6 @@ using kmgiasoc.Permissions;
 using kmgiasoc.Deals.Dtos;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
-using System.Threading.Tasks;
-using kmgiasoc.DealCategories.Dtos;
-using kmgiasoc.DealCategories;
-using System.Collections.Generic;
-using kmgiasoc.Cities.Dtos;
-using kmgiasoc.Cities;
 
 namespace kmgiasoc.Deals
 {
@@ -22,7 +16,7 @@ namespace kmgiasoc.Deals
         protected override string DeletePolicyName { get; set; } = kmgiasocPermissions.Deal.Delete;
 
         private readonly IDealRepository _repository;
-
+        
         public DealAppService(IDealRepository repository) : base(repository)
         {
             _repository = repository;

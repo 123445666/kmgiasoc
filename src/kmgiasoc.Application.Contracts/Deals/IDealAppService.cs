@@ -13,5 +13,6 @@ namespace kmgiasoc.Deals
             DealCreateDto,
             DealUpdateDto>
     {
+
     }
 }

@@ -1,13 +1,15 @@
-using kmgiasoc.Cities.Dtos;
+﻿using kmgiasoc.Cities.Dtos;
 using kmgiasoc.DealCategories.Dtos;
+using kmgiasoc.Deals;
 using System;
+using Volo.Abp;
 using Volo.Abp.Application.Dtos;
 using Volo.CmsKit.Users;
 
-namespace kmgiasoc.Deals.Dtos
+namespace kmgiasoc.Front.Deals.Dtos
 {
     [Serializable]
-    public class DealDto : FullAuditedEntityDto<Guid>
+    public class DealFrontDto : FullAuditedEntityDto<Guid>, IIsPublished, IIsApproved
     {
         public string Title { get; set; }
 
@@ -60,5 +62,20 @@ namespace kmgiasoc.Deals.Dtos
         public Guid AuthorId { get; set; }
 
         public CmsUserDto Author { get; set; }
+        public bool IsPublished
+        {
+            get
+            {
+                return DealPriority == (int)DealEnum.Status.Published;
+            }
+        }
+
+        public bool IsApproved
+        {
+            get
+            {
+                return DealPriority == (int)DealEnum.Status.Approved;
+            }
+        }
     }
 }
