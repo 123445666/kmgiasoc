@@ -11,6 +11,7 @@ using kmgiasoc.Web.Pages.Files;
 using System.IO;
 using kmgiasoc.FileUploader;
 using Volo.CmsKit;
+using kmgiasoc.kmgiasoc.Front.Deals;
 
 namespace kmgiasoc.Web.Pages.Deals.Deal
 {
@@ -24,13 +25,15 @@ namespace kmgiasoc.Web.Pages.Deals.Deal
         public List<SelectListItem> DealCategories { get; set; }
         public List<SelectListItem> Citites { get; set; }
 
-        private readonly IDealAppService _service;
+        private readonly IDealFrontAppService _service;
+        private readonly IDealAppService _dealAppService;
         private readonly IFileAppService _fileAppService;
 
-        public CreateModel(IDealAppService service, IFileAppService fileAppService)
+        public CreateModel(IDealFrontAppService service, IDealAppService dealAppService, IFileAppService fileAppService)
         {
             _service = service;
             _fileAppService = fileAppService;
+            _dealAppService = dealAppService;
         }
 
         public virtual async Task OnGetAsync()
@@ -70,7 +73,7 @@ namespace kmgiasoc.Web.Pages.Deals.Deal
 
             ViewModel.DealPriority = (int)DealEnum.Status.Draft;
             var dto = ObjectMapper.Map<CreateDealViewModel, DealCreateDto>(ViewModel);
-            await _service.CreateAsync(dto);
+            await _dealAppService.CreateAsync(dto);
             return RedirectToPage("/deals/deal/create");
             //return NoContent();
             //return Page();

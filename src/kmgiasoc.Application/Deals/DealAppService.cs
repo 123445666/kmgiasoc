@@ -22,33 +22,10 @@ namespace kmgiasoc.Deals
         protected override string DeletePolicyName { get; set; } = kmgiasocPermissions.Deal.Delete;
 
         private readonly IDealRepository _repository;
-        private readonly IDealCategoryRepository _dealCategoryRepository;
-        private readonly ICityRepository _cityRepository;
 
-        public DealAppService(IDealRepository repository, IDealCategoryRepository dealCategoryRepository,
-            ICityRepository cityRepository) : base(repository)
+        public DealAppService(IDealRepository repository) : base(repository)
         {
             _repository = repository;
-            _dealCategoryRepository = dealCategoryRepository;
-            _cityRepository = cityRepository;
-        }
-
-        public async Task<ListResultDto<DealCategoryDto>> GetDealCategoriesLookupAsync()
-        {
-            var dealCategories = await _dealCategoryRepository.GetListAsync();
-
-            return new ListResultDto<DealCategoryDto>(
-                ObjectMapper.Map<List<DealCategory>, List<DealCategoryDto>>(dealCategories)
-            );
-        }
-
-        public async Task<ListResultDto<CityDto>> GetCititesLookupAsync()
-        {
-            var citites = await _cityRepository.GetListAsync();
-
-            return new ListResultDto<CityDto>(
-                ObjectMapper.Map<List<City>, List<CityDto>>(citites)
-            );
         }
     }
 }
