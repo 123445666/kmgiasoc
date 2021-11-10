@@ -9,4 +9,8 @@
 	  <ProjectReference Include="..\..\src\kmgiasoc.Application.Contracts\kmgiasoc.Application.Contracts.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Front\DealCategories\" />
+	</ItemGroup>
+
 </Project>

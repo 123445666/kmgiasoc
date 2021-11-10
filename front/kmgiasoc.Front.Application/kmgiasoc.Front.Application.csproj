@@ -10,4 +10,9 @@
 	  <ProjectReference Include="..\kmgiasoc.Front.Application.Contracts\kmgiasoc.Front.Application.Contracts.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Front\Citites\" />
+	  <Folder Include="Front\Countries\" />
+	</ItemGroup>
+
 </Project>
