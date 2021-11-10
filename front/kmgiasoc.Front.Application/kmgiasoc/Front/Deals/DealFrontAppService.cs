@@ -8,7 +8,7 @@ using kmgiasoc.Cities;
 using kmgiasoc.Deals;
 using Volo.Abp.Application.Services;
 
-namespace kmgiasoc.kmgiasoc.Front.Deals
+namespace kmgiasoc.Front.Deals
 {
     public class DealFrontAppService : ApplicationService, IDealFrontAppService
     {

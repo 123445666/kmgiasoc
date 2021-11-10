@@ -11,7 +11,7 @@ using kmgiasoc.Web.Pages.Files;
 using System.IO;
 using kmgiasoc.FileUploader;
 using Volo.CmsKit;
-using kmgiasoc.kmgiasoc.Front.Deals;
+using kmgiasoc.Front.Deals;
 
 namespace kmgiasoc.Web.Pages.Deals.Deal
 {
