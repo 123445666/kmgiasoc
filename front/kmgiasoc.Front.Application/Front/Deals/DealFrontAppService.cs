@@ -41,15 +41,5 @@ namespace kmgiasoc.Front.Deals
                 ObjectMapper.Map<List<City>, List<CityDto>>(citites)
             );
         }
-
-        Task<ListResultDto<DealCategoryDto>> IDealFrontAppService.GetDealCategoriesLookupAsync()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        Task<ListResultDto<CityDto>> IDealFrontAppService.GetCititesLookupAsync()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }
