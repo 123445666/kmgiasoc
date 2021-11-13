@@ -38,11 +38,13 @@ using Volo.Abp.UI;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.VirtualFileSystem;
 using Volo.CmsKit.Web;
+using kmgiasoc.Front;
 
 namespace kmgiasoc.Web
 {
     [DependsOn(
         typeof(kmgiasocHttpApiModule),
+        typeof(kmgiasocFrontApplicationModule),
         typeof(kmgiasocApplicationModule),
         typeof(kmgiasocEntityFrameworkCoreModule),
         typeof(AbpAutofacModule),
@@ -140,6 +142,8 @@ namespace kmgiasoc.Web
                     options.FileSets.ReplaceEmbeddedByPhysical<kmgiasocDomainModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}kmgiasoc.Domain"));
                     options.FileSets.ReplaceEmbeddedByPhysical<kmgiasocApplicationContractsModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}kmgiasoc.Application.Contracts"));
                     options.FileSets.ReplaceEmbeddedByPhysical<kmgiasocApplicationModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}kmgiasoc.Application"));
+                    options.FileSets.ReplaceEmbeddedByPhysical<kmgiasocFrontApplicationContractsModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}kmgiasoc.Front.Application.Contracts"));
+                    options.FileSets.ReplaceEmbeddedByPhysical<kmgiasocFrontApplicationModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}kmgiasoc.Front.Application"));
                     options.FileSets.ReplaceEmbeddedByPhysical<kmgiasocWebModule>(hostingEnvironment.ContentRootPath);
                 });
             }
@@ -167,6 +171,7 @@ namespace kmgiasoc.Web
             Configure<AbpAspNetCoreMvcOptions>(options =>
             {
                 options.ConventionalControllers.Create(typeof(kmgiasocApplicationModule).Assembly);
+                options.ConventionalControllers.Create(typeof(kmgiasocFrontApplicationModule).Assembly);
             });
         }
 

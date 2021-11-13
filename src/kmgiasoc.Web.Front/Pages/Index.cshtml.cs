@@ -6,32 +6,38 @@ using Volo.Abp.Data;
 using System.Linq;
 using kmgiasoc.Deals.Dtos;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
+using kmgiasoc.Front.Deals;
 
 namespace kmgiasoc.Web.Pages
 {
     public class IndexModel : kmgiasocPageModel
     {
-        private readonly IDealAppService _dealAppService;
+        public const int PageSize = 12;
+        public int CurrentPage { get; set; } = 1;
+
+        private readonly IDealFrontAppService _dealFrontAppService;
         private readonly IDataFilter _dataFilter;
 
-        public IList<DealDto> pagedResultDealDto { get; set; }
+        public PagedResultDto<DealDto> pagedResultDealDto { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string dealCategorySlug { get; set; }
 
-
-        public IndexModel(IDataFilter dataFilter, IDealAppService dealAppService)
+        public IndexModel(IDataFilter dataFilter, IDealFrontAppService dealFrontAppService)
         {
             _dataFilter = dataFilter;
-            _dealAppService = dealAppService;
+            _dealFrontAppService = dealFrontAppService;
         }
 
         public virtual async Task OnGetAsync()
         {
-            using (_dataFilter.Enable<IIsPublished>())
-            {
-                //PagedAndSortedResultRequestDto p = new PagedAndSortedResultRequestDto();
-                //p.Sorting = "DealPriority DESC";
-                //var result = await _dealAppService.GetListAsync(p);
-                //pagedResultDealDto = result.Items.ToList();
-            }
+            pagedResultDealDto = await _dealFrontAppService.GetListAsync(
+                dealCategorySlug,
+                new PagedAndSortedResultRequestDto
+                {
+                    SkipCount = PageSize * (CurrentPage - 1),
+                    MaxResultCount = PageSize
+                });
         }
     }
 }
