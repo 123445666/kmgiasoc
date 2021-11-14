@@ -46,13 +46,21 @@ namespace kmgiasoc.Front.Deals
 
         public virtual async Task<PagedResultDto<DealDto>> GetListAsync([NotNull] string dealCategorSlug, PagedAndSortedResultRequestDto input)
         {
-            var dealCategory = await _dealCategoryRepository.GetBySlugAsync(dealCategorSlug);
+            if (!string.IsNullOrEmpty(dealCategorSlug))
+            {
+                var dealCategory = await _dealCategoryRepository.GetBySlugAsync(dealCategorSlug);
 
-            var deals = await _repository.GetListAsync(null, dealCategory.Id, input.MaxResultCount, input.SkipCount, input.Sorting);
+                var deals = await _repository.GetListAsync(null, dealCategory.Id, input.MaxResultCount, input.SkipCount, input.Sorting);
+                return new PagedResultDto<DealDto>(
+                    await _repository.GetCountAsync(dealCategoryId: dealCategory.Id),
+                    ObjectMapper.Map<List<Deal>, List<DealDto>>(deals));
+            }
 
+            var _deals = await _repository.GetListAsync(null, null, input.MaxResultCount, input.SkipCount, input.Sorting);
             return new PagedResultDto<DealDto>(
-                await _repository.GetCountAsync(dealCategoryId: dealCategory.Id),
-                ObjectMapper.Map<List<Deal>, List<DealDto>>(deals));
+                await _repository.GetCountAsync(dealCategoryId: null),
+                ObjectMapper.Map<List<Deal>, List<DealDto>>(_deals));
+
         }
     }
 }
