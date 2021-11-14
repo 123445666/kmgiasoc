@@ -1,0 +1,6 @@
+.cms-kit-editor {
+    height: 65vh !important;
+}
+.CodeMirror-placeholder {
+    white-space: pre-wrap;
+}

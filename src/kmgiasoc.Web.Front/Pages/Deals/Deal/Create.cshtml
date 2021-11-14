@@ -5,6 +5,9 @@
 @using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using Volo.Abp.AspNetCore.Mvc.UI.Packages.TuiEditor
+@using Volo.Abp.AspNetCore.Mvc.UI.Packages.Uppy
+@using Volo.Abp.AspNetCore.Mvc.UI.Packages.Slugify
 @using kmgiasoc.Web.Pages.Deals.Deal
 @using kmgiasoc.Localization
 @using kmgiasoc.Web.Menus
@@ -19,7 +22,18 @@
 }
 
 @section scripts{
-    <abp-script src="/Pages/Deals/Deal/index.js" />
+    <abp-script-bundle>
+        <abp-script type="typeof(TuiEditorScriptContributor)" />
+        <abp-script type="typeof(UppyScriptContributor)" />
+        <abp-script type="typeof(SlugifyScriptContributor)" />
+        <abp-script src="/Pages/Deals/Deal/index.js" />
+    </abp-script-bundle>
+}
+@section styles {
+    <abp-style-bundle>
+        <abp-style type="typeof(TuiEditorStyleContributor)" />
+        <abp-style src="/Pages/Deals/Deal/index.css" />
+    </abp-style-bundle>
 }
 
 <main class="bg-gray-300 mb-32">
@@ -29,7 +43,7 @@
                 <div class="container items-center px-5 py-12 lg:px-20">
                     <div class="flex flex-col w-full p-10 px-8 pt-6 mx-auto my-6 mb-4 transition duration-500 ease-in-out transform bg-white border rounded-lg lg:w-1/2">
                         <h1 class="page-title text-lg font-bold space--mb-0"> @L["CreateDealPage"] </h1>
-                        <form action="/deals/deal/create" method="post" enctype="multipart/form-data" novalidate="novalidate">
+                        <form action="/deals/deal/create" method="post" enctype="multipart/form-data" novalidate="novalidate" id="form-deal-create">
                             @Html.AntiForgeryToken()
                             <div class="relative pt-4">
                                 <label asp-for="ViewModel.Link" class="text-base leading-7 text-blueGray-500">@L["DealLink"]</label>
@@ -76,11 +90,11 @@
                                        class="w-full border-2 border-gray-300 px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg focus:bg-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
                             </div>
 
-                            <div class="relative pt-4">
-                                <label asp-for="ViewModel.Description" class="text-base leading-7 text-blueGray-500">@L["DealDescription"]</label>
-                                <textarea asp-for="ViewModel.Description"
-                                          placeholder="@L["DealDescriptionPlaceholder"]"
-                                          class="w-full h-32 px-4 py-2 mt-2 text-base text-blueGray-500 transition duration-500 ease-in-out transform bg-white border rounded-lg focus:border-blue-500 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 apearance-none autoexpand ckeditor"></textarea>
+                            <div 
+                                 @*asp-for="ViewModel.Description"*@
+                                 data-placeholder="@L["DealDescriptionPlaceholder"]"
+                                 data-input-id="@Html.IdFor(x => x.ViewModel.Description)"
+                                 class="w-full h-32 px-4 py-2 mt-2 text-base text-blueGray-500 transition duration-500 ease-in-out transform bg-white border rounded-lg focus:border-blue-500 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 apearance-none autoexpand content-editor cms-kit-editor">
                             </div>
 
                             <div class="relative pt-4">

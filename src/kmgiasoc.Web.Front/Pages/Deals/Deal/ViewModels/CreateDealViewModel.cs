@@ -1,15 +1,21 @@
+using kmgiasoc.Cities;
+using kmgiasoc.DealCategories;
 using System;
 
 using System.ComponentModel.DataAnnotations;
-using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Form;
+using Volo.CmsKit.Users;
 namespace kmgiasoc.Web.Pages.Deals.Deal.ViewModels
 {
     public class CreateDealViewModel
     {
         [Display(Name = "DealTitle")]
         public string Title { get; set; }
+
         [Display(Name = "DealSlug")]
         public string Slug { get; set; }
+
+        [Display(Name = "DealShortDescription")]
+        public string ShortDescription { get; set; }
 
         [Display(Name = "DealDescription")]
         public string Description { get; set; }
@@ -23,9 +29,14 @@ namespace kmgiasoc.Web.Pages.Deals.Deal.ViewModels
         [Display(Name = "DealImage")]
         public string Image { get; set; }
 
-        [SelectItems(nameof(DealCategories))]
+        [Display(Name = "DealCoverImageMediaId")]
+        public Guid? CoverImageMediaId { get; set; }
+
         [Display(Name = "DealDealCategoryId")]
         public Guid DealCategoryId { get; set; }
+
+        [Display(Name = "DealDealCategory")]
+        public DealCategory DealCategory { get; set; }
 
         [Display(Name = "DealDealPriority")]
         public int DealPriority { get; set; }
@@ -51,12 +62,11 @@ namespace kmgiasoc.Web.Pages.Deals.Deal.ViewModels
         [Display(Name = "DealEndPromo")]
         public DateTime EndPromo { get; set; }
 
-        [SelectItems(nameof(DealCategories))]
         [Display(Name = "DealCityId")]
         public int CityId { get; set; }
 
         [Display(Name = "DealCity")]
-        public string City { get; set; }
+        public City City { get; set; }
 
         [Display(Name = "DealLocalShop")]
         public string LocalShop { get; set; }
@@ -69,5 +79,11 @@ namespace kmgiasoc.Web.Pages.Deals.Deal.ViewModels
 
         [Display(Name = "DealRatePoint")]
         public int RatePoint { get; set; }
+
+        [Display(Name = "DealAuthorId")]
+        public Guid AuthorId { get; set; }
+
+        [Display(Name = "DealAuthor")]
+        public CmsUser Author { get; set; }
     }
 }

@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Deals\Dtos\CreateDealDto.cs" />
     <Compile Remove="Deals\Dtos\CreateUpdateDealDto.cs" />
     <Compile Remove="Deals\Dtos\UpdateDealDto.cs" />
   </ItemGroup>

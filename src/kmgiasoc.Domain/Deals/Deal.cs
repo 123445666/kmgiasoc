@@ -2,8 +2,10 @@ using kmgiasoc.Cities;
 using kmgiasoc.DealCategories;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using Volo.Abp;
 using Volo.Abp.Domain.Entities.Auditing;
 using Volo.Abp.MultiTenancy;
+using Volo.CmsKit;
 using Volo.CmsKit.Users;
 
 namespace kmgiasoc.Deals
@@ -53,12 +55,10 @@ namespace kmgiasoc.Deals
             string shortDescription,
             string description,
             string link,
-            string domainLink,
             string image,
             Guid? coverImageMediaId,
             Guid? tenantId,
             Guid dealCategoryId,
-            DealCategory dealCategory,
             int dealPriority,
             decimal price,
             decimal pricePromo,
@@ -68,26 +68,23 @@ namespace kmgiasoc.Deals
             DateTime beginPromo,
             DateTime endPromo,
             int cityId,
-            City city,
             string localShop,
             DateTime publishDate,
             DateTime modifiedDate,
             int ratePoint,
-            Guid authorId,
-            CmsUser author
+            Guid authorId
         ) : base(id)
         {
-            Title = title;
-            Slug = slug;
-            ShortDescription = shortDescription;
-            Description = description;
+            SetTitle(title);
+            SetSlug(title);
+            SetShortDescription(shortDescription);
+            SetContent(description);
             Link = link;
-            DomainLink = domainLink;
+            SetDomainLink(link);
             Image = image;
             CoverImageMediaId = coverImageMediaId;
             TenantId = tenantId;
             DealCategoryId = dealCategoryId;
-            DealCategory = dealCategory;
             DealPriority = dealPriority;
             Price = price;
             PricePromo = pricePromo;
@@ -97,13 +94,40 @@ namespace kmgiasoc.Deals
             BeginPromo = beginPromo;
             EndPromo = endPromo;
             CityId = cityId;
-            City = city;
             LocalShop = localShop;
             PublishDate = publishDate;
             ModifiedDate = modifiedDate;
             RatePoint = ratePoint;
             AuthorId = authorId;
-            Author = author;
+        }
+
+        public virtual void SetTitle(string title)
+        {
+            Title = Check.NotNullOrWhiteSpace(title, nameof(title), DealConsts.MaxTitleLength);
+        }
+
+        internal void SetSlug(string slug)
+        {
+            Check.NotNullOrWhiteSpace(slug, nameof(slug), DealConsts.MaxSlugLength, DealConsts.MinSlugLength);
+
+            Slug = SlugNormalizer.Normalize(slug);
+        }
+
+        public virtual void SetShortDescription(string shortDescription)
+        {
+            ShortDescription = Check.Length(shortDescription, nameof(shortDescription), DealConsts.MaxShortDescriptionLength);
+        }
+
+        public virtual void SetContent(string description)
+        {
+            description = Check.Length(description, nameof(description), DealConsts.MaxContentLength);
+        }
+
+        public virtual void SetDomainLink(string link)
+        {
+            Uri myUri = new Uri(link);
+            DomainLink = myUri.Host;
+            
         }
     }
 }

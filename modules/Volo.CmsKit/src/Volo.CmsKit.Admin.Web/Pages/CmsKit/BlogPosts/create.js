@@ -232,6 +232,7 @@
             previewStyle: 'tab',
             height: "100%",
             minHeight: "25em",
+            maxwidth: "100%",
             initialEditType: 'markdown',
             language: $editorContainer.data("language"),
             hooks: {

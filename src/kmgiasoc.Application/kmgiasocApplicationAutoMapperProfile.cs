@@ -21,8 +21,6 @@ namespace kmgiasoc
             CreateMap<DealCategory, DealCategoryDto>();
             CreateMap<CreateUpdateDealCategoryDto, DealCategory>(MemberList.Source);
             CreateMap<Deal, DealDto>();
-            CreateMap<CreateDealDto, Deal>(MemberList.Source);
-            CreateMap<Deal, DealDto>();
             CreateMap<DealCategory, DealCategoryDto>();
             CreateMap<DealCategoryCreateDto, DealCategory>(MemberList.Source);
             CreateMap<DealCategoryUpdateDto, DealCategory>(MemberList.Source);

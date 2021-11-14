@@ -1,0 +1,16 @@
+//string fileName = "";
+            //using (var memoryStream = new MemoryStream())
+            //{
+            //    string fileExtension = Path.GetExtension(DealUploadFileDto.File.FileName);
+            //    fileName = Path.ChangeExtension(Path.GetRandomFileName(), fileExtension);
+
+            //    await DealUploadFileDto.File.CopyToAsync(memoryStream);
+
+            //    await _fileAppService.SaveBlobAsync(
+            //        new SaveBlobInputDto
+            //        {
+            //            Name = fileName,
+            //            Content = memoryStream.ToArray()
+            //        }
+            //    );
+            //}

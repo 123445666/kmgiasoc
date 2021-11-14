@@ -15,7 +15,6 @@ namespace kmgiasoc.Web
         public kmgiasocWebAutoMapperProfile()
         {
             //Define your AutoMapper configuration here for the Web project.
-            CreateMap<CreateDealViewModel, CreateDealDto>();
             CreateMap<DealCategoryDto, EditDealCategoryViewModel>();
             CreateMap<CreateDealCategoryViewModel, DealCategoryCreateDto>();
             CreateMap<EditDealCategoryViewModel, DealCategoryUpdateDto>();

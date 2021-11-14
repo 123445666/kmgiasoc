@@ -27,12 +27,10 @@ namespace kmgiasoc.Web.Pages.Deals.Deal
 
         private readonly IDealFrontAppService _service;
         private readonly IDealAppService _dealAppService;
-        private readonly IFileAppService _fileAppService;
 
-        public CreateModel(IDealFrontAppService service, IDealAppService dealAppService, IFileAppService fileAppService)
+        public CreateModel(IDealFrontAppService service, IDealAppService dealAppService)
         {
             _service = service;
-            _fileAppService = fileAppService;
             _dealAppService = dealAppService;
         }
 
@@ -51,29 +49,12 @@ namespace kmgiasoc.Web.Pages.Deals.Deal
 
         public virtual async Task<IActionResult> OnPostAsync()
         {
-            string fileName = "";
-            using (var memoryStream = new MemoryStream())
-            {
-                string fileExtension = Path.GetExtension(DealUploadFileDto.File.FileName);
-                fileName = Path.ChangeExtension(Path.GetRandomFileName(), fileExtension);
-
-                await DealUploadFileDto.File.CopyToAsync(memoryStream);
-
-                await _fileAppService.SaveBlobAsync(
-                    new SaveBlobInputDto
-                    {
-                        Name = fileName,
-                        Content = memoryStream.ToArray()
-                    }
-                );
-            }
-
-            ViewModel.Image = fileName;
-            ViewModel.Slug = SlugNormalizer.Normalize(ViewModel.Title);
+            ViewModel.Image = DealUploadFileDto.File.FileName;
 
             ViewModel.DealPriority = (int)DealEnum.Status.Draft;
+
             var dto = ObjectMapper.Map<CreateDealViewModel, DealCreateDto>(ViewModel);
-            await _dealAppService.CreateAsync(dto);
+            await _service.CreateAsync(dto);
             return RedirectToPage("/deals/deal/create");
             //return NoContent();
             //return Page();
