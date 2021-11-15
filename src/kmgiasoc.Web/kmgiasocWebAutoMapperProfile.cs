@@ -19,6 +19,7 @@ namespace kmgiasoc.Web
             CreateMap<CreateDealCategoryViewModel, DealCategoryCreateDto>();
             CreateMap<EditDealCategoryViewModel, DealCategoryUpdateDto>();
             CreateMap<CreateDealViewModel, DealCreateDto>();
+            CreateMap<DealDto, EditDealViewModel>();
             CreateMap<CountryDto, EditCountryViewModel>();
             CreateMap<CreateCountryViewModel, CountryCreateDto>();
             CreateMap<EditCountryViewModel, CountryUpdateDto>();
