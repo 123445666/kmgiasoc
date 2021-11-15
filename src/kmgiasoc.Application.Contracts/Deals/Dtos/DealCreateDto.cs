@@ -51,8 +51,6 @@ namespace kmgiasoc.Deals.Dtos
 
         public string LocalShop { get; set; }
 
-        public DateTime PublishDate { get; set; }
-
         public DateTime ModifiedDate { get; set; }
 
         public int RatePoint { get; set; }
@@ -60,5 +58,11 @@ namespace kmgiasoc.Deals.Dtos
         public Guid AuthorId { get; set; }
 
         public CmsUserDto Author { get; set; }
+
+        public bool IsPublished { get; set; }
+
+        public DateTime PublishDate { get; set; }
+
+        public bool IsFeatured { get; set; }
     }
 }

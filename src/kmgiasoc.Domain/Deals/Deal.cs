@@ -38,11 +38,13 @@ namespace kmgiasoc.Deals
         public int CityId { get; set; }
         public City City { get; set; }
         public string LocalShop { get; set; }
-        public DateTime PublishDate { get; set; }
         public DateTime ModifiedDate { get; set; }
         public int RatePoint { get; set; }
         public Guid AuthorId { get; set; }
         public virtual CmsUser Author { get; set; }
+        public bool IsPublished { get; set; }
+        public DateTime PublishDate { get; set; }
+        public bool IsFeatured { get; set; }
 
         protected Deal()
         {
@@ -69,10 +71,12 @@ namespace kmgiasoc.Deals
             DateTime endPromo,
             int cityId,
             string localShop,
-            DateTime publishDate,
             DateTime modifiedDate,
             int ratePoint,
-            Guid authorId
+            Guid authorId,
+            bool isPublished,
+            DateTime publishDate,
+            bool isFeatured
         ) : base(id)
         {
             SetTitle(title);
@@ -95,10 +99,12 @@ namespace kmgiasoc.Deals
             EndPromo = endPromo;
             CityId = cityId;
             LocalShop = localShop;
-            PublishDate = publishDate;
             ModifiedDate = modifiedDate;
             RatePoint = ratePoint;
             AuthorId = authorId;
+            IsPublished = isPublished;
+            PublishDate = publishDate;
+            IsFeatured = isFeatured;
         }
 
         public virtual void SetTitle(string title)
@@ -127,7 +133,7 @@ namespace kmgiasoc.Deals
         {
             Uri myUri = new Uri(link);
             DomainLink = myUri.Host;
-            
+
         }
     }
 }

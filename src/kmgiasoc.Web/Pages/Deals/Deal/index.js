@@ -129,10 +129,6 @@ $(function () {
                 data: "localShop"
             },
             {
-                title: l('DealPublishDate'),
-                data: "publishDate"
-            },
-            {
                 title: l('DealModifiedDate'),
                 data: "modifiedDate"
             },
@@ -147,6 +143,18 @@ $(function () {
             {
                 title: l('DealAuthor'),
                 data: "author"
+            },
+            {
+                title: l('DealIsPublished'),
+                data: "isPublished"
+            },
+            {
+                title: l('DealPublishDate'),
+                data: "publishDate"
+            },
+            {
+                title: l('DealIsFeatured'),
+                data: "isFeatured"
             },
         ]
     }));
