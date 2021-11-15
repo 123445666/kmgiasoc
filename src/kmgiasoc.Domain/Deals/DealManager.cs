@@ -43,10 +43,10 @@ namespace kmgiasoc.Deals
             DateTime endPromo,
             City city,
             string localShop,
-            DateTime publishDate,
-            DateTime modifiedDate,
             int ratePoint,
-            CmsUser author
+            CmsUser author,
+            bool isPublished,
+            bool IsFeatured
             )
         {
             Check.NotNull(author, nameof(author));
@@ -75,10 +75,10 @@ namespace kmgiasoc.Deals
                          endPromo,
                          city.Id,
                          localShop,
-                         publishDate,
-                         modifiedDate,
                          ratePoint,
-                        author.Id
+                         author.Id,
+                         isPublished,
+                         IsFeatured
                         );
 
             await CheckSlugExistenceAsync(dealCategory.Id, deal.Slug);

@@ -71,11 +71,9 @@ namespace kmgiasoc.Deals
             DateTime endPromo,
             int cityId,
             string localShop,
-            DateTime modifiedDate,
             int ratePoint,
             Guid authorId,
             bool isPublished,
-            DateTime publishDate,
             bool isFeatured
         ) : base(id)
         {
@@ -99,11 +97,11 @@ namespace kmgiasoc.Deals
             EndPromo = endPromo;
             CityId = cityId;
             LocalShop = localShop;
-            ModifiedDate = modifiedDate;
+            ModifiedDate = DateTime.Now;
             RatePoint = ratePoint;
             AuthorId = authorId;
             IsPublished = isPublished;
-            PublishDate = publishDate;
+            SetPublishedDate(isPublished);
             IsFeatured = isFeatured;
         }
 
@@ -134,6 +132,11 @@ namespace kmgiasoc.Deals
             Uri myUri = new Uri(link);
             DomainLink = myUri.Host;
 
+        }
+
+        public virtual void SetPublishedDate(bool isPublished)
+        {
+            if (isPublished) PublishDate = DateTime.Now;
         }
     }
 }

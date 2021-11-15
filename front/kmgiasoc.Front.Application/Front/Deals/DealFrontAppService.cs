@@ -68,10 +68,10 @@ namespace kmgiasoc.Front.Deals
                                                         input.EndPromo,
                                                         city,
                                                         input.LocalShop,
-                                                        input.PublishDate,
-                                                        input.ModifiedDate,
                                                         input.RatePoint,
-                                                        author
+                                                        author,
+                                                        input.IsPublished,
+                                                        input.IsFeatured
                                                         );
 
             await _repository.InsertAsync(deal);
