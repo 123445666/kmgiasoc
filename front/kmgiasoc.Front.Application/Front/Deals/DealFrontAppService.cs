@@ -173,6 +173,29 @@ namespace kmgiasoc.Front.Deals
                 ObjectMapper.Map<List<Deal>, List<DealDto>>(_deals));
 
         }
+
+        public virtual async Task<PagedResultDto<DealDto>> GetPublishedListAsync([NotNull] string dealCategorSlug, PagedAndSortedResultRequestDto input)
+        {
+            if (!string.IsNullOrEmpty(dealCategorSlug))
+            {
+                var dealCategory = await _dealCategoryRepository.GetBySlugAsync(dealCategorSlug);
+
+                if (!dealCategory.IsDeleted)
+                {
+                    var deals = await _repository.GetListByPriorityAsync(null, (int)DealConsts.Status.Published, dealCategory.Id, input.MaxResultCount, input.SkipCount, input.Sorting);
+                    return new PagedResultDto<DealDto>(
+                        await _repository.GetCountAsync(dealCategoryId: dealCategory.Id),
+                        ObjectMapper.Map<List<Deal>, List<DealDto>>(deals));
+                }
+                return new PagedResultDto<DealDto>();
+            }
+
+            var _deals = await _repository.GetListByPriorityAsync(null, (int)DealConsts.Status.Published, null, input.MaxResultCount, input.SkipCount, input.Sorting);
+            return new PagedResultDto<DealDto>(
+                await _repository.GetCountAsync(dealCategoryId: null),
+                ObjectMapper.Map<List<Deal>, List<DealDto>>(_deals));
+
+        }
         #endregion
     }
 }

@@ -87,6 +87,44 @@ namespace kmgiasoc.Deals
             }).ToList();
         }
 
+        public virtual async Task<List<Deal>> GetListByPriorityAsync(
+           string filter = null,
+           int? dealPriority = null,
+           Guid? dealCategoryId = null,
+           int maxResultCount = int.MaxValue,
+           int skipCount = 0,
+           string sorting = null,
+           CancellationToken cancellationToken = default)
+
+        {
+            var dbContext = await GetDbContextAsync();
+            var dealsDbSet = dbContext.Set<Deal>();
+            var usersDbSet = dbContext.Set<CmsUser>();
+
+            var queryable = dealsDbSet
+                .WhereIf(dealCategoryId.HasValue, x => x.DealCategoryId == dealCategoryId)
+                .WhereIf(dealPriority.HasValue, x => x.DealPriority == dealPriority)
+                .WhereIf(!string.IsNullOrWhiteSpace(filter), x => x.Title.Contains(filter) || x.Slug.Contains(filter));
+
+            queryable = queryable.OrderBy(sorting.IsNullOrEmpty() ? $"{nameof(Deal.CreationTime)} desc" : sorting);
+
+            var combinedResult = await queryable
+                .Join(
+                    usersDbSet,
+                    o => o.AuthorId,
+                    i => i.Id,
+                    (deal, user) => new { deal, user })
+                .Skip(skipCount)
+                .Take(maxResultCount)
+                .ToListAsync(GetCancellationToken(cancellationToken));
+
+            return combinedResult.Select(s =>
+            {
+                s.deal.Author = s.user;
+                return s.deal;
+            }).ToList();
+        }
+
         public async Task<bool> SlugExistsAsync(Guid dealCategoryId, [NotNull] string slug,
             CancellationToken cancellationToken = default)
         {

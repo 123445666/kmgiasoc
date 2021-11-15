@@ -31,7 +31,7 @@ namespace kmgiasoc.Web.Pages
 
         public virtual async Task OnGetAsync()
         {
-            pagedResultDealDto = await _dealFrontAppService.GetListAsync(
+            pagedResultDealDto = await _dealFrontAppService.GetPublishedListAsync(
                 dealCategorySlug,
                 new PagedAndSortedResultRequestDto
                 {

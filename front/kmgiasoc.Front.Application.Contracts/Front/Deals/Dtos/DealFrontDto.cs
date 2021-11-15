@@ -66,7 +66,7 @@ namespace kmgiasoc.Front.Deals.Dtos
         {
             get
             {
-                return DealPriority == (int)DealEnum.Status.Published;
+                return DealPriority == (int)DealConsts.Status.Published;
             }
         }
 
@@ -74,7 +74,7 @@ namespace kmgiasoc.Front.Deals.Dtos
         {
             get
             {
-                return DealPriority == (int)DealEnum.Status.Approved;
+                return DealPriority == (int)DealConsts.Status.Approved;
             }
         }
     }

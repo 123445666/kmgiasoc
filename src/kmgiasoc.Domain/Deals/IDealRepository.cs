@@ -21,6 +21,15 @@ namespace kmgiasoc.Deals
             string sorting = null,
             CancellationToken cancellationToken = default);
 
+        Task<List<Deal>> GetListByPriorityAsync(
+            string filter = null,
+            int? DealPriority = null,
+            Guid? dealCategoryId = null,
+            int maxResultCount = int.MaxValue,
+            int skipCount = 0,
+            string sorting = null,
+            CancellationToken cancellationToken = default);
+
         Task<bool> SlugExistsAsync(Guid dealCategoryId, string slug, CancellationToken cancellationToken = default);
 
         Task<Deal> GetBySlugAsync(Guid dealCategoryId, string slug, CancellationToken cancellationToken = default);
