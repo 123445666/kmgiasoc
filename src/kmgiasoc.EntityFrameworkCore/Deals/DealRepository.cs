@@ -40,10 +40,14 @@ namespace kmgiasoc.Deals
 
         public virtual async Task<int> GetCountAsync(
             string filter = null,
+            bool isPublished = false,
+            bool isFeatured = false,
             Guid? dealCategoryId = null,
             CancellationToken cancellationToken = default)
         {
             var queryable = (await GetDbSetAsync())
+               .WhereIf(isPublished, x => x.IsPublished)
+               .WhereIf(isFeatured, x => x.IsFeatured)
                .WhereIf(dealCategoryId.HasValue, x => x.DealCategoryId == dealCategoryId)
                .WhereIf(!string.IsNullOrEmpty(filter), x => x.Title.Contains(filter) || x.Slug.Contains(filter));
 
@@ -53,6 +57,8 @@ namespace kmgiasoc.Deals
 
         public virtual async Task<List<Deal>> GetListAsync(
             string filter = null,
+            bool isPublished = false,
+            bool isFeatured = false,
             Guid? dealCategoryId = null,
             int maxResultCount = int.MaxValue,
             int skipCount = 0,
@@ -66,44 +72,8 @@ namespace kmgiasoc.Deals
 
             var queryable = dealsDbSet
                 .WhereIf(dealCategoryId.HasValue, x => x.DealCategoryId == dealCategoryId)
-                .WhereIf(!string.IsNullOrWhiteSpace(filter), x => x.Title.Contains(filter) || x.Slug.Contains(filter));
-
-            queryable = queryable.OrderBy(sorting.IsNullOrEmpty() ? $"{nameof(Deal.CreationTime)} desc" : sorting);
-
-            var combinedResult = await queryable
-                .Join(
-                    usersDbSet,
-                    o => o.AuthorId,
-                    i => i.Id,
-                    (deal, user) => new { deal, user })
-                .Skip(skipCount)
-                .Take(maxResultCount)
-                .ToListAsync(GetCancellationToken(cancellationToken));
-
-            return combinedResult.Select(s =>
-            {
-                s.deal.Author = s.user;
-                return s.deal;
-            }).ToList();
-        }
-
-        public virtual async Task<List<Deal>> GetListByPriorityAsync(
-           string filter = null,
-           int? dealPriority = null,
-           Guid? dealCategoryId = null,
-           int maxResultCount = int.MaxValue,
-           int skipCount = 0,
-           string sorting = null,
-           CancellationToken cancellationToken = default)
-
-        {
-            var dbContext = await GetDbContextAsync();
-            var dealsDbSet = dbContext.Set<Deal>();
-            var usersDbSet = dbContext.Set<CmsUser>();
-
-            var queryable = dealsDbSet
-                .WhereIf(dealCategoryId.HasValue, x => x.DealCategoryId == dealCategoryId)
-                .WhereIf(dealPriority.HasValue, x => x.DealPriority == dealPriority)
+                .WhereIf(isPublished, x => x.IsPublished)
+                .WhereIf(isFeatured, x => x.IsFeatured)
                 .WhereIf(!string.IsNullOrWhiteSpace(filter), x => x.Title.Contains(filter) || x.Slug.Contains(filter));
 
             queryable = queryable.OrderBy(sorting.IsNullOrEmpty() ? $"{nameof(Deal.CreationTime)} desc" : sorting);

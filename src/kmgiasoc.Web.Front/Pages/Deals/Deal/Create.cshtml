@@ -152,6 +152,7 @@
                                                         </div>
                                                     </div>
                                                     <input type="file" asp-for="DealUploadFileDto.File" class="h-full w-full opacity-0 cursor-pointer" />
+                                                    @Html.HiddenFor(x => x.ViewModel.CoverImageMediaId)
                                                     @*<input id="DealUploadFileDto_File" type="file" class="h-full w-full opacity-0 cursor-pointer" name="">*@
                                                 </div>
                                                 <div id="dealImgUploaded" class="hidden">

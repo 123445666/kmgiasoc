@@ -137,6 +137,7 @@ namespace kmgiasoc.Deals
         public virtual void SetPublishedDate(bool isPublished)
         {
             if (isPublished) PublishDate = DateTime.Now;
+            else PublishDate = DateTime.MinValue;
         }
     }
 }

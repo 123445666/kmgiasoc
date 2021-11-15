@@ -51,8 +51,6 @@ namespace kmgiasoc.Web.Pages.Deals.Deal
         {
             ViewModel.Image = DealUploadFileDto.File.FileName;
 
-            ViewModel.DealPriority = (int)DealConsts.Status.Draft;
-
             var dto = ObjectMapper.Map<CreateDealViewModel, DealCreateDto>(ViewModel);
             await _service.CreateAsync(dto);
             return RedirectToPage("/deals/deal/create");

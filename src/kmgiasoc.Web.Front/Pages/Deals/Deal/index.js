@@ -109,8 +109,8 @@ $(function () {
     });
 
     // -----------------------------------
-    var fileUploadUri = "/api/deal-kit-front/media/deal";
-    var fileUriPrefix = "/api/cms-kit/media/";
+    var fileUploadUri = "/api/upload-kit/media/deal";
+    var fileUriPrefix = "/api/media/";
 
     initAllEditors();
 

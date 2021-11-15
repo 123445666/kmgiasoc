@@ -15,7 +15,7 @@ namespace kmgiasoc.kmgiasoc.Front.Media
 {
     [RequiresGlobalFeature(typeof(MediaFeature))]
     [RemoteService(Name = CmsKitAdminRemoteServiceConsts.RemoteServiceName)]
-    [Route("api/deal-kit-front/media")]
+    [Route("api/upload-kit/media")]
     public class MediaFrontController : CmsKitAdminController, IMediaDescriptorAdminAppService
     {
         protected readonly IMediaDescriptorAdminAppService MediaDescriptorAdminAppService;

@@ -113,7 +113,7 @@ namespace kmgiasoc.Front.Deals
         {
             var dealCategories = (await _dealCategoryRepository.GetListAsync()).ToDictionary(x => x.Id);
 
-            var deals = await _repository.GetListAsync(input.Filter, input.dealCategoryId, input.MaxResultCount, input.SkipCount, input.Sorting);
+            var deals = await _repository.GetListAsync(input.Filter, false, false, input.dealCategoryId, input.MaxResultCount, input.SkipCount, input.Sorting);
 
             var count = await _repository.GetCountAsync(input.Filter);
 
@@ -161,13 +161,13 @@ namespace kmgiasoc.Front.Deals
             {
                 var dealCategory = await _dealCategoryRepository.GetBySlugAsync(dealCategorSlug);
 
-                var deals = await _repository.GetListAsync(null, dealCategory.Id, input.MaxResultCount, input.SkipCount, input.Sorting);
+                var deals = await _repository.GetListAsync(null, false, false, dealCategory.Id, input.MaxResultCount, input.SkipCount, input.Sorting);
                 return new PagedResultDto<DealDto>(
                     await _repository.GetCountAsync(dealCategoryId: dealCategory.Id),
                     ObjectMapper.Map<List<Deal>, List<DealDto>>(deals));
             }
 
-            var _deals = await _repository.GetListAsync(null, null, input.MaxResultCount, input.SkipCount, input.Sorting);
+            var _deals = await _repository.GetListAsync(null, false, false, null, input.MaxResultCount, input.SkipCount, input.Sorting);
             return new PagedResultDto<DealDto>(
                 await _repository.GetCountAsync(dealCategoryId: null),
                 ObjectMapper.Map<List<Deal>, List<DealDto>>(_deals));
@@ -182,17 +182,17 @@ namespace kmgiasoc.Front.Deals
 
                 if (!dealCategory.IsDeleted)
                 {
-                    var deals = await _repository.GetListByPriorityAsync(null, (int)DealConsts.Status.Published, dealCategory.Id, input.MaxResultCount, input.SkipCount, input.Sorting);
+                    var deals = await _repository.GetListAsync(null, true, false, dealCategory.Id, input.MaxResultCount, input.SkipCount, input.Sorting);
                     return new PagedResultDto<DealDto>(
-                        await _repository.GetCountAsync(dealCategoryId: dealCategory.Id),
+                        await _repository.GetCountAsync(isPublished: true, isFeatured: false, dealCategoryId: dealCategory.Id),
                         ObjectMapper.Map<List<Deal>, List<DealDto>>(deals));
                 }
                 return new PagedResultDto<DealDto>();
             }
 
-            var _deals = await _repository.GetListByPriorityAsync(null, (int)DealConsts.Status.Published, null, input.MaxResultCount, input.SkipCount, input.Sorting);
+            var _deals = await _repository.GetListAsync(null, true, false, null, input.MaxResultCount, input.SkipCount, input.Sorting);
             return new PagedResultDto<DealDto>(
-                await _repository.GetCountAsync(dealCategoryId: null),
+                await _repository.GetCountAsync(isPublished: true, isFeatured: false, dealCategoryId: null),
                 ObjectMapper.Map<List<Deal>, List<DealDto>>(_deals));
 
         }

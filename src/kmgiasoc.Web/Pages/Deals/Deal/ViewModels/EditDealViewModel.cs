@@ -27,7 +27,7 @@ namespace kmgiasoc.Web.Pages.Deals.Deal.ViewModels
 
         public Guid DealCategoryId { get; set; }
 
-        public DealCategory DealCategory { get; set; }
+        //public DealCategory DealCategory { get; set; }
 
         public int DealPriority { get; set; }
 
@@ -47,7 +47,7 @@ namespace kmgiasoc.Web.Pages.Deals.Deal.ViewModels
 
         public int CityId { get; set; }
 
-        public City City { get; set; }
+        //public City City { get; set; }
 
         public string LocalShop { get; set; }
 
@@ -57,7 +57,7 @@ namespace kmgiasoc.Web.Pages.Deals.Deal.ViewModels
 
         public Guid AuthorId { get; set; }
 
-        public CmsUser Author { get; set; }
+        //public CmsUser Author { get; set; }
 
         public bool IsPublished { get; set; }
 
