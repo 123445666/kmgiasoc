@@ -25,8 +25,8 @@ namespace kmgiasoc.Deals
             string sorting = null,
             CancellationToken cancellationToken = default);
 
-        Task<bool> SlugExistsAsync(Guid dealCategoryId, string slug, CancellationToken cancellationToken = default);
+        Task<bool> SlugExistsAsync(string slug, CancellationToken cancellationToken = default);
 
-        Task<Deal> GetBySlugAsync(Guid dealCategoryId, string slug, CancellationToken cancellationToken = default);
+        Task<Deal> GetBySlugAsync(string slug, CancellationToken cancellationToken = default);
     }
 }

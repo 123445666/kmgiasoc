@@ -21,14 +21,13 @@ namespace kmgiasoc.Deals
         }
 
         public async Task<Deal> GetBySlugAsync(
-            Guid dealCategoryId,
             [NotNull] string slug,
             CancellationToken cancellationToken = default)
         {
             Check.NotNullOrEmpty(slug, nameof(slug));
 
             var deal = await GetAsync(
-                                    x => x.DealCategoryId == dealCategoryId && x.Slug.ToLower() == slug,
+                                    x => x.Slug.ToLower() == slug,
                                     cancellationToken: GetCancellationToken(cancellationToken));
 
             deal.Author = await (await GetDbContextAsync())
@@ -95,12 +94,12 @@ namespace kmgiasoc.Deals
             }).ToList();
         }
 
-        public async Task<bool> SlugExistsAsync(Guid dealCategoryId, [NotNull] string slug,
+        public async Task<bool> SlugExistsAsync([NotNull] string slug,
             CancellationToken cancellationToken = default)
         {
             Check.NotNullOrEmpty(slug, nameof(slug));
 
-            return await (await GetDbSetAsync()).AnyAsync(x => x.DealCategoryId == dealCategoryId && x.Slug.ToLower() == slug,
+            return await (await GetDbSetAsync()).AnyAsync(x => x.Slug.ToLower() == slug,
                 GetCancellationToken(cancellationToken));
         }
     }

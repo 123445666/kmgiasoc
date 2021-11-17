@@ -12,19 +12,16 @@ namespace kmgiasoc.Deals
         {
         }
 
-        public DealSlugAlreadyExistException(Guid dealCategoryId, string slug)
+        public DealSlugAlreadyExistException(string slug)
         {
             Slug = slug;
-            DealCategoryId = dealCategoryId;
 
             Code = CmsKitErrorCodes.BlogPosts.SlugAlreadyExist;
 
             WithData(nameof(Slug), Slug);
-            WithData(nameof(DealCategoryId), DealCategoryId);
         }
 
         public virtual string Slug { get; }
 
-        public virtual Guid DealCategoryId { get; }
     }
 }

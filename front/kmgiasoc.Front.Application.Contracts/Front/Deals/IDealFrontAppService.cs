@@ -22,8 +22,9 @@ namespace kmgiasoc.Front.Deals
         #region LookupData
         Task<ListResultDto<DealCategoryDto>> GetDealCategoriesLookupAsync();
         Task<ListResultDto<CityDto>> GetCititesLookupAsync();
-        Task<PagedResultDto<DealDto>> GetPublishedListAsync([NotNull] string blogSlug, PagedAndSortedResultRequestDto input);
-        Task<PagedResultDto<DealDto>> GetListAsync([NotNull] string blogSlug, PagedAndSortedResultRequestDto input);
+        Task<PagedResultDto<DealDto>> GetPublishedListAsync([NotNull] string dealCategorySlug, PagedAndSortedResultRequestDto input);
+        Task<PagedResultDto<DealDto>> GetListAsync([NotNull] string dealCategorySlug, PagedAndSortedResultRequestDto input);
+        Task<DealDto> GetAsync([NotNull] string dealSlug);
         #endregion
     }
 }

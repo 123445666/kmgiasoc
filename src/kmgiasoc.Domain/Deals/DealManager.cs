@@ -81,7 +81,7 @@ namespace kmgiasoc.Deals
                          IsFeatured
                         );
 
-            await CheckSlugExistenceAsync(dealCategory.Id, deal.Slug);
+            await CheckSlugExistenceAsync(deal.Slug);
 
             return deal;
         }
@@ -90,16 +90,16 @@ namespace kmgiasoc.Deals
         {
             Check.NotNullOrWhiteSpace(newSlug, nameof(newSlug));
 
-            await CheckSlugExistenceAsync(deal.DealCategoryId, newSlug);
+            await CheckSlugExistenceAsync(newSlug);
 
             deal.SetSlug(newSlug);
         }
 
-        protected virtual async Task CheckSlugExistenceAsync(Guid dealCategoryId, string slug)
+        protected virtual async Task CheckSlugExistenceAsync(string slug)
         {
-            if (await _repository.SlugExistsAsync(dealCategoryId, slug))
+            if (await _repository.SlugExistsAsync(slug))
             {
-                throw new DealSlugAlreadyExistException(dealCategoryId, slug);
+                throw new DealSlugAlreadyExistException(slug);
             }
         }
 

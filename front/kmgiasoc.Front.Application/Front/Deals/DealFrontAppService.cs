@@ -196,6 +196,13 @@ namespace kmgiasoc.Front.Deals
                 ObjectMapper.Map<List<Deal>, List<DealDto>>(_deals));
 
         }
+
+        public virtual async Task<DealDto> GetAsync([NotNull] string dealSlug)
+        {
+            var deal = await _repository.GetBySlugAsync(dealSlug);
+
+            return ObjectMapper.Map<Deal, DealDto>(deal);
+        }
         #endregion
     }
 }

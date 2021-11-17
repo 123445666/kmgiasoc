@@ -1,0 +1,28 @@
+﻿@page
+
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using kmgiasoc.Localization
+
+@using kmgiasoc.Web.Menus
+@inject IPageLayout PageLayout
+@inject IHtmlLocalizer<kmgiasocResource> L
+
+@model kmgiasoc.Web.Pages.Deals.Deal.DetailModel
+@{
+    PageLayout.Content.Title = L["Deal"].Value;
+    PageLayout.Content.BreadCrumb.Add(L["Menu:Deal"].Value);
+    PageLayout.Content.MenuItemName = kmgiasocMenus.Deal;
+}
+
+@section scripts{
+    <abp-script-bundle>
+        <abp-script src="/Pages/Deals/Deal/index.js" />
+    </abp-script-bundle>
+}
+@section styles {
+    <abp-style-bundle>
+        <abp-style src="/Pages/Deals/Deal/index.css" />
+    </abp-style-bundle>
+}
+
