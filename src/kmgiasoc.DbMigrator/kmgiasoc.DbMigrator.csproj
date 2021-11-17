@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Autofac" Version="4.4.3" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="4.4.4" />
     <ProjectReference Include="..\kmgiasoc.Application.Contracts\kmgiasoc.Application.Contracts.csproj" />
     <ProjectReference Include="..\kmgiasoc.EntityFrameworkCore\kmgiasoc.EntityFrameworkCore.csproj" />
   </ItemGroup>
