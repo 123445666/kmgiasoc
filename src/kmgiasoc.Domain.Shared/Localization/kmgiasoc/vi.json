@@ -133,6 +133,7 @@
     "CityOrderCity": "CityOrderCity",
     "CreateCity": "CreateCity",
     "EditCity": "EditCity",
-    "CityDeletionConfirmationMessage": "Are you sure to delete the city {0}?"
+    "CityDeletionConfirmationMessage": "Are you sure to delete the city {0}?",
+    "ViewMore": "Xem Thêm"
   }
 }

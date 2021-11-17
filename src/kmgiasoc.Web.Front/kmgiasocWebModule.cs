@@ -39,6 +39,8 @@ using Volo.Abp.UI.Navigation;
 using Volo.Abp.VirtualFileSystem;
 using Volo.CmsKit.Web;
 using kmgiasoc.Front;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using kmgiasoc.Deals;
 
 namespace kmgiasoc.Web
 {
@@ -227,5 +229,15 @@ namespace kmgiasoc.Web
             app.UseAbpSerilogEnrichers();
             app.UseConfiguredEndpoints();
         }
+
+        public override void PostConfigureServices(ServiceConfigurationContext context)
+        {
+                Configure<RazorPagesOptions>(options =>
+                {
+                    options.Conventions.AddPageRoute("/DealCategories/Index", @"/cat/{dealCategorySlug:minlength(1)}/");
+                    options.Conventions.AddPageRoute("/Deals/Deal/Detail", @"/deal/{dealSlug:minlength(1)}/");
+                    options.Conventions.AddPageRoute("/Deals/Deal/Create", @"/deal/create");
+                });
+            }
     }
 }

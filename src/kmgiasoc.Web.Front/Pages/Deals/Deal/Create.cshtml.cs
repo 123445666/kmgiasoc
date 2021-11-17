@@ -12,6 +12,7 @@ using System.IO;
 using kmgiasoc.FileUploader;
 using Volo.CmsKit;
 using kmgiasoc.Front.Deals;
+using kmgiasoc.Utilities;
 
 namespace kmgiasoc.Web.Pages.Deals.Deal
 {
@@ -53,7 +54,7 @@ namespace kmgiasoc.Web.Pages.Deals.Deal
 
             var dto = ObjectMapper.Map<CreateDealViewModel, DealCreateDto>(ViewModel);
             await _service.CreateAsync(dto);
-            return RedirectToPage("/deals/deal/create");
+            return RedirectToPage(UrlFilter.BuildCreateDealUrl());
             //return NoContent();
             //return Page();
         }

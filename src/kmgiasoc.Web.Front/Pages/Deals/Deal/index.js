@@ -1,12 +1,11 @@
 $(function () {
 
-    var l = abp.localization.getResource("CmsKit");
+    var l = abp.localization.getResource("kmgiasoc");
 
     var $formCreate = $('#form-deal-create');
-    var $shortDescription = $('#ViewModel_ShortDescription');
     var $coverImage = $('#ViewModel_CoverImageMediaId');
     var $buttonSubmit = $('#AddDealButton');
-    var $pageContentInput = $('#ViewModel_Description');
+    var $shortDescription = $('#ViewModel_Description');
     var $fileInput = $('#DealUploadFileDto_File');
 
     var UPPY_FILE_ID = "uppy-upload-file";
@@ -89,7 +88,7 @@ $(function () {
     function finishSaving() {
         abp.notify.success(l('SuccessfullySaved'));
         abp.ui.clearBusy();
-        location.href = "/deals/deal/create";
+        location.href = "/deal/create";
     }
 
     var shorDescriptionEdited = false;
