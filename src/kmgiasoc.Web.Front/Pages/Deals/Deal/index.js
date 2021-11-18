@@ -5,7 +5,8 @@ $(function () {
     var $formCreate = $('#form-deal-create');
     var $coverImage = $('#ViewModel_CoverImageMediaId');
     var $buttonSubmit = $('#AddDealButton');
-    var $shortDescription = $('#ViewModel_Description');
+    var $shortDescription = $('#ViewModel_ShortDescription');
+    var $description = $('#ViewModel_Description');
     var $fileInput = $('#DealUploadFileDto_File');
 
     var UPPY_FILE_ID = "uppy-upload-file";

@@ -21,6 +21,7 @@ namespace kmgiasoc.Utilities
 
         public static string BuildImageUrl(Guid? CoverImageMediaId)
         {
+            if (CoverImageMediaId == null) return "#";
             return "/api/media/" + CoverImageMediaId;
         }
     }

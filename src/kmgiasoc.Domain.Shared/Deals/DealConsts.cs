@@ -13,7 +13,7 @@ namespace kmgiasoc.Deals
 
         public static int MinSlugLength { get; set; } = 2;
 
-        public static int MaxShortDescriptionLength { get; set; } = 1024;
+        public static int MaxShortDescriptionLength { get; set; } = 120;
 
         public static int MaxContentLength { get; set; } = int.MaxValue;
 

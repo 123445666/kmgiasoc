@@ -237,6 +237,7 @@ namespace kmgiasoc.Web
                     options.Conventions.AddPageRoute("/DealCategories/Index", @"/cat/{dealCategorySlug:minlength(1)}/");
                     options.Conventions.AddPageRoute("/Deals/Deal/Detail", @"/deal/{dealSlug:minlength(1)}/");
                     options.Conventions.AddPageRoute("/Deals/Deal/Create", @"/deal/create");
+                    options.Conventions.AddPageRoute("/Deals/Deal/Edit", @"/deal/edit/{id:minlength(1)}");
                 });
             }
     }
