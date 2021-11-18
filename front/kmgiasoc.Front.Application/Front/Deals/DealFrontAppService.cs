@@ -85,6 +85,7 @@ namespace kmgiasoc.Front.Deals
             var deal = await _repository.GetAsync(id);
 
             deal.SetTitle(input.Title);
+            deal.SetSlug(input.Title);
             deal.SetShortDescription(input.ShortDescription);
             deal.SetContent(input.Description);
             deal.SetDomainLink(input.Link);

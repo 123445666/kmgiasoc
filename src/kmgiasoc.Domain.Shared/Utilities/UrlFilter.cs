@@ -10,6 +10,10 @@ namespace kmgiasoc.Utilities
         {
             return "/deal/create";
         }
+        public static string BuildEditDealUrl(Guid? id)
+        {
+            return "/deal/edit/" + id;
+        }
         public static string BuildCategoryDealUrl(string slug)
         {
             return "/cat/" + slug + "/";

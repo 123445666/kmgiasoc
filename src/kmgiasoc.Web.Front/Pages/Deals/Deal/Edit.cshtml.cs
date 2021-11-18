@@ -57,8 +57,10 @@ namespace kmgiasoc.Web.Pages.Deals.Deal
 
         public virtual async Task<IActionResult> OnPostAsync()
         {
-            ViewModel.Image = DealUploadFileDto.File.FileName;
-
+            if (DealUploadFileDto.File != null)
+            {
+                ViewModel.Image = DealUploadFileDto.File.FileName;
+            }
             var dto = ObjectMapper.Map<EditDealViewModel, DealUpdateDto>(ViewModel);
             await _service.UpdateAsync(Id, dto);
             return NoContent();

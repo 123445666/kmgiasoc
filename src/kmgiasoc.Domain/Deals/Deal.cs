@@ -110,7 +110,7 @@ namespace kmgiasoc.Deals
             Title = Check.NotNullOrWhiteSpace(title, nameof(title), DealConsts.MaxTitleLength);
         }
 
-        internal void SetSlug(string slug)
+        public virtual void SetSlug(string slug)
         {
             Check.NotNullOrWhiteSpace(slug, nameof(slug), DealConsts.MaxSlugLength, DealConsts.MinSlugLength);
 
@@ -124,7 +124,7 @@ namespace kmgiasoc.Deals
 
         public virtual void SetContent(string description)
         {
-            description = Check.Length(description, nameof(description), DealConsts.MaxContentLength);
+            Description = Check.Length(description, nameof(description), DealConsts.MaxContentLength);
         }
 
         public virtual void SetDomainLink(string link)
