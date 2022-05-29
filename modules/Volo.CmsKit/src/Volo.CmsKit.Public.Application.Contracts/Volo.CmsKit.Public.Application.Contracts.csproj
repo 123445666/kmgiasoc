@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Volo.CmsKit.Common.Application.Contracts\Volo.CmsKit.Common.Application.Contracts.csproj" />
-    <PackageReference Include="Volo.Abp.EventBus" Version="4.4.2" />
+    <PackageReference Include="Volo.Abp.EventBus" Version="5.2.2" />
   </ItemGroup>
 
 </Project>

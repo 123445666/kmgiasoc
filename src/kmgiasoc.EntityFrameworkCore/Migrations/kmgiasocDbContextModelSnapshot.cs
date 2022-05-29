@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 using kmgiasoc.EntityFrameworkCore;
 
+#nullable disable
+
 namespace kmgiasoc.Migrations
 {
     [DbContext(typeof(kmgiasocDbContext))]
@@ -17,9 +19,354 @@ namespace kmgiasoc.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("_Abp_DatabaseProvider", EfCoreDatabaseProvider.SqlServer)
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.12")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "6.0.5")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("kmgiasoc.Cities.City", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)")
+                        .HasColumnName("ConcurrencyStamp");
+
+                    b.Property<int>("CountryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("DeleterId");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DeletionTime");
+
+                    b.Property<string>("ExtraProperties")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ExtraProperties");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OrderCity")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("TenantId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("TenantId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.ToTable("AppCities", (string)null);
+                });
+
+            modelBuilder.Entity("kmgiasoc.Countries.Country", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)")
+                        .HasColumnName("ConcurrencyStamp");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("DeleterId");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DeletionTime");
+
+                    b.Property<string>("ExtraProperties")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ExtraProperties");
+
+                    b.Property<string>("Flag")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OrderCountry")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("TenantId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("TenantId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AppCountries", (string)null);
+                });
+
+            modelBuilder.Entity("kmgiasoc.DealCategories.DealCategory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("CatOrder")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)")
+                        .HasColumnName("ConcurrencyStamp");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("DeleterId");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DeletionTime");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExtraProperties")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ExtraProperties");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("Parent")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("PublishDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Slug")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("TenantId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("TenantId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AppDealCategories", (string)null);
+                });
+
+            modelBuilder.Entity("kmgiasoc.Deals.Deal", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AuthorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("BeginPromo")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CodePromo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)")
+                        .HasColumnName("ConcurrencyStamp");
+
+                    b.Property<Guid?>("CoverImageMediaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<Guid>("DealCategoryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("DealPriority")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("DeleterId");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DeletionTime");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DomainLink")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("EndPromo")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ExtraProperties")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ExtraProperties");
+
+                    b.Property<bool>("FreeShipping")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsDeleted");
+
+                    b.Property<bool>("IsFeatured")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsPublished")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<string>("Link")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LocalShop")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,4)");
+
+                    b.Property<decimal>("PricePromo")
+                        .HasColumnType("decimal(18,4)");
+
+                    b.Property<decimal>("PriceShipping")
+                        .HasColumnType("decimal(18,4)");
+
+                    b.Property<DateTime>("PublishDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("RatePoint")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ShortDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Slug")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("TenantId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("TenantId");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.HasIndex("CityId");
+
+                    b.HasIndex("DealCategoryId");
+
+                    b.ToTable("AppDeals", (string)null);
+                });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>
                 {
@@ -95,16 +442,28 @@ namespace kmgiasoc.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("ImpersonatorTenantId");
 
+                    b.Property<string>("ImpersonatorTenantName")
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)")
+                        .HasColumnName("ImpersonatorTenantName");
+
                     b.Property<Guid?>("ImpersonatorUserId")
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("ImpersonatorUserId");
+
+                    b.Property<string>("ImpersonatorUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)")
+                        .HasColumnName("ImpersonatorUserName");
 
                     b.Property<Guid?>("TenantId")
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("TenantId");
 
                     b.Property<string>("TenantName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)")
+                        .HasColumnName("TenantName");
 
                     b.Property<string>("Url")
                         .HasMaxLength(256)
@@ -126,7 +485,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasIndex("TenantId", "UserId", "ExecutionTime");
 
-                    b.ToTable("AbpAuditLogs");
+                    b.ToTable("AbpAuditLogs", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLogAction", b =>
@@ -176,7 +535,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasIndex("TenantId", "ServiceName", "MethodName", "ExecutionTime");
 
-                    b.ToTable("AbpAuditLogActions");
+                    b.ToTable("AbpAuditLogActions", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.EntityChange", b =>
@@ -226,7 +585,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasIndex("TenantId", "EntityTypeFullName", "EntityId");
 
-                    b.ToTable("AbpEntityChanges");
+                    b.ToTable("AbpEntityChanges", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.EntityPropertyChange", b =>
@@ -268,7 +627,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasIndex("EntityChangeId");
 
-                    b.ToTable("AbpEntityPropertyChanges");
+                    b.ToTable("AbpEntityPropertyChanges", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.BackgroundJobs.BackgroundJobRecord", b =>
@@ -326,7 +685,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasIndex("IsAbandoned", "NextTryTime");
 
-                    b.ToTable("AbpBackgroundJobs");
+                    b.ToTable("AbpBackgroundJobs", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.FeatureManagement.FeatureValue", b =>
@@ -355,9 +714,11 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Name", "ProviderName", "ProviderKey");
+                    b.HasIndex("Name", "ProviderName", "ProviderKey")
+                        .IsUnique()
+                        .HasFilter("[ProviderName] IS NOT NULL AND [ProviderKey] IS NOT NULL");
 
-                    b.ToTable("AbpFeatureValues");
+                    b.ToTable("AbpFeatureValues", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.Identity.IdentityClaimType", b =>
@@ -403,7 +764,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpClaimTypes");
+                    b.ToTable("AbpClaimTypes", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.Identity.IdentityLinkUser", b =>
@@ -429,7 +790,7 @@ namespace kmgiasoc.Migrations
                         .IsUnique()
                         .HasFilter("[SourceTenantId] IS NOT NULL AND [TargetTenantId] IS NOT NULL");
 
-                    b.ToTable("AbpLinkUsers");
+                    b.ToTable("AbpLinkUsers", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.Identity.IdentityRole", b =>
@@ -477,7 +838,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasIndex("NormalizedName");
 
-                    b.ToTable("AbpRoles");
+                    b.ToTable("AbpRoles", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.Identity.IdentityRoleClaim", b =>
@@ -505,7 +866,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AbpRoleClaims");
+                    b.ToTable("AbpRoleClaims", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.Identity.IdentitySecurityLog", b =>
@@ -579,7 +940,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpSecurityLogs");
+                    b.ToTable("AbpSecurityLogs", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.Identity.IdentityUser", b =>
@@ -630,6 +991,9 @@ namespace kmgiasoc.Migrations
                     b.Property<string>("ExtraProperties")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("ExtraProperties");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -730,7 +1094,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasIndex("UserName");
 
-                    b.ToTable("AbpUsers");
+                    b.ToTable("AbpUsers", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.Identity.IdentityUserClaim", b =>
@@ -758,7 +1122,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AbpUserClaims");
+                    b.ToTable("AbpUserClaims", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.Identity.IdentityUserLogin", b =>
@@ -787,7 +1151,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasIndex("LoginProvider", "ProviderKey");
 
-                    b.ToTable("AbpUserLogins");
+                    b.ToTable("AbpUserLogins", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.Identity.IdentityUserOrganizationUnit", b =>
@@ -814,7 +1178,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasIndex("UserId", "OrganizationUnitId");
 
-                    b.ToTable("AbpUserOrganizationUnits");
+                    b.ToTable("AbpUserOrganizationUnits", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.Identity.IdentityUserRole", b =>
@@ -833,7 +1197,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasIndex("RoleId", "UserId");
 
-                    b.ToTable("AbpUserRoles");
+                    b.ToTable("AbpUserRoles", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.Identity.IdentityUserToken", b =>
@@ -858,7 +1222,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
-                    b.ToTable("AbpUserTokens");
+                    b.ToTable("AbpUserTokens", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.Identity.OrganizationUnit", b =>
@@ -931,7 +1295,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasIndex("ParentId");
 
-                    b.ToTable("AbpOrganizationUnits");
+                    b.ToTable("AbpOrganizationUnits", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.Identity.OrganizationUnitRole", b =>
@@ -958,7 +1322,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasIndex("RoleId", "OrganizationUnitId");
 
-                    b.ToTable("AbpOrganizationUnitRoles");
+                    b.ToTable("AbpOrganizationUnitRoles", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.IdentityServer.ApiResources.ApiResource", b =>
@@ -1032,7 +1396,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("IdentityServerApiResources");
+                    b.ToTable("IdentityServerApiResources", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.IdentityServer.ApiResources.ApiResourceClaim", b =>
@@ -1046,7 +1410,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("ApiResourceId", "Type");
 
-                    b.ToTable("IdentityServerApiResourceClaims");
+                    b.ToTable("IdentityServerApiResourceClaims", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.IdentityServer.ApiResources.ApiResourceProperty", b =>
@@ -1064,7 +1428,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("ApiResourceId", "Key", "Value");
 
-                    b.ToTable("IdentityServerApiResourceProperties");
+                    b.ToTable("IdentityServerApiResourceProperties", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.IdentityServer.ApiResources.ApiResourceScope", b =>
@@ -1078,7 +1442,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("ApiResourceId", "Scope");
 
-                    b.ToTable("IdentityServerApiResourceScopes");
+                    b.ToTable("IdentityServerApiResourceScopes", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.IdentityServer.ApiResources.ApiResourceSecret", b =>
@@ -1103,7 +1467,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("ApiResourceId", "Type", "Value");
 
-                    b.ToTable("IdentityServerApiResourceSecrets");
+                    b.ToTable("IdentityServerApiResourceSecrets", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.IdentityServer.ApiScopes.ApiScope", b =>
@@ -1179,7 +1543,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("IdentityServerApiScopes");
+                    b.ToTable("IdentityServerApiScopes", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.IdentityServer.ApiScopes.ApiScopeClaim", b =>
@@ -1193,7 +1557,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("ApiScopeId", "Type");
 
-                    b.ToTable("IdentityServerApiScopeClaims");
+                    b.ToTable("IdentityServerApiScopeClaims", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.IdentityServer.ApiScopes.ApiScopeProperty", b =>
@@ -1211,7 +1575,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("ApiScopeId", "Key", "Value");
 
-                    b.ToTable("IdentityServerApiScopeProperties");
+                    b.ToTable("IdentityServerApiScopeProperties", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.IdentityServer.Clients.Client", b =>
@@ -1395,7 +1759,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("IdentityServerClients");
+                    b.ToTable("IdentityServerClients", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.IdentityServer.Clients.ClientClaim", b =>
@@ -1413,7 +1777,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("ClientId", "Type", "Value");
 
-                    b.ToTable("IdentityServerClientClaims");
+                    b.ToTable("IdentityServerClientClaims", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.IdentityServer.Clients.ClientCorsOrigin", b =>
@@ -1427,7 +1791,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("ClientId", "Origin");
 
-                    b.ToTable("IdentityServerClientCorsOrigins");
+                    b.ToTable("IdentityServerClientCorsOrigins", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.IdentityServer.Clients.ClientGrantType", b =>
@@ -1441,7 +1805,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("ClientId", "GrantType");
 
-                    b.ToTable("IdentityServerClientGrantTypes");
+                    b.ToTable("IdentityServerClientGrantTypes", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.IdentityServer.Clients.ClientIdPRestriction", b =>
@@ -1455,7 +1819,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("ClientId", "Provider");
 
-                    b.ToTable("IdentityServerClientIdPRestrictions");
+                    b.ToTable("IdentityServerClientIdPRestrictions", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.IdentityServer.Clients.ClientPostLogoutRedirectUri", b =>
@@ -1469,7 +1833,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("ClientId", "PostLogoutRedirectUri");
 
-                    b.ToTable("IdentityServerClientPostLogoutRedirectUris");
+                    b.ToTable("IdentityServerClientPostLogoutRedirectUris", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.IdentityServer.Clients.ClientProperty", b =>
@@ -1487,7 +1851,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("ClientId", "Key", "Value");
 
-                    b.ToTable("IdentityServerClientProperties");
+                    b.ToTable("IdentityServerClientProperties", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.IdentityServer.Clients.ClientRedirectUri", b =>
@@ -1501,7 +1865,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("ClientId", "RedirectUri");
 
-                    b.ToTable("IdentityServerClientRedirectUris");
+                    b.ToTable("IdentityServerClientRedirectUris", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.IdentityServer.Clients.ClientScope", b =>
@@ -1515,7 +1879,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("ClientId", "Scope");
 
-                    b.ToTable("IdentityServerClientScopes");
+                    b.ToTable("IdentityServerClientScopes", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.IdentityServer.Clients.ClientSecret", b =>
@@ -1540,7 +1904,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("ClientId", "Type", "Value");
 
-                    b.ToTable("IdentityServerClientSecrets");
+                    b.ToTable("IdentityServerClientSecrets", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.IdentityServer.Devices.DeviceFlowCodes", b =>
@@ -1612,7 +1976,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasIndex("UserCode");
 
-                    b.ToTable("IdentityServerDeviceFlowCodes");
+                    b.ToTable("IdentityServerDeviceFlowCodes", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.IdentityServer.Grants.PersistedGrant", b =>
@@ -1678,7 +2042,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasIndex("SubjectId", "SessionId", "Type");
 
-                    b.ToTable("IdentityServerPersistedGrants");
+                    b.ToTable("IdentityServerPersistedGrants", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.IdentityServer.IdentityResources.IdentityResource", b =>
@@ -1754,7 +2118,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("IdentityServerIdentityResources");
+                    b.ToTable("IdentityServerIdentityResources", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.IdentityServer.IdentityResources.IdentityResourceClaim", b =>
@@ -1768,7 +2132,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("IdentityResourceId", "Type");
 
-                    b.ToTable("IdentityServerIdentityResourceClaims");
+                    b.ToTable("IdentityServerIdentityResourceClaims", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.IdentityServer.IdentityResources.IdentityResourceProperty", b =>
@@ -1786,7 +2150,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("IdentityResourceId", "Key", "Value");
 
-                    b.ToTable("IdentityServerIdentityResourceProperties");
+                    b.ToTable("IdentityServerIdentityResourceProperties", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.PermissionManagement.PermissionGrant", b =>
@@ -1816,9 +2180,11 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Name", "ProviderName", "ProviderKey");
+                    b.HasIndex("TenantId", "Name", "ProviderName", "ProviderKey")
+                        .IsUnique()
+                        .HasFilter("[TenantId] IS NOT NULL");
 
-                    b.ToTable("AbpPermissionGrants");
+                    b.ToTable("AbpPermissionGrants", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.SettingManagement.Setting", b =>
@@ -1847,9 +2213,11 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Name", "ProviderName", "ProviderKey");
+                    b.HasIndex("Name", "ProviderName", "ProviderKey")
+                        .IsUnique()
+                        .HasFilter("[ProviderName] IS NOT NULL AND [ProviderKey] IS NOT NULL");
 
-                    b.ToTable("AbpSettings");
+                    b.ToTable("AbpSettings", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.TenantManagement.Tenant", b =>
@@ -1906,7 +2274,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasIndex("Name");
 
-                    b.ToTable("AbpTenants");
+                    b.ToTable("AbpTenants", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.TenantManagement.TenantConnectionString", b =>
@@ -1925,7 +2293,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("TenantId", "Name");
 
-                    b.ToTable("AbpTenantConnectionStrings");
+                    b.ToTable("AbpTenantConnectionStrings", (string)null);
                 });
 
             modelBuilder.Entity("Volo.CmsKit.Blogs.Blog", b =>
@@ -1990,7 +2358,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CmsBlogs");
+                    b.ToTable("CmsBlogs", (string)null);
                 });
 
             modelBuilder.Entity("Volo.CmsKit.Blogs.BlogFeature", b =>
@@ -2052,7 +2420,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CmsBlogFeatures");
+                    b.ToTable("CmsBlogFeatures", (string)null);
                 });
 
             modelBuilder.Entity("Volo.CmsKit.Blogs.BlogPost", b =>
@@ -2138,7 +2506,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasIndex("Slug", "BlogId");
 
-                    b.ToTable("CmsBlogPosts");
+                    b.ToTable("CmsBlogPosts", (string)null);
                 });
 
             modelBuilder.Entity("Volo.CmsKit.Comments.Comment", b =>
@@ -2146,6 +2514,12 @@ namespace kmgiasoc.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)")
+                        .HasColumnName("ConcurrencyStamp");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2")
@@ -2165,6 +2539,10 @@ namespace kmgiasoc.Migrations
                         .HasMaxLength(64)
                         .HasColumnType("nvarchar(64)");
 
+                    b.Property<string>("ExtraProperties")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ExtraProperties");
+
                     b.Property<Guid?>("RepliedCommentId")
                         .HasColumnType("uniqueidentifier");
 
@@ -2183,7 +2561,58 @@ namespace kmgiasoc.Migrations
 
                     b.HasIndex("TenantId", "EntityType", "EntityId");
 
-                    b.ToTable("CmsComments");
+                    b.ToTable("CmsComments", (string)null);
+                });
+
+            modelBuilder.Entity("Volo.CmsKit.GlobalResources.GlobalResource", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)")
+                        .HasColumnName("ConcurrencyStamp");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<string>("ExtraProperties")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ExtraProperties");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
+
+                    b.Property<Guid?>("TenantId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("TenantId");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasMaxLength(2147483647)
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CmsGlobalResources", (string)null);
                 });
 
             modelBuilder.Entity("Volo.CmsKit.MediaDescriptors.MediaDescriptor", b =>
@@ -2257,7 +2686,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CmsMediaDescriptors");
+                    b.ToTable("CmsMediaDescriptors", (string)null);
                 });
 
             modelBuilder.Entity("Volo.CmsKit.Menus.MenuItem", b =>
@@ -2332,7 +2761,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CmsMenuItems");
+                    b.ToTable("CmsMenuItems", (string)null);
                 });
 
             modelBuilder.Entity("Volo.CmsKit.Pages.Page", b =>
@@ -2409,7 +2838,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasIndex("TenantId", "Slug");
 
-                    b.ToTable("CmsPages");
+                    b.ToTable("CmsPages", (string)null);
                 });
 
             modelBuilder.Entity("Volo.CmsKit.Ratings.Rating", b =>
@@ -2446,7 +2875,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasIndex("TenantId", "EntityType", "EntityId", "CreatorId");
 
-                    b.ToTable("CmsRatings");
+                    b.ToTable("CmsRatings", (string)null);
                 });
 
             modelBuilder.Entity("Volo.CmsKit.Reactions.UserReaction", b =>
@@ -2488,7 +2917,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasIndex("TenantId", "CreatorId", "EntityType", "EntityId", "ReactionName");
 
-                    b.ToTable("CmsUserReactions");
+                    b.ToTable("CmsUserReactions", (string)null);
                 });
 
             modelBuilder.Entity("Volo.CmsKit.Tags.EntityTag", b =>
@@ -2507,7 +2936,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasIndex("TenantId", "EntityId", "TagId");
 
-                    b.ToTable("CmsEntityTags");
+                    b.ToTable("CmsEntityTags", (string)null);
                 });
 
             modelBuilder.Entity("Volo.CmsKit.Tags.Tag", b =>
@@ -2574,7 +3003,7 @@ namespace kmgiasoc.Migrations
 
                     b.HasIndex("TenantId", "Name");
 
-                    b.ToTable("CmsTags");
+                    b.ToTable("CmsTags", (string)null);
                 });
 
             modelBuilder.Entity("Volo.CmsKit.Users.CmsUser", b =>
@@ -2641,349 +3070,45 @@ namespace kmgiasoc.Migrations
 
                     b.HasIndex("TenantId", "UserName");
 
-                    b.ToTable("CmsUsers");
+                    b.ToTable("CmsUsers", (string)null);
                 });
 
             modelBuilder.Entity("kmgiasoc.Cities.City", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.HasOne("kmgiasoc.Countries.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)")
-                        .HasColumnName("ConcurrencyStamp");
-
-                    b.Property<int>("CountryId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("CreationTime");
-
-                    b.Property<Guid?>("CreatorId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("CreatorId");
-
-                    b.Property<Guid?>("DeleterId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("DeleterId");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("DeletionTime");
-
-                    b.Property<string>("ExtraProperties")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("ExtraProperties");
-
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false)
-                        .HasColumnName("IsDeleted");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("LastModificationTime");
-
-                    b.Property<Guid?>("LastModifierId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("LastModifierId");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("OrderCity")
-                        .HasColumnType("int");
-
-                    b.Property<Guid?>("TenantId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("TenantId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CountryId");
-
-                    b.ToTable("AppCities");
-                });
-
-            modelBuilder.Entity("kmgiasoc.Countries.Country", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)")
-                        .HasColumnName("ConcurrencyStamp");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("CreationTime");
-
-                    b.Property<Guid?>("CreatorId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("CreatorId");
-
-                    b.Property<Guid?>("DeleterId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("DeleterId");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("DeletionTime");
-
-                    b.Property<string>("ExtraProperties")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("ExtraProperties");
-
-                    b.Property<string>("Flag")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false)
-                        .HasColumnName("IsDeleted");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("LastModificationTime");
-
-                    b.Property<Guid?>("LastModifierId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("LastModifierId");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("OrderCountry")
-                        .HasColumnType("int");
-
-                    b.Property<Guid?>("TenantId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("TenantId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AppCountries");
-                });
-
-            modelBuilder.Entity("kmgiasoc.DealCategories.DealCategory", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("CatOrder")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)")
-                        .HasColumnName("ConcurrencyStamp");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("CreationTime");
-
-                    b.Property<Guid?>("CreatorId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("CreatorId");
-
-                    b.Property<Guid?>("DeleterId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("DeleterId");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("DeletionTime");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ExtraProperties")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("ExtraProperties");
-
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false)
-                        .HasColumnName("IsDeleted");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("LastModificationTime");
-
-                    b.Property<Guid?>("LastModifierId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("LastModifierId");
-
-                    b.Property<DateTime>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid?>("Parent")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("PublishDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Slug")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid?>("TenantId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("TenantId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AppDealCategories");
+                    b.Navigation("Country");
                 });
 
             modelBuilder.Entity("kmgiasoc.Deals.Deal", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                    b.HasOne("Volo.CmsKit.Users.CmsUser", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Property<Guid>("AuthorId")
-                        .HasColumnType("uniqueidentifier");
+                    b.HasOne("kmgiasoc.Cities.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Property<DateTime>("BeginPromo")
-                        .HasColumnType("datetime2");
+                    b.HasOne("kmgiasoc.DealCategories.DealCategory", "DealCategory")
+                        .WithMany()
+                        .HasForeignKey("DealCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Property<int>("CityId")
-                        .HasColumnType("int");
+                    b.Navigation("Author");
 
-                    b.Property<string>("CodePromo")
-                        .HasColumnType("nvarchar(max)");
+                    b.Navigation("City");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)")
-                        .HasColumnName("ConcurrencyStamp");
-
-                    b.Property<Guid?>("CoverImageMediaId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("CreationTime");
-
-                    b.Property<Guid?>("CreatorId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("CreatorId");
-
-                    b.Property<Guid>("DealCategoryId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("DealPriority")
-                        .HasColumnType("int");
-
-                    b.Property<Guid?>("DeleterId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("DeleterId");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("DeletionTime");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DomainLink")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("EndPromo")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ExtraProperties")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("ExtraProperties");
-
-                    b.Property<bool>("FreeShipping")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false)
-                        .HasColumnName("IsDeleted");
-
-                    b.Property<bool>("IsFeatured")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsPublished")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("LastModificationTime");
-
-                    b.Property<Guid?>("LastModifierId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("LastModifierId");
-
-                    b.Property<string>("Link")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LocalShop")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,4)");
-
-                    b.Property<decimal>("PricePromo")
-                        .HasColumnType("decimal(18,4)");
-
-                    b.Property<decimal>("PriceShipping")
-                        .HasColumnType("decimal(18,4)");
-
-                    b.Property<DateTime>("PublishDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("RatePoint")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ShortDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Slug")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid?>("TenantId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("TenantId");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AuthorId");
-
-                    b.HasIndex("CityId");
-
-                    b.HasIndex("DealCategoryId");
-
-                    b.ToTable("AppDeals");
+                    b.Navigation("DealCategory");
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLogAction", b =>
@@ -3272,44 +3397,6 @@ namespace kmgiasoc.Migrations
                         .IsRequired();
 
                     b.Navigation("Author");
-                });
-
-            modelBuilder.Entity("kmgiasoc.Cities.City", b =>
-                {
-                    b.HasOne("kmgiasoc.Countries.Country", "Country")
-                        .WithMany()
-                        .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Country");
-                });
-
-            modelBuilder.Entity("kmgiasoc.Deals.Deal", b =>
-                {
-                    b.HasOne("Volo.CmsKit.Users.CmsUser", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("kmgiasoc.Cities.City", "City")
-                        .WithMany()
-                        .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("kmgiasoc.DealCategories.DealCategory", "DealCategory")
-                        .WithMany()
-                        .HasForeignKey("DealCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Author");
-
-                    b.Navigation("City");
-
-                    b.Navigation("DealCategory");
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>

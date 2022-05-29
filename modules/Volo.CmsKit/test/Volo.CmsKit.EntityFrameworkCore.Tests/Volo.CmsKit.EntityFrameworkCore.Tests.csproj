@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup><LangVersion>latest</LangVersion>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>Volo.CmsKit</RootNamespace>
   </PropertyGroup>
 
@@ -10,7 +10,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="$(MicrosoftPackageVersion)" />
     <ProjectReference Include="..\..\src\Volo.CmsKit.EntityFrameworkCore\Volo.CmsKit.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\Volo.CmsKit.TestBase\Volo.CmsKit.TestBase.csproj" />
-    <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" Version="4.4.2" />
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" Version="5.2.2" />
   </ItemGroup>
 
 </Project>

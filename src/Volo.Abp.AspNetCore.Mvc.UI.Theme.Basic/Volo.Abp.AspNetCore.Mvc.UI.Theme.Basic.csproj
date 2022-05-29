@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     <AssemblyName>Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic</AssemblyName>
     <PackageId>Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic</PackageId>
@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="4.4.4" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="5.2.2" />
   </ItemGroup>
 
 </Project>

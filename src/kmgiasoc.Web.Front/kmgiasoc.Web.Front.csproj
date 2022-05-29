@@ -3,7 +3,7 @@
   <Import Project="..\..\common.props" />
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>kmgiasoc.Web</RootNamespace>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,14 +43,14 @@
     <ProjectReference Include="..\kmgiasoc.HttpApi\kmgiasoc.HttpApi.csproj" />
     <ProjectReference Include="..\kmgiasoc.EntityFrameworkCore\kmgiasoc.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic\Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.csproj" />
-    <PackageReference Include="Volo.Abp.Autofac" Version="4.4.4" />
-    <PackageReference Include="Volo.Abp.Swashbuckle" Version="4.4.4" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Authentication.JwtBearer" Version="4.4.4" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Serilog" Version="4.4.4" />
-    <PackageReference Include="Volo.Abp.Identity.Web" Version="4.4.4" />
-    <PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="4.4.4" />
-    <PackageReference Include="Volo.Abp.TenantManagement.Web" Version="4.4.4" />
-    <PackageReference Include="Volo.Abp.SettingManagement.Web" Version="4.4.4" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="5.2.2" />
+    <PackageReference Include="Volo.Abp.Swashbuckle" Version="5.2.2" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Authentication.JwtBearer" Version="5.2.2" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Serilog" Version="5.2.2" />
+    <PackageReference Include="Volo.Abp.Identity.Web" Version="5.2.2" />
+    <PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="5.2.2" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Web" Version="5.2.2" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Web" Version="5.2.2" />
   </ItemGroup>
 
   <ItemGroup>

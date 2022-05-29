@@ -1,4 +1,4 @@
-﻿$(function () {
+$(function () {
 
     var l = abp.localization.getResource("CmsKit");
 
@@ -63,22 +63,25 @@
 
     function submitEntityTags(blogPostId) {
 
-        var tags = $tagsInput.val().split(',').map(x => x.trim()).filter(x => x);
+        if ($tagsInput.val()) {
 
-        if (tags.length === 0) {
-            finishSaving();
-            return;
+            var tags = $tagsInput.val().split(',').map(x => x.trim()).filter(x => x);
+
+            if (tags.length > 0) {
+                volo.cmsKit.admin.tags.entityTagAdmin
+                    .setEntityTags({
+                        entityType: 'BlogPost',
+                        entityId: blogPostId,
+                        tags: tags
+                    })
+                    .then(function (result) {
+                        finishSaving(result);
+                    });
+                return;
+            }
         }
 
-        volo.cmsKit.admin.tags.entityTagAdmin
-            .setEntityTags({
-                entityType: 'BlogPost',
-                entityId: blogPostId,
-                tags: tags
-            })
-            .then(function (result) {
-                finishSaving(result);
-            });
+        finishSaving();
     }
 
     function getUppyHeaders() {
@@ -177,6 +180,7 @@
             useCommandShortcut: true,
             initialValue: initialValue,
             previewStyle: 'tab',
+            plugins: [toastui.Editor.plugin.codeSyntaxHighlight],
             height: "100%",
             minHeight: "25em",
             initialEditType: 'markdown',
